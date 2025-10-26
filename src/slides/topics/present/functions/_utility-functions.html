@@ -1,0 +1,110 @@
+<section>
+  <h4>Utility Functions</h4>
+  <h5><img src="./assets/baseline/baseline-widely-icon.svg" style="width: 5rem" alt="" /> Widely Available (various)</h5>
+  <p>Essential helpers for <mark>counters, attributes, and URLs</mark></p>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- attr() demo -->
+        <div style="padding: 1rem; background: #f3f4f6; border-radius: 0.5rem">
+          <div data-tooltip="I'm a tooltip!" style="display: inline-block; padding: 0.5rem 1rem; background: #3b82f6; color: white; border-radius: 0.25rem; position: relative">Hover me</div>
+          <small style="display: block; margin-top: 0.5rem; opacity: 0.6">attr() reads data attributes</small>
+        </div>
+
+        <!-- counter() demo -->
+        <div style="padding: 1rem; background: #1f2937; border-radius: 0.5rem">
+          <ol style="list-style: none; counter-reset: custom-counter; margin: 0; padding: 0; color: white">
+            <li style="counter-increment: custom-counter; margin-bottom: 0.5rem">
+              <span style="display: inline-block; width: 2rem; height: 2rem; line-height: 2rem; text-align: center; background: #8b5cf6; border-radius: 50%; margin-right: 0.5rem; font-weight: bold"
+                >1</span
+              >
+              Custom counter item
+            </li>
+            <li style="counter-increment: custom-counter; margin-bottom: 0.5rem">
+              <span style="display: inline-block; width: 2rem; height: 2rem; line-height: 2rem; text-align: center; background: #8b5cf6; border-radius: 50%; margin-right: 0.5rem; font-weight: bold"
+                >2</span
+              >
+              Another counter item
+            </li>
+            <li style="counter-increment: custom-counter">
+              <span style="display: inline-block; width: 2rem; height: 2rem; line-height: 2rem; text-align: center; background: #8b5cf6; border-radius: 50%; margin-right: 0.5rem; font-weight: bold"
+                >3</span
+              >
+              Last counter item
+            </li>
+          </ol>
+        </div>
+
+        <!-- url() demo -->
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap">
+          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem"></div>
+          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 0.5rem"></div>
+          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 0.5rem"></div>
+        </div>
+        <small style="text-align: center; opacity: 0.8">url() loads external resources</small>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* attr(): Access HTML attributes in CSS */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::after {
+  /* Read data attribute value */
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
+/* counter(): Custom list numbering */
+ol {
+  list-style: none;
+  counter-reset: my-counter;
+}
+
+li {
+  counter-increment: my-counter;
+}
+
+li::before {
+  content: counter(my-counter) ". ";
+  font-weight: bold;
+  color: #8b5cf6;
+}
+
+/* counters(): Nested counters */
+li::before {
+  content: counters(section, ".") " ";
+}
+
+/* url(): Load external resources */
+.element {
+  /* Images */
+  background-image: url('/path/to/image.jpg');
+  
+  /* Fonts */
+  src: url('/fonts/custom.woff2') format('woff2');
+  
+  /* SVG as data URI */
+  mask-image: url('data:image/svg+xml,...');
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

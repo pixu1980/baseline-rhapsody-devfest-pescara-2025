@@ -1,0 +1,116 @@
+<section>
+  <h4>@keyframes Animations</h4>
+  <h5><img src="./assets/baseline/baseline-widely-icon.svg" style="width: 5rem" alt="" /> Widely Available (October 2015)</h5>
+  <small>Declarative animations with <mark>full control</mark></small>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- Bounce animation -->
+        <div style="padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; display: flex; justify-content: center; align-items: flex-end; height: 120px">
+          <div style="width: 60px; height: 60px; background: white; border-radius: 50%; animation: bounce 1s ease-in-out infinite">
+            <style>
+              @keyframes bounce {
+                0%,
+                100% {
+                  transform: translateY(0);
+                }
+                50% {
+                  transform: translateY(-40px);
+                }
+              }
+            </style>
+          </div>
+        </div>
+        <small style="text-align: center; opacity: 0.8; margin-top: -1rem">Bounce Animation</small>
+
+        <!-- Spin animation -->
+        <div style="padding: 2rem; background: #f3f4f6; border-radius: 0.5rem; display: flex; justify-content: center">
+          <div style="width: 60px; height: 60px; border: 4px solid #e5e7eb; border-top-color: #667eea; border-radius: 50%; animation: spin 1s linear infinite">
+            <style>
+              @keyframes spin {
+                to {
+                  transform: rotate(360deg);
+                }
+              }
+            </style>
+          </div>
+        </div>
+        <small style="text-align: center; opacity: 0.8; margin-top: -1rem">Spin (loading indicator)</small>
+
+        <!-- Pulse animation -->
+        <div style="padding: 2rem; background: #1f2937; border-radius: 0.5rem; display: flex; justify-content: center">
+          <div style="width: 60px; height: 60px; background: #10b981; border-radius: 50%; animation: pulse 2s ease-in-out infinite">
+            <style>
+              @keyframes pulse {
+                0%,
+                100% {
+                  transform: scale(1);
+                  opacity: 1;
+                }
+                50% {
+                  transform: scale(1.2);
+                  opacity: 0.7;
+                }
+              }
+            </style>
+          </div>
+        </div>
+        <small style="text-align: center; opacity: 0.8; margin-top: -1rem">Pulse</small>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Define keyframes */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-40px);
+  }
+}
+
+/* Apply animation */
+.ball {
+  animation: bounce 1s ease-in-out infinite;
+  /* name duration timing-function iteration */
+}
+
+/* Multiple properties */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Percentage steps */
+@keyframes colorShift {
+  0% { background: red; }
+  25% { background: yellow; }
+  50% { background: green; }
+  75% { background: blue; }
+  100% { background: red; }
+}
+
+/* Animation properties */
+.element {
+  animation-name: fadeInUp;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0.2s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

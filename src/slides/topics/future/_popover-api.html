@@ -1,0 +1,257 @@
+<section>
+  <h4>Popover API</h4>
+  <h5><img src="./assets/baseline/baseline-newly-icon.svg" style="width: 5rem" alt="" /> Newly Available (April 2024)</h5>
+  <small balance>Tooltips and dropdowns with <mark>automatic positioning</mark> and accessibility</small>
+  <comparison>
+    <left>
+      <style>
+        /* Popover styling */
+        [popover] {
+          border: none;
+          border-radius: 0.5rem;
+          padding: 1rem;
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+          background: #1f2937;
+          color: white;
+          margin: 0;
+        }
+
+        /* Container positioning for fallback */
+        .tooltip-container {
+          position: relative;
+          display: inline-block;
+        }
+
+        .menu-container {
+          position: relative;
+        }
+
+        /* Anchor positioning for popovers (when supported) */
+        .tooltip-btn {
+          anchor-name: --tooltip-anchor;
+        }
+
+        #tooltip-popover {
+          font-size: 1.5rem;
+          padding: 0.5rem 1rem;
+          white-space: nowrap;
+        }
+
+        /* Try anchor positioning first */
+        @supports (anchor-name: --test) {
+          #tooltip-popover {
+            position-anchor: --tooltip-anchor;
+            position: fixed;
+            bottom: anchor(top);
+            left: anchor(center);
+            translate: -50% 0;
+            margin-bottom: 0.5rem;
+          }
+
+          #menu-popover {
+            position-anchor: --menu-anchor;
+            position: fixed;
+            top: anchor(bottom);
+            left: anchor(left);
+            margin-top: 0.5rem;
+          }
+        }
+
+        /* Fallback: absolute positioning relative to container */
+        @supports not (anchor-name: --test) {
+          #tooltip-popover {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            translate: -50% 0;
+            margin-bottom: 0.5rem;
+          }
+
+          #menu-popover {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+          }
+        }
+
+        .menu-btn {
+          anchor-name: --menu-anchor;
+        }
+
+        #menu-popover {
+          background: white;
+          color: #1f2937;
+          padding: 0;
+          min-width: 200px;
+        }
+
+        .menu-item {
+          padding: 0.75rem 1rem;
+          border-bottom: 1px solid #e5e7eb;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+
+        .menu-item:last-child {
+          border-bottom: none;
+        }
+
+        .menu-item:hover {
+          background: #f3f4f6;
+        }
+
+        .menu-item.danger {
+          color: #ef4444;
+        }
+
+        /* Button styling */
+        .popover-trigger {
+          padding: 0.75rem 1.5rem;
+          border: none;
+          border-radius: 0.5rem;
+          font-weight: bold;
+          cursor: pointer;
+          transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+        }
+
+        .popover-trigger:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .tooltip-btn {
+          background: white;
+          color: #667eea;
+        }
+
+        .menu-btn {
+          background: #667eea;
+          color: white;
+          width: 100%;
+        }
+
+        /* Animation for popover */
+        [popover] {
+          opacity: 0;
+          transform: translateY(-10px);
+          transition:
+            opacity 0.2s ease,
+            transform 0.2s ease,
+            overlay 0.2s ease allow-discrete,
+            display 0.2s ease allow-discrete;
+        }
+
+        [popover]:popover-open {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        @starting-style {
+          [popover]:popover-open {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+        }
+      </style>
+
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- Tooltip demo -->
+        <div style="padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; text-align: center">
+          <div class="tooltip-container">
+            <button popovertarget="tooltip-popover" class="popover-trigger tooltip-btn">Click for tooltip 💬</button>
+            <div popover id="tooltip-popover">I'm a popover tooltip with automatic positioning!</div>
+          </div>
+        </div>
+
+        <!-- Menu demo -->
+        <div style="padding: 1.5rem; background: #f3f4f6; border-radius: 0.5rem">
+          <div class="menu-container">
+            <button popovertarget="menu-popover" class="popover-trigger menu-btn">Actions ▼</button>
+            <div popover id="menu-popover">
+              <div class="menu-item">✏️ Edit</div>
+              <div class="menu-item">📤 Share</div>
+              <div class="menu-item">📋 Copy</div>
+              <div class="menu-item danger">🗑️ Delete</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Features -->
+        <div style="padding: 1.5rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 0.5rem; color: white">
+          <div style="font-weight: bold; margin-bottom: 1rem">✨ Features</div>
+          <div style="display: flex; flex-direction: column; gap: -0.5rem; font-size: 1.5rem">
+            <div>✓ Automatic top layer positioning</div>
+            <div>✓ Light dismiss (click outside)</div>
+            <div>✓ Focus management built-in</div>
+            <div>✓ No JavaScript required</div>
+          </div>
+        </div>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Combine Popover API + Anchor Positioning */
+
+/* Define anchor on trigger button */
+.tooltip-btn {
+  anchor-name: --tooltip-anchor;
+}
+
+/* Position popover relative to anchor */
+[popover]#tooltip {
+  position-anchor: --tooltip-anchor;
+  position: fixed;
+  
+  /* Position above button */
+  bottom: anchor(top);
+  left: anchor(center);
+  translate: -50% 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Menu positioned below trigger */
+.menu-btn {
+  anchor-name: --menu-anchor;
+}
+
+[popover]#menu {
+  position-anchor: --menu-anchor;
+  position: fixed;
+  
+  /* Position below button */
+  top: anchor(bottom);
+  left: anchor(left);
+  margin-top: 0.5rem;
+}
+
+/* Animate popover appearance */
+[popover] {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.2s,
+    transform 0.2s,
+    overlay 0.2s allow-discrete,
+    display 0.2s allow-discrete;
+}
+
+[popover]:popover-open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@starting-style {
+  [popover]:popover-open {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

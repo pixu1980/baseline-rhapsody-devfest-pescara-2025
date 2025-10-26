@@ -1,0 +1,68 @@
+<section>
+  <h4>Logical Properties</h4>
+  <h5><img src="./assets/baseline/baseline-widely-icon.svg" style="width: 5rem" alt="" /> Widely Available (July 2021)</h5>
+  <p>Write <mark>direction agnostic</mark> CSS for global reach</p>
+  <comparison>
+    <left>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Physical properties (old way) */
+.box-physical {
+  margin-left: 1rem;
+  margin-right: 2rem;
+  border-top: 2px solid blue;
+  border-bottom: 1px solid gray;
+}
+
+/* Logical properties (modern way) */
+.box-logical {
+  /* Inline = horizontal in LTR/RTL */
+  margin-inline-start: 1rem;
+  margin-inline-end: 2rem;
+  
+  /* Block = vertical */
+  border-block-start: 2px solid blue;
+  border-block-end: 1px solid gray;
+}
+
+/* Shorthand */
+.element {
+  padding-inline: 2rem;  /* left & right */
+  padding-block: 1rem;   /* top & bottom */
+  margin-inline: auto;   /* center horizontally */
+}
+
+/* Size properties */
+.card {
+  inline-size: 300px;    /* width */
+  block-size: 200px;     /* height */
+  max-inline-size: 100%; /* max-width */
+}
+        </code>
+      </pre>
+    </left>
+    <right>
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- LTR demo -->
+        <div style="padding: 1rem; background: #f3f4f6; border-radius: 0.5rem">
+          <div style="font-weight: bold; margin-bottom: 0.5rem">English (LTR)</div>
+          <div style="padding-inline: 2rem 1rem; margin-inline-start: 2rem; border-inline-start: 4px solid #667eea; background: white; border-radius: 0.25rem; direction: ltr">
+            Text flows left to right
+          </div>
+        </div>
+
+        <!-- RTL demo -->
+        <div style="padding: 1rem; background: #f3f4f6; border-radius: 0.5rem">
+          <div style="font-weight: bold; margin-bottom: 0.5rem">Arabic (RTL)</div>
+          <div style="padding-inline: 2rem 1rem; margin-inline-start: 2rem; border-inline-start: 4px solid #10b981; background: white; border-radius: 0.25rem; direction: rtl">
+            النص يتدفق من اليمين إلى اليسار
+          </div>
+        </div>
+
+        <div style="padding: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 0.5rem; text-align: center; font-weight: bold">
+          Same CSS, adapts automatically! ✨
+        </div>
+      </small>
+    </right>
+  </comparison>
+</section>

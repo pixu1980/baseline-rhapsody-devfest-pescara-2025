@@ -1,0 +1,213 @@
+<section>
+  <h4>Trigonometric Functions</h4>
+  <h5><img src="./assets/baseline/baseline-newly-icon.svg" style="width: 5rem" alt="" /> Newly Available (July 2023)</h5>
+  <small balance>Sine, cosine, and tangent for <mark>circular layouts</mark> and organic animations</small>
+  <comparison>
+    <left>
+      <style>
+        /* Circular rotation animation */
+        @keyframes rotate-circle {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .circle-demo {
+          cursor: pointer;
+          position: relative;
+        }
+
+        .circle-demo:hover .circle-container {
+          animation: rotate-circle 3s linear infinite;
+        }
+
+        /* Wave animation */
+        @keyframes wave-flow {
+          0% {
+            transform: translateX(0) scaleY(1);
+          }
+          50% {
+            transform: translateX(-10px) scaleY(1.3);
+          }
+          100% {
+            transform: translateX(0) scaleY(1);
+          }
+        }
+
+        .wave-demo {
+          cursor: pointer;
+          position: relative;
+        }
+
+        .wave-demo:hover .wave-bar {
+          animation: wave-flow 0.6s ease-in-out infinite;
+        }
+
+        .wave-demo:hover .wave-bar:nth-child(1) {
+          animation-delay: 0s;
+        }
+        .wave-demo:hover .wave-bar:nth-child(2) {
+          animation-delay: 0.075s;
+        }
+        .wave-demo:hover .wave-bar:nth-child(3) {
+          animation-delay: 0.15s;
+        }
+        .wave-demo:hover .wave-bar:nth-child(4) {
+          animation-delay: 0.225s;
+        }
+        .wave-demo:hover .wave-bar:nth-child(5) {
+          animation-delay: 0.3s;
+        }
+        .wave-demo:hover .wave-bar:nth-child(6) {
+          animation-delay: 0.375s;
+        }
+        .wave-demo:hover .wave-bar:nth-child(7) {
+          animation-delay: 0.45s;
+        }
+        .wave-demo:hover .wave-bar:nth-child(8) {
+          animation-delay: 0.525s;
+        }
+        .wave-demo:hover .wave-bar:nth-child(9) {
+          animation-delay: 0.6s;
+        }
+      </style>
+
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- Circular layout demo -->
+        <div class="circle-demo" style="position: relative; padding-top: 1.5rem">
+          <div class="circle-container" style="position: relative; width: 200px; height: 200px; margin: 0 auto; border: 2px dashed rgba(255, 255, 255, 0.3); border-radius: 50%">
+            <div
+              style="
+                position: absolute;
+                top: calc(50% + 80px * sin(0deg));
+                left: calc(50% + 80px * cos(0deg));
+                transform: translate(-50%, -50%);
+                width: 30px;
+                height: 30px;
+                background: #ef4444;
+                border-radius: 50%;
+              "
+            ></div>
+            <div
+              style="
+                position: absolute;
+                top: calc(50% + 80px * sin(72deg));
+                left: calc(50% + 80px * cos(72deg));
+                transform: translate(-50%, -50%);
+                width: 30px;
+                height: 30px;
+                background: #f59e0b;
+                border-radius: 50%;
+              "
+            ></div>
+            <div
+              style="
+                position: absolute;
+                top: calc(50% + 80px * sin(144deg));
+                left: calc(50% + 80px * cos(144deg));
+                transform: translate(-50%, -50%);
+                width: 30px;
+                height: 30px;
+                background: #10b981;
+                border-radius: 50%;
+              "
+            ></div>
+            <div
+              style="
+                position: absolute;
+                top: calc(50% + 80px * sin(216deg));
+                left: calc(50% + 80px * cos(216deg));
+                transform: translate(-50%, -50%);
+                width: 30px;
+                height: 30px;
+                background: #3b82f6;
+                border-radius: 50%;
+              "
+            ></div>
+            <div
+              style="
+                position: absolute;
+                top: calc(50% + 80px * sin(288deg));
+                left: calc(50% + 80px * cos(288deg));
+                transform: translate(-50%, -50%);
+                width: 30px;
+                height: 30px;
+                background: #8b5cf6;
+                border-radius: 50%;
+              "
+            ></div>
+          </div>
+        </div>
+        <small style="text-align: center; opacity: 0.8">5 items in circular layout (hover to rotate)</small>
+
+        <!-- Wave pattern demo -->
+        <div class="wave-demo" style="position: relative; padding-top: 1.5rem">
+          <div style="display: flex; align-items: center; justify-content: space-evenly; height: 80px; background: #1f2937; border-radius: 0.5rem">
+            <div class="wave-bar" style="width: 8px; height: calc(40px + 20px * sin(0deg)); background: #667eea; border-radius: 4px"></div>
+            <div class="wave-bar" style="width: 8px; height: calc(40px + 20px * sin(45deg)); background: #667eea; border-radius: 4px"></div>
+            <div class="wave-bar" style="width: 8px; height: calc(40px + 20px * sin(90deg)); background: #667eea; border-radius: 4px"></div>
+            <div class="wave-bar" style="width: 8px; height: calc(40px + 20px * sin(135deg)); background: #667eea; border-radius: 4px"></div>
+            <div class="wave-bar" style="width: 8px; height: calc(40px + 20px * sin(180deg)); background: #667eea; border-radius: 4px"></div>
+            <div class="wave-bar" style="width: 8px; height: calc(40px + 20px * sin(225deg)); background: #667eea; border-radius: 4px"></div>
+            <div class="wave-bar" style="width: 8px; height: calc(40px + 20px * sin(270deg)); background: #667eea; border-radius: 4px"></div>
+            <div class="wave-bar" style="width: 8px; height: calc(40px + 20px * sin(315deg)); background: #667eea; border-radius: 4px"></div>
+            <div class="wave-bar" style="width: 8px; height: calc(40px + 20px * sin(360deg)); background: #667eea; border-radius: 4px"></div>
+          </div>
+        </div>
+        <small style="text-align: center; opacity: 0.8">Wave pattern with sin() (hover to animate)</small>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* sin(): Vertical position in circle */
+/* cos(): Horizontal position in circle */
+.item-1 {
+  /* Place on circle: radius * sin/cos(angle) */
+  top: calc(50% + 100px * sin(0deg));
+  left: calc(50% + 100px * cos(0deg));
+}
+
+/* Distribute items equally around circle */
+.item-2 {
+  top: calc(50% + 100px * sin(72deg));
+  left: calc(50% + 100px * cos(72deg));
+}
+
+/* tan(): Slope calculations */
+.skewed {
+  /* Create angle based slope */
+  transform: skewY(tan(15deg) * 1rad);
+}
+
+/* Inverse functions */
+.angle-based {
+  /* asin(): Get angle from sine value */
+  --angle: asin(0.5); /* = 30deg */
+  
+  /* acos(): Get angle from cosine value */
+  --angle2: acos(0.866); /* ≈ 30deg */
+  
+  /* atan(): Get angle from tangent value */
+  --angle3: atan(1); /* = 45deg */
+  
+  /* atan2(): Two parameter arctangent */
+  --angle4: atan2(1, 1); /* = 45deg */
+}
+
+/* Wave animations */
+.wave-item {
+  /* Sine wave pattern */
+  height: calc(50px + 30px * sin(var(--i) * 45deg));
+  
+  /* Phase shifted cosine */
+  opacity: calc(0.5 + 0.5 * cos(var(--i) * 30deg));
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

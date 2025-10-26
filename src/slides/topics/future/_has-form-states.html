@@ -1,0 +1,107 @@
+<section>
+  <h4>:has() with Form States</h4>
+  <h5><img src="./assets/baseline/baseline-newly-icon.svg" style="width: 5rem" alt="" /> Newly Available (December 2023)</h5>
+  <p>Style forms based on <mark>input state</mark> without JavaScript</p>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- Valid form -->
+        <div style="padding: 1.5rem; background: #f3f4f6; border-radius: 0.5rem; border: 2px solid #10b981">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; color: #10b981; font-weight: bold">
+            <span style="font-size: 1.5rem">✓</span>
+            <span>All fields valid</span>
+          </div>
+          <div style="margin-bottom: 0.75rem">
+            <label style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; color: #1f2937">Email</label>
+            <input type="email" value="user@example.com" style="width: 100%; padding: 0.5rem; border: 2px solid #10b981; border-radius: 0.25rem" />
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; color: #1f2937">Password</label>
+            <input type="password" value="password123" style="width: 100%; padding: 0.5rem; border: 2px solid #10b981; border-radius: 0.25rem" />
+          </div>
+          <button style="margin-top: 1rem; padding: 0.75rem 1.5rem; background: #10b981; color: white; border: none; border-radius: 0.5rem; font-weight: bold; width: 100%">Submit</button>
+        </div>
+
+        <!-- Invalid form -->
+        <div style="padding: 1.5rem; background: #f3f4f6; border-radius: 0.5rem; border: 2px solid #ef4444">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; color: #ef4444; font-weight: bold">
+            <span style="font-size: 1.5rem">✗</span>
+            <span>Please fix errors</span>
+          </div>
+          <div style="margin-bottom: 0.75rem">
+            <label style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; color: #1f2937">Email</label>
+            <input type="email" value="invalid-email" style="width: 100%; padding: 0.5rem; border: 2px solid #ef4444; border-radius: 0.25rem" />
+            <small style="color: #ef4444; font-size: 0.75rem">Invalid email format</small>
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; color: #1f2937">Password</label>
+            <input type="password" value="" style="width: 100%; padding: 0.5rem; border: 2px solid #ef4444; border-radius: 0.25rem" />
+            <small style="color: #ef4444; font-size: 0.75rem">Password is required</small>
+          </div>
+          <button style="margin-top: 1rem; padding: 0.75rem 1.5rem; background: #d1d5db; color: #6b7280; border: none; border-radius: 0.5rem; font-weight: bold; width: 100%; cursor: not-allowed">
+            Submit
+          </button>
+        </div>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Style form based on validity */
+form:has(input:invalid) {
+  border-color: #ef4444;
+}
+
+form:has(input:invalid) .form-status {
+  color: #ef4444;
+}
+
+form:has(input:invalid) .form-status::before {
+  content: "✗ Please fix errors";
+}
+
+/* All valid state */
+form:not(:has(input:invalid)) {
+  border-color: #10b981;
+}
+
+form:not(:has(input:invalid)) .submit-btn {
+  background: #10b981;
+  cursor: pointer;
+}
+
+/* Disable submit if invalid */
+form:has(input:invalid) .submit-btn {
+  background: #d1d5db;
+  color: #6b7280;
+  pointer-events: none;
+}
+
+/* Required fields */
+form:has(input:required:invalid) .required-indicator {
+  display: block;
+}
+
+/* User has interacted */
+form:has(input:user-invalid) {
+  /* Only show errors after interaction */
+}
+
+/* Checkbox/Radio states */
+form:has(input[type="checkbox"]:checked) .checked-content {
+  display: block;
+}
+
+form:has(input[type="radio"]:checked) .options {
+  opacity: 1;
+}
+
+/* Multiple conditions */
+form:has(input[type="email"]:invalid):has(input[type="password"]:invalid) {
+  /* Both invalid */
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

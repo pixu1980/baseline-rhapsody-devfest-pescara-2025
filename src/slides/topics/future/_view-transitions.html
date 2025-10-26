@@ -1,0 +1,126 @@
+<section>
+  <h4>View Transitions API</h4>
+  <h5><img src="./assets/baseline/baseline-limited-icon.svg" style="width: 5rem" alt="" /> Limited Availability</h5>
+  <small balance>Smooth page transitions with <mark>automatic morphing</mark></small>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <style>
+          @keyframes morph-expand {
+            0% {
+              width: 60px;
+              height: 60px;
+              opacity: 1;
+            }
+            50% {
+              opacity: 0.5;
+              transform: scale(1.1);
+            }
+            100% {
+              width: 100%;
+              height: auto;
+              aspect-ratio: 16/9;
+              opacity: 1;
+            }
+          }
+
+          @keyframes morph-shrink {
+            0% {
+              width: 100%;
+              height: auto;
+              aspect-ratio: 16/9;
+              opacity: 1;
+            }
+            50% {
+              opacity: 0.5;
+              transform: scale(0.9);
+            }
+            100% {
+              width: 60px;
+              height: 60px;
+              opacity: 1;
+            }
+          }
+
+          .morph-demo:hover .morph-small {
+            animation: morph-expand 1s ease-in-out forwards;
+          }
+
+          .morph-demo:hover .morph-large {
+            animation: morph-shrink 1s ease-in-out forwards;
+          }
+        </style>
+
+        <!-- Animated morph demo -->
+        <div class="morph-demo" style="padding: 1.5rem; background: #f3f4f6; border-radius: 0.5rem; border: 2px solid #667eea; cursor: pointer; position: relative; min-height: 180px">
+          <div
+            class="morph-small"
+            style="width: 60px; height: 60px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; margin-bottom: 0.5rem; transition: all 0.3s ease"
+          ></div>
+          <div style="font-size: 1.5rem; color: #6b7280">Morphing Card</div>
+        </div>
+
+        <!-- Features list -->
+        <div style="padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; color: white">
+          <div style="font-weight: bold; margin-bottom: 1rem">Features</div>
+          <div style="display: flex; flex-direction: column; gap: -0.5rem; font-size: 1.5rem">
+            <div>✓ Automatic fade in/out</div>
+            <div>✓ Element morphing</div>
+            <div>✓ Cross-document support</div>
+            <div>✓ Customizable animations</div>
+          </div>
+        </div>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Give elements transition names */
+.card {
+  view-transition-name: card-1;
+}
+
+.card-detail {
+  view-transition-name: card-1;
+  /* Same name = morph! */
+}
+
+/* Customize transition */
+::view-transition-old(card-1) {
+  animation: fade-out 0.3s ease-out;
+}
+
+::view-transition-new(card-1) {
+  animation: fade-in 0.3s ease-in;
+}
+
+/* Custom animations */
+@keyframes fade-out {
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}
+
+/* Group transitions */
+::view-transition-group(card-1) {
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+
+/* Different transitions per element */
+.header { view-transition-name: header; }
+.content { view-transition-name: content; }
+.sidebar { view-transition-name: sidebar; }
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

@@ -1,0 +1,87 @@
+<section>
+  <h3>Float & <mark>Clear</mark></h3>
+  <p class="fragment">How we used for "<mark>hack</mark>" layouts</p>
+</section>
+
+<section>
+  <h4>multi-column layout "<mark>challenge</mark>"</h4>
+  <comparison>
+    <left>
+      <small class="fragment" style="border: 2px solid #ef4444; background: #fee2e2; padding: 1rem">
+        <div style="float: left; border: 1px solid #000; width: 32.8%; background: #fff; color: #000">Left Column</div>
+        <div style="float: left; border: 1px solid #000; width: 32.8%; background: #fff; color: #000">Center Column</div>
+        <div style="float: left; border: 1px solid #000; width: 32.8%; background: #fff; color: #000">Right Column</div>
+      </small>
+    </left>
+    <right>
+      <pre class="fragment">
+        <code class="hljs html" data-trim data-line-numbers>
+&lt;div class="container"&gt;
+  &lt;div class="column"&gt;Left&lt;/div&gt;
+  &lt;div class="column"&gt;Center&lt;/div&gt;
+  &lt;div class="column"&gt;Right&lt;/div&gt;
+  &lt;div class="clearfix"&gt;&lt;/div&gt;
+&lt;/div&gt;
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>
+
+<section>
+  <h4>the infamous <mark>clearfix</mark> "hack"</h4>
+  <comparison>
+    <left>
+      <pre class="fragment">
+        <code class="hljs css" data-trim data-line-numbers>
+/* The classic clearfix */
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/* IE6/7 fallback */
+.clearfix {
+  *zoom: 1;
+}
+</code></pre>
+    </left>
+    <right>
+      <div class="fragment">
+        <div style="border: 2px solid #ef4444; padding: 1rem; background: #fee2e2">
+          <div style="float: left; width: 44%; border: 1px solid #000; color: #000; font-size: 3rem; background: #fff; padding: 1rem">Float Left</div>
+          <div style="float: right; width: 44%; border: 1px solid #000; color: #000; font-size: 3rem; background: #fff; padding: 1rem">Float Right</div>
+        </div>
+        <p style="margin-top: 1rem"><small>Without clearfix, the parent would collapse! 😱</small></p>
+      </div>
+      <br />
+      <div class="fragment">
+        <div style="border: 2px solid #ef4444; padding: 1rem; background: #fee2e2">
+          <div style="float: left; width: 44%; border: 1px solid #000; color: #000; font-size: 3rem; background: #fff; padding: 1rem">Float Left</div>
+          <div style="float: right; width: 44%; border: 1px solid #000; color: #000; font-size: 3rem; background: #fff; padding: 1rem">Float Right</div>
+          <div style="clear: both"></div>
+        </div>
+        <p style="margin-top: 1rem"><small>With clearfix, the parent will not collapse! 😱</small></p>
+      </div>
+    </right>
+  </comparison>
+  <aside class="notes">The clearfix was copy-pasted into every project. We memorized it like a prayer. Notice the *zoom: 1 for IE6/7 - that was a whole other level of pain.</aside>
+</section>
+<section>
+  <h4>it was <mark>awful</mark>, uh?</h4>
+  <small>
+    <ul>
+      <li class="fragment">⚠️ Parent collapse without clearfix</li>
+      <li class="fragment">⚠️ Percentage calculations = headaches</li>
+      <li class="fragment">⚠️ No vertical centering</li>
+      <li class="fragment">⚠️ Float clearing everywhere</li>
+      <li class="fragment">⚠️ Semantic markup sacrificed</li>
+    </ul>
+  </small>
+  <aside class="notes">Floats were never meant for layout! They were designed for wrapping text around images. But we made them work... with pain.</aside>
+</section>

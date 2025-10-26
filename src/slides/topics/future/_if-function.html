@@ -1,0 +1,75 @@
+<section>
+  <h4>if() Function</h4>
+  <h5><img src="./assets/baseline/baseline-limited-icon.svg" style="width: 5rem" alt="" /> Limited Availability</h5>
+  <small>Conditional logic with <mark>ternary operator</mark> in CSS</small>
+  <pre>
+    <code class="hljs css" data-trim data-line-numbers>
+/* Syntax: if(condition, true-value, false-value) */
+
+/* Dark mode colors */
+.element {
+  background: if(
+    style(--dark-mode: 1): 20px,
+    style(--dark-mode: 2): 520px,
+    #1f2937,
+    white
+  );
+  
+  color: if(
+    style(--dark-mode: 1),
+    white,
+    #1f2937
+  );
+}
+
+/* Responsive spacing */
+.container {
+  padding: if(
+    media(width >= 768px),
+    2rem,
+    1rem
+  );
+}
+
+/* Conditional sizing */
+.card {
+  width: if(
+    container(width >= 600px),
+    50%,
+    100%
+  );
+}
+
+/* Feature detection */
+.modern {
+  display: if(
+    supports(display: grid),
+    grid,
+    flex
+  );
+}
+
+/* Nested conditions */
+.responsive {
+  font-size: if(
+    media(width >= 1200px),
+    2rem,
+    if(
+      media(width >= 768px),
+      1.5rem,
+      1rem
+    )
+  );
+}
+
+/* With custom properties */
+.dynamic {
+  opacity: if(
+    style(--is-visible: 1),
+    1,
+    0
+  );
+}
+    </code>
+  </pre>
+</section>

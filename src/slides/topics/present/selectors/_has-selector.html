@@ -1,0 +1,76 @@
+<section>
+  <h4>:has() Selector</h4>
+  <h5><img src="./assets/baseline/baseline-newly-icon.svg" style="width: 5rem" alt="" /> Newly Available (December 2023)</h5>
+  <p>The <mark>parent selector</mark> we always wanted</p>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1rem; width: 100%">
+        <!-- Form with valid state -->
+        <div style="padding: 1.5rem; background: #f3f4f6; border-radius: 0.5rem; border: 2px solid #10b981">
+          <div style="margin-bottom: 1rem">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600">Email</label>
+            <input type="email" value="user@example.com" style="width: 100%; padding: 0.5rem; border: 2px solid #10b981; border-radius: 0.25rem" />
+          </div>
+          <button style="padding: 0.75rem 1.5rem; background: #10b981; color: white; border: none; border-radius: 0.5rem; font-weight: bold">Submit ✓</button>
+        </div>
+        <small style="text-align: center; opacity: 0.8">Form with valid input (green border)</small>
+
+        <!-- Form with invalid state -->
+        <div style="padding: 1.5rem; background: #f3f4f6; border-radius: 0.5rem; border: 2px solid #ef4444">
+          <div style="margin-bottom: 1rem">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600">Email</label>
+            <input type="email" value="invalid-email" style="width: 100%; padding: 0.5rem; border: 2px solid #ef4444; border-radius: 0.25rem" />
+          </div>
+          <button style="padding: 0.75rem 1.5rem; background: #d1d5db; color: #6b7280; border: none; border-radius: 0.5rem; font-weight: bold; cursor: not-allowed">Submit ✗</button>
+        </div>
+        <small style="text-align: center; opacity: 0.8">Form with invalid input (red border)</small>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Style parent based on child state */
+form:has(input:invalid) {
+  border-color: red;
+}
+
+form:has(input:valid) {
+  border-color: green;
+}
+
+/* Disable submit if invalid input */
+form:has(input:invalid) button {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Style article with no images */
+article:not(:has(img)) {
+  max-width: 60ch;
+}
+
+/* Card with link gets hover effect */
+.card:has(a) {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card:has(a):hover {
+  transform: translateY(-4px);
+}
+
+/* Previous sibling selector! */
+li:has(+ li.active) {
+  /* Style the item BEFORE active */
+  opacity: 0.6;
+}
+
+/* Check for multiple conditions */
+form:has(input:required:invalid) {
+  /* Required AND invalid */
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

@@ -1,0 +1,87 @@
+<section>
+  <h4>Overlay Positioning</h4>
+  <h5><img src="./assets/baseline/baseline-newly-icon.svg" style="width: 5rem" alt="" /> Newly Available (December 2023)</h5>
+  <p>Top layer for modals and popovers with <mark>proper stacking</mark></p>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- Top layer visualization -->
+        <div style="padding: 1.5rem; background: #f3f4f6; border-radius: 0.5rem">
+          <div style="font-weight: bold; margin-bottom: 1rem; color: #1f2937">Stacking Layers</div>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.875rem">
+            <div style="padding: 0.75rem; background: #ef4444; color: white; border-radius: 0.5rem; font-weight: bold; text-align: center">Top Layer (overlays)</div>
+            <div style="padding: 0.5rem; background: #e5e7eb; color: #6b7280; border-radius: 0.5rem; text-align: center">z-index: 9999</div>
+            <div style="padding: 0.5rem; background: #d1d5db; color: #6b7280; border-radius: 0.5rem; text-align: center">z-index: 100</div>
+            <div style="padding: 0.5rem; background: #9ca3af; color: white; border-radius: 0.5rem; text-align: center">Normal document flow</div>
+          </div>
+        </div>
+
+        <!-- Modal example -->
+        <div style="position: relative; padding: 2rem; background: rgba(0, 0, 0, 0.5); border-radius: 0.5rem; min-height: 140px; display: flex; align-items: center; justify-content: center">
+          <div style="background: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); max-width: 300px; text-align: center">
+            <div style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem; color: #1f2937">Dialog</div>
+            <div style="font-size: 0.875rem; color: #6b7280; margin-bottom: 1rem">Always on top!</div>
+            <button style="padding: 0.5rem 1.5rem; background: #667eea; color: white; border: none; border-radius: 0.5rem; font-weight: bold">OK</button>
+          </div>
+        </div>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Elements in top layer */
+dialog,
+[popover],
+::backdrop {
+  /* Automatically in top layer */
+  /* No z-index needed! */
+}
+
+/* Top layer behavior */
+.overlay {
+  /* Always above everything else */
+  /* Ignores containing block */
+  /* Ignores overflow: hidden */
+  /* Ignores z-index stacking */
+}
+
+/* Backdrop styling */
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+[popover]::backdrop {
+  background: transparent;
+}
+
+/* Fullscreen also uses top layer */
+.video:fullscreen {
+  /* In top layer automatically */
+}
+
+.video::backdrop {
+  background: black;
+}
+
+/* Animating overlay */
+dialog {
+  transition: 
+    opacity 0.3s,
+    overlay 0.3s allow-discrete;
+}
+
+dialog:not([open]) {
+  opacity: 0;
+}
+
+/* Multiple overlays stack correctly */
+/* Last opened is on top */
+/* Proper light-dismiss order */
+
+/* No more z-index wars! */
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

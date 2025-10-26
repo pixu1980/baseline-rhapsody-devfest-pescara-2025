@@ -1,0 +1,148 @@
+<section>
+  <h4>What is Baseline?</h4>
+  <small>
+    <p balance class="fragment">Baseline, officially introduced during the Google I/O 2023, is an <mark>initiative</mark>, a standard for indicating when web platform features <mark>become reliably available</mark> across major browsers.</p>
+    <p align="left" class="fragment">
+      <span>✅ Clear communication about feature support</span><br />
+      <span>✅ Helps developers make informed decisions</span><br />
+      <span>✅ Tracks features across Chrome, Firefox, Safari, Edge</span><br />
+      <span>✅ Updated regularly by web standards organizations</span>
+    </p>
+  </small>
+</section>
+<section>
+  <p>3 simple states for <br />Web API <mark>Availability</mark></p>
+</section>
+
+<section>
+  <h3><img src="./assets/baseline/baseline-widely-icon.svg" style="width: 5rem" alt="" /> Widely Available</h3>
+  <small style="background: #d1fae5; padding: 2rem; border-radius: 8px; border-left: 4px solid #10b981">
+    <h4 style="color: #065f46; margin-top: 0">Safe to Use in Production</h4>
+    <ul style="color: #065f46">
+      <li>Available in Chrome, Firefox, Safari, Edge for <strong>30+ months</strong></li>
+      <li>Excellent cross-browser support</li>
+      <li>Can be used without fallbacks in most cases</li>
+      <li>Recommended for all projects</li>
+    </ul>
+  </small>
+</section>
+
+<section>
+  <h3><img src="./assets/baseline/baseline-newly-icon.svg" style="width: 5rem" alt="" /> Newly Available</h3>
+  <small style="background: hsl(217, 90%, 75%); padding: 2rem; border-radius: 8px; border-left: 4px solid hsl(217, 90%, 53%)">
+    <h4 style="color: hsl(217, 90%, 25%); margin-top: 0">Use with Progressive Enhancement</h4>
+    <ul style="color: hsl(217, 90%, 25%)">
+      <li>Available in all major browsers for <strong>less than 30 months</strong></li>
+      <li>Good modern browser support</li>
+      <li>Consider fallbacks for older browsers</li>
+      <li>Test thoroughly across browsers</li>
+    </ul>
+  </small>
+</section>
+<section>
+  <h3><img src="./assets/baseline/baseline-limited-icon.svg" style="width: 5rem" alt="" /> Limited Availability</h3>
+  <small style="background: hsl(36, 93%, 85%); padding: 2rem; border-radius: 8px; border-left: 4px solid hsl(36, 93%, 35%)">
+    <h4 style="color: hsl(36, 93%, 35%); margin-top: 0">Experimental - Use with Caution</h4>
+    <ul style="color: hsl(36, 93%, 35%)">
+      <li><strong>Not available</strong> in all major browsers yet</li>
+      <li>May require feature flags or polyfills</li>
+      <li>Syntax may change</li>
+      <li>Best for experiments and prototypes</li>
+      <li>Plan for graceful degradation</li>
+    </ul>
+  </small>
+</section>
+
+<section>
+  <h4>An example</h4>
+  <pre>
+    <code class="hljs text" data-trim>
+@container at-rule
+
+Chrome 105    ✅ Sep 2022
+Firefox 110   ✅ Feb 2023
+Safari 16.0   ✅ Sep 2022
+Edge 105      ✅ Sep 2022
+
+Last browser:  Firefox (Feb 2023)
+Baseline date: Feb 2023 (Newly Available)
+Widely date:   Aug 2025 (Feb 2023 + 30 months)
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h3>Decision Framework</h3>
+  <table style="width: 100%; font-size: 3rem">
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>When to Use</th>
+        <th>Considerations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="fragment">
+        <td><img src="./assets/baseline/baseline-widely-icon.svg" style="width: 5rem" alt="" /> Widely</td>
+        <td>
+          ✅ All projects<br />
+          ✅ Production sites<br />
+          ✅ No fallback needed
+        </td>
+        <td>
+          Safe for 95%+ users<br />
+          Minimal testing required
+        </td>
+      </tr>
+      <tr class="fragment">
+        <td><img src="./assets/baseline/baseline-newly-icon.svg" style="width: 5rem" alt="" /> Newly</td>
+        <td>
+          ✅ Modern projects<br />
+          ✅ With fallbacks<br />
+          ⚠️ Check user base
+        </td>
+        <td>
+          Use @supports<br />
+          Test older browsers<br />
+          Progressive enhancement
+        </td>
+      </tr>
+      <tr class="fragment">
+        <td><img src="./assets/baseline/baseline-limited-icon.svg" style="width: 5rem" alt="" /> Limited</td>
+        <td>
+          ⚠️ Experiments only<br />
+          ⚠️ With polyfills<br />
+          ⚠️ Feature detection
+        </td>
+        <td>
+          Provide fallbacks<br />
+          Syntax may change<br />
+          Limited browser support
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h3>Checking Baseline Status</h3>
+  <ol>
+    <li>Visit <a href="https://web.dev/baseline" target="_blank">web.dev/baseline</a></li>
+    <li>Check MDN browser compatibility tables</li>
+    <li>Look for Baseline badges in documentation</li>
+    <li>Use <code>@supports</code> for feature detection</li>
+  </ol>
+  <!-- <pre><code class="language-css">/* Feature detection example */
+@supports (container-type: inline-size) {
+  .card {
+    container-type: inline-size;
+  }
+}
+
+/* Fallback for browsers without support */
+@supports not (container-type: inline-size) {
+  .card {
+    /* Use media queries instead */
+  }
+}</code></pre> -->
+</section>

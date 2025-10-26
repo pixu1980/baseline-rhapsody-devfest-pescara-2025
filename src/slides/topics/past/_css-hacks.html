@@ -1,0 +1,118 @@
+<section>
+  <h3>Hacks & <mark>Workarounds</mark></h3>
+  <p class="fragment">a "<mark>wild west</mark>" of browser compatibility</p>
+</section>
+
+<section>
+  <h4>Browser-Specific <mark>Nightmares</mark></h4>
+  <small>a <mark>minefield</mark> of hacks and workarounds</small>
+  <comparison>
+    <left>
+      <small class="fragment">
+        <ul>
+          <li>Too different rendering engines</li>
+          <li>Box model inconsistencies</li>
+          <li>Margin collapsing bugs</li>
+          <li>PNG transparency issues</li>
+          <li>Z-index nightmares</li>
+        </ul>
+      </small>
+    </left>
+    <right>
+      <pre class="fragment">
+        <code class="hljs css" data-trim data-line-numbers>
+/* IE6/7 hacks */
+* html .selector {
+  /* Only IE6 sees this */
+  margin: 10px;
+}
+
+*+html .selector {
+  /* Only IE7 sees this */
+  margin: 10px;
+}
+
+.selector {
+  margin: 20px;
+  _margin: 10px; /* IE6 underscore hack */
+  *margin: 10px; /* IE6/7 star hack */
+}
+
+/* IE conditional comments in CSS */
+/* @media \0screen\,screen\9 {
+  .selector { margin: 10px; }
+} */
+        </code>
+      </pre>
+    </right>
+  </comparison>
+  <aside class="notes">Each browser had its own quirks. IE6 was the worst offender, but every browser required special treatment. We had to be browser archaeologists.</aside>
+</section>
+
+<section>
+  <h4>Vendor <mark>Prefix</mark> Hell</h4>
+  <comparison>
+    <left>
+      <small class="fragment">
+        <ul>
+          <li>Different prefixes for different browsers</li>
+          <li>N times the code for one property</li>
+          <li>How and When to drop old prefixes?</li>
+          <li>Additional toolchain entries (Autoprefixer?)</li>
+        </ul>
+      </small>
+    </left>
+    <right>
+      <pre class="fragment">
+        <code class="hljs css" data-trim data-line-numbers>
+.box {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  
+  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  -ms-transform: rotate(5deg);
+  -o-transform: rotate(5deg);
+  transform: rotate(5deg);
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+  <aside class="notes">Vendor prefixes were necessary for experimental features, but they cluttered our code. Build tools eventually automated this pain away.</aside>
+</section>
+
+<!-- <section>
+  <h3>The Famous <mark>"Works on My Machine"</mark></h3>
+  <div style="text-align: center; padding: 2rem">
+    <div class="fragment" style="font-size: 3rem; margin-bottom: 1rem">🖥️ → 💥</div>
+    <div class="fragment" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); border: 3px solid #ef4444; padding: 2rem; border-radius: 1rem; margin: 2rem auto; max-width: 600px">
+      <h4 style="margin-top: 0; color: #991b1b">The Developer Experience</h4>
+      <ul style="text-align: left; color: #7f1d1d">
+        <li>Test in IE6, IE7, IE8, IE9, IE10...</li>
+        <li>Different bugs in Firefox 2, 3, 3.5...</li>
+        <li>Safari on Mac vs Windows (different!)</li>
+        <li>Opera had its own special quirks</li>
+        <li>Mobile browsers? Forget about it!</li>
+      </ul>
+    </div>
+
+    <div class="fragment" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border: 2px solid #10b981; padding: 1.5rem; border-radius: 1rem; margin-top: 2rem">
+      <p style="font-size: 1.2rem; margin: 0; color: #065f46">
+        <strong>Today:</strong> Evergreen browsers + Standards = Less Pain!<br />
+        <span style="font-size: 0.9rem">And <mark>Baseline</mark> tells us what's safe to use! 🎯</span>
+      </p>
+    </div>
+  </div>
+  <aside class="notes">
+    The pain of browser compatibility testing was real. Virtual machines, separate test computers, BrowserStack... it was exhausting. Modern evergreen browsers and web standards have made this SO much
+    better.
+  </aside>
+</section> -->

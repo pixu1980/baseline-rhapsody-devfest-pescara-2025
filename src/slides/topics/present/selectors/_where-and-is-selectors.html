@@ -1,0 +1,78 @@
+<section>
+  <h4>:is() and :where() Selectors</h4>
+  <h5><img src="./assets/baseline/baseline-widely-icon.svg" style="width: 5rem" alt="" /> Widely Available (April 2021)</h5>
+  <small>Cleaner selector lists with <mark>different specificity</mark> behaviors</small>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1rem; width: 100%">
+        <!-- :is() demo -->
+        <div style="padding: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; color: white">
+          <div style="font-weight: bold; margin-bottom: 0.5rem">:is() Selector</div>
+          <div style="font-size: 1.5rem; opacity: 0.9">Matches any selector in the list</div>
+          <div style="margin-top: 0.5rem; padding: 0.5rem; background: rgba(255, 255, 255, 0.2); border-radius: 0.25rem; font-size: 1.5rem">Specificity = highest in list</div>
+        </div>
+
+        <!-- :where() demo -->
+        <div style="padding: 1rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 0.5rem; color: white">
+          <div style="font-weight: bold; margin-bottom: 0.5rem">:where() Selector</div>
+          <div style="font-size: 1.5rem; opacity: 0.9">Matches any selector in the list</div>
+          <div style="margin-top: 0.5rem; padding: 0.5rem; background: rgba(255, 255, 255, 0.2); border-radius: 0.25rem; font-size: 1.5rem">Specificity = 0 (easy to override!)</div>
+        </div>
+
+        <!-- Comparison -->
+        <div style="padding: 1rem; background: #f3f4f6; border-radius: 0.5rem">
+          <div style="font-weight: bold; margin-bottom: 0.5rem; color: #1f2937">Key Difference</div>
+          <div style="font-size: 1.5rem; color: #6b7280">
+            Both match same elements, but<br />
+            <code style="color: #667eea">:is()</code> keeps specificity<br />
+            <code style="color: #10b981">:where()</code> has zero specificity
+          </div>
+        </div>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Before: repetitive selectors */
+h1 a, h2 a, h3 a, h4 a {
+  color: blue;
+}
+
+/* After: with :is() */
+:is(h1, h2, h3, h4) a {
+  color: blue;
+}
+
+/* Complex matching */
+:is(.card, .panel) :is(h2, h3) {
+  margin-top: 0;
+}
+
+/* :where() - zero specificity */
+:where(h1, h2, h3) {
+  color: gray;
+}
+
+/* Easy to override! */
+h1 { color: black; } /* Wins! */
+
+/* Use case: reset styles */
+:where(ul, ol) {
+  padding-left: 0;
+  /* Easy to override later */
+}
+
+/* :is() forgiving selector list */
+:is(.valid, :unknown-selector, .active) {
+  /* Doesn't break if one fails! */
+}
+
+/* Combine with :not() */
+section:not(:is(.hero, .footer)) {
+  padding: 2rem;
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

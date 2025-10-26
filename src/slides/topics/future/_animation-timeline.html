@@ -1,0 +1,166 @@
+<section>
+  <h4>Animation Timeline</h4>
+  <h5><img src="./assets/baseline/baseline-limited-icon.svg" style="width: 5rem" alt="" /> Limited Availability</h5>
+  <small>Link animations to <mark>scroll or time</mark> progress</small>
+  <comparison>
+    <left>
+      <style>
+        .scroll-timeline-demo {
+          position: relative;
+          height: 200px;
+          overflow-y: auto;
+          background: #f3f4f6;
+          border-radius: 0.5rem;
+          scroll-behavior: smooth;
+        }
+
+        .scroll-content {
+          height: 500px;
+          position: relative;
+          padding: 2rem;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .animated-sphere {
+          position: sticky;
+          width: 40px;
+          height: 40px;
+          background: white;
+          border-radius: 50%;
+          margin: 0 auto;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          transition: all 0.1s ease-out;
+        }
+
+        /* Simulate scroll-driven animations with JS */
+        .sphere-1 {
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        .sphere-2 {
+          top: 50%;
+          transform: translateY(-50%);
+          margin-top: 2rem;
+        }
+
+        .sphere-3 {
+          top: 50%;
+          transform: translateY(-50%);
+          margin-top: 4rem;
+        }
+      </style>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const scrollDemo = document.querySelector('.scroll-timeline-demo');
+          if (scrollDemo) {
+            scrollDemo.addEventListener('scroll', () => {
+              const scrollPercent = scrollDemo.scrollTop / (scrollDemo.scrollHeight - scrollDemo.clientHeight);
+
+              const sphere1 = scrollDemo.querySelector('.sphere-1');
+              const sphere2 = scrollDemo.querySelector('.sphere-2');
+              const sphere3 = scrollDemo.querySelector('.sphere-3');
+
+              if (sphere1) {
+                // Move from left to right with scale
+                const translateX = scrollPercent * 200 - 100; // -100px to +100px
+                sphere1.style.opacity = 0.4 + scrollPercent * 0.6;
+                sphere1.style.transform = `translateY(-50%) translateX(${translateX}px) scale(${1 + scrollPercent * 0.5})`;
+              }
+
+              if (sphere2) {
+                // Move from left to right
+                const translateX = scrollPercent * 200 - 100; // -100px to +100px
+                sphere2.style.opacity = 0.4 + scrollPercent * 0.6;
+                sphere2.style.transform = `translateY(-50%) translateX(${translateX}px)`;
+              }
+
+              if (sphere3) {
+                // Move from left to right with scale
+                const translateX = scrollPercent * 200 - 100; // -100px to +100px
+                sphere3.style.opacity = 0.2 + scrollPercent * 0.8;
+                sphere3.style.transform = `translateY(-50%) translateX(${translateX}px) scale(${0.7 + scrollPercent * 0.3})`;
+              }
+            });
+          }
+        });
+      </script>
+
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- Timeline visualization -->
+        <div style="padding: 1.5rem; background: #f3f4f6; border-radius: 0.5rem">
+          <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.875rem">
+            <div style="padding: 0.75rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; color: white"><strong>scroll()</strong> - Viewport scroll</div>
+            <div style="padding: 0.75rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 0.5rem; color: white"><strong>view()</strong> - Element in view</div>
+            <div style="padding: 0.75rem; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 0.5rem; color: white"><strong>auto</strong> - Default timeline</div>
+          </div>
+        </div>
+
+        <!-- Scrollable example visualization -->
+        <div class="scroll-timeline-demo">
+          <div class="scroll-content">
+            <div class="animated-sphere sphere-1"></div>
+            <div class="animated-sphere sphere-2"></div>
+            <div class="animated-sphere sphere-3"></div>
+          </div>
+        </div>
+        <small balance style="text-align: center; opacity: 0.8; margin-top: -1rem">Scroll-driven animation (spheres move with scroll progress)</small>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Scroll-driven animation */
+.progress-bar {
+  animation: grow auto linear;
+  animation-timeline: scroll(root);
+  /* Tied to viewport scroll */
+}
+
+@keyframes grow {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* View-driven animation */
+.reveal {
+  animation: fade-in auto linear;
+  animation-timeline: view();
+  /* Animates when in viewport */
+  
+  animation-range: entry 0% cover 50%;
+  /* Control when animation runs */
+}
+
+/* Different scroll axes */
+.horizontal-scroll {
+  animation-timeline: scroll(inline);
+  /* Horizontal scroll */
+}
+
+/* Named timelines */
+.container {
+  scroll-timeline-name: my-scroller;
+}
+
+.child {
+  animation-timeline: my-scroller;
+  /* Use parent's scroll */
+}
+
+/* Combine with existing animations */
+.element {
+  animation: spin 1s linear;
+  animation-timeline: scroll(root);
+  /* Spin based on scroll! */
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

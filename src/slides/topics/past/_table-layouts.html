@@ -1,0 +1,92 @@
+<section>
+  <h3>Table Layouts</h3>
+  <p class="fragment">when <mark>Semantics</mark> didn't matter</p>
+</section>
+
+<section>
+  <h4>The <mark>&lt;table&gt;</mark> Abuse</h4>
+  <comparison>
+    <left>
+      <div class="fragment">
+        <div style="border: 2px solid #ef4444; background: #fee2e2; padding: 0.5rem; font-size: 1.8rem">
+          <table style="width: 100%; border-collapse: collapse">
+            <tr>
+              <td style="width: 30%; background: #fecaca; color: #000; padding: 0.5rem; border: 1px solid #ef4444">Sidebar</td>
+              <td style="background: #fff; padding: 0.5rem; border: 1px solid #ef4444">
+                <div style="background: #fecaca; color: #000; padding: 0.5rem; margin-bottom: 0.5rem; border: 1px solid #ef4444">Header</div>
+                <div style="background: #fff; color: #000; padding: 0.5rem; border: 1px solid #ef4444">Main Content</div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <p style="margin-top: 1rem"><small>Nested tables within tables! 🤯</small></p>
+      </div>
+    </left>
+    <right>
+      <pre class="fragment">
+        <code class="hljs html" data-trim data-line-numbers>
+&lt;!-- The "layout" --&gt;
+&lt;table width="100%" cellpadding="0"&gt;
+  &lt;tr&gt;
+    &lt;td width="200"&gt;Sidebar&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table width="100%"&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Header&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Content&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+        </code>
+      </pre>
+    </right>
+  </comparison>
+  <aside class="notes">Tables were used for layout because they gave us grid-like control. But they were a nightmare for accessibility, SEO, and maintenance.</aside>
+</section>
+
+<section>
+  <h4><mark>display: table</mark> alternative</h4>
+  <comparison>
+    <left>
+      <pre class="fragment">
+        <code class="hljs css" data-trim data-line-numbers>
+.layout {
+  display: table;
+  width: 100%;
+}
+
+.sidebar {
+  display: table-cell;
+  width: 200px;
+  vertical-align: top;
+}
+
+.content {
+  display: table-cell;
+  vertical-align: top;
+}
+        </code>
+      </pre>
+    </left>
+    <right>
+      <small>
+        <ul>
+          <li class="fragment">⚠️ Still table-thinking for layouts</li>
+          <li class="fragment">⚠️ Hard to make responsive</li>
+          <li class="fragment">⚠️ Vertical alignment works... but at what cost?</li>
+          <li class="fragment">⚠️ No gaps/gutters without spacer elements</li>
+          <li class="fragment">⚠️ Order changes require HTML changes</li>
+        </ul>
+      </small>
+    </right>
+  </comparison>
+</section>
+
+<section>
+  <p>slightly better, but still... <mark class="fragment">yawk!</mark></p>
+  <aside class="notes">display: table was "better" because we kept semantic HTML, but we were still thinking in tables. True layout tools were still years away.</aside>
+</section>

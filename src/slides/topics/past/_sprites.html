@@ -1,0 +1,66 @@
+<section>
+  <h3>CSS Sprites</h3>
+  <p class="fragment">The "<mark>image optimization</mark>" technique</p>
+</section>
+
+<section>
+  <h4>One Image to <mark>Rule Them All</mark></h4>
+  <comparison>
+    <left>
+      <div class="fragment">
+        <small style="color: #000; background: #f8fafc; padding: 2rem; border-radius: 0.5rem">
+          <p>the "magic" sprite grid</p>
+          <br />
+          <div style="display: grid; grid-template-columns: repeat(3, 40px); gap: 1rem; background: #e2e8f0; padding: 1rem; place-content: center; border: 2px dashed #94a3b8">
+            <div style="width: 32px; height: 32px; background: hsl(217, 91%, 60%); border-radius: 4px" title="Icon 1"></div>
+            <div style="width: 32px; height: 32px; background: hsl(217, 91%, 65%); border-radius: 4px" title="Icon 2"></div>
+            <div style="width: 32px; height: 32px; background: hsl(217, 91%, 70%); border-radius: 4px" title="Icon 3"></div>
+            <div style="width: 32px; height: 32px; background: hsl(160, 84%, 40%); border-radius: 4px" title="Icon 1 hover"></div>
+            <div style="width: 32px; height: 32px; background: hsl(160, 84%, 55%); border-radius: 4px" title="Icon 2 hover"></div>
+            <div style="width: 32px; height: 32px; background: hsl(160, 84%, 70%); border-radius: 4px" title="Icon 3 hover"></div>
+          </div>
+        </small>
+      </div>
+    </left>
+    <right>
+      <pre class="fragment">
+        <code class="hljs css" data-trim data-line-numbers>
+/* the sprite sheet */
+.icon {
+  background: url('sprites.png') no-repeat;
+  background-position: 0 0;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+
+/* adding classes via JS and 
+manual pixel calculations */
+.icon.icon-hover {
+  background-position: -32px 0;
+}
+
+.icon.icon-active {
+  background-position: -64px 0;
+}
+
+        </code>
+      </pre>
+    </right>
+  </comparison>
+  <aside class="notes">CSS Sprites were born from HTTP/1.1 limitations - fewer requests meant better performance. But the maintenance cost was HUGE.</aside>
+</section>
+
+<section>
+  <h4>this idea leaded to lots of <mark>problems</mark></h4>
+  <small>
+    <ul>
+      <li class="fragment">⚠️ Add one button → rebuild entire sprite</li>
+      <li class="fragment">⚠️ Manual pixel calculations</li>
+      <li class="fragment">⚠️ Hover/Active states = 2/3x the complexity</li>
+      <li class="fragment">⚠️ Different sizes? More sprites!</li>
+      <li class="fragment">⚠️ Documentation needed to track positions</li>
+    </ul>
+  </small>
+  <aside class="notes">With HTTP/2 multiplexing, the "fewer requests" argument died. SVG gave us scalable, accessible icons. Sprites became a relic of the past.</aside>
+</section>

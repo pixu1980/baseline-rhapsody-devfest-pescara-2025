@@ -1,0 +1,76 @@
+<section>
+  <h4>Variable Fonts</h4>
+  <h5><img src="./assets/baseline/baseline-widely-icon.svg" style="width: 5rem" alt="" /> Widely Available (September 2018)</h5>
+  <small>One font file, <mark>infinite variations</mark></small>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- Weight variations -->
+        <div style="padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; color: white">
+          <div style="font-size: 2rem; font-weight: 300; margin-bottom: 0.5rem">Light 300</div>
+          <div style="font-size: 2rem; font-weight: 500; margin-bottom: 0.5rem">Medium 500</div>
+          <div style="font-size: 2rem; font-weight: 700">Bold 700</div>
+        </div>
+
+        <!-- Width variations -->
+        <div style="padding: 1.5rem; background: #f3f4f6; border-radius: 0.5rem; color: #1f2937">
+          <div style="font-size: 1.5rem; font-stretch: 75%; margin-bottom: 0.5rem">Condensed 75%</div>
+          <div style="font-size: 1.5rem; font-stretch: 100%; margin-bottom: 0.5rem">Normal 100%</div>
+          <div style="font-size: 1.5rem; font-stretch: 125%">Expanded 125%</div>
+        </div>
+
+        <!-- Slant/Italic -->
+        <div style="padding: 1.5rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 0.5rem; color: white">
+          <div style="font-size: 1.75rem; font-style: normal; margin-bottom: 0.5rem">Normal Style</div>
+          <div style="font-size: 1.75rem; font-style: italic">Italic Style</div>
+        </div>
+
+        <small style="text-align: center; opacity: 0.8">One file, multiple styles!</small>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Load variable font */
+@font-face {
+  font-family: 'Inter Variable';
+  src: url('/fonts/inter-var.woff2') 
+       format('woff2-variations');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+}
+
+/* Use standard properties */
+.text {
+  font-family: 'Inter Variable';
+  font-weight: 450; /* Any value! */
+  font-stretch: 110%;
+}
+
+/* Low level control */
+.custom {
+  font-variation-settings:
+    'wght' 650,    /* Weight */
+    'wdth' 90,     /* Width */
+    'slnt' -5;     /* Slant */
+}
+
+/* Animate variations! */
+.heading {
+  font-weight: 300;
+  transition: font-weight 0.3s;
+}
+
+.heading:hover {
+  font-weight: 900;
+}
+
+/* Responsive typography */
+h1 {
+  font-weight: clamp(400, 50vw, 900);
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

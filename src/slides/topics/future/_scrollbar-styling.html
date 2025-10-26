@@ -1,0 +1,100 @@
+<section>
+  <h4>Scrollbar Styling</h4>
+  <h5><img src="./assets/baseline/baseline-newly-icon.svg" style="width: 5rem" alt="" /> Newly Available (August 2024)</h5>
+  <p>Customize scrollbars with <mark>standard CSS</mark></p>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- Thin scrollbar -->
+        <div style="padding: 1rem; background: #f3f4f6; border-radius: 0.5rem">
+          <div style="font-weight: bold; margin-bottom: 0.5rem; color: #1f2937">Thin Scrollbar</div>
+          <div style="height: 100px; overflow-y: auto; padding: 0.75rem; background: white; border-radius: 0.5rem; scrollbar-width: thin; scrollbar-color: #667eea #e5e7eb">
+            <div style="height: 300px; font-size: 0.875rem; color: #6b7280; line-height: 1.6">
+              This content scrolls with a thin custom scrollbar. Notice the purple thumb and light gray track. Scroll to see the effect!
+            </div>
+          </div>
+        </div>
+
+        <!-- Auto scrollbar -->
+        <div style="padding: 1rem; background: #f3f4f6; border-radius: 0.5rem">
+          <div style="font-weight: bold; margin-bottom: 0.5rem; color: #1f2937">Custom Colors</div>
+          <div style="height: 100px; overflow-y: auto; padding: 0.75rem; background: white; border-radius: 0.5rem; scrollbar-width: auto; scrollbar-color: #10b981 #d1f4e8">
+            <div style="height: 300px; font-size: 0.875rem; color: #6b7280; line-height: 1.6">
+              Green thumb with light green track. The scrollbar maintains the browser's default width while using custom colors.
+            </div>
+          </div>
+        </div>
+
+        <!-- None (overlay) -->
+        <div style="padding: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; color: white">
+          <div style="font-weight: bold; margin-bottom: 0.75rem">Options</div>
+          <div style="font-size: 0.875rem; display: flex; flex-direction: column; gap: 0.5rem">
+            <div>• <strong>thin</strong> - Minimal width</div>
+            <div>• <strong>auto</strong> - Platform default</div>
+            <div>• <strong>none</strong> - Hidden</div>
+            <div>• Custom thumb/track colors</div>
+          </div>
+        </div>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Standard scrollbar styling */
+.container {
+  /* Width: thin, auto, none */
+  scrollbar-width: thin;
+  
+  /* Colors: thumb track */
+  scrollbar-color: #667eea #e5e7eb;
+}
+
+/* Thin scrollbar with custom colors */
+.scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: #10b981 #d1f4e8;
+}
+
+/* Hide scrollbar (still scrollable) */
+.hidden-scroll {
+  scrollbar-width: none;
+}
+
+/* WebKit specific (more control) */
+.custom::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.custom::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+
+.custom::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 6px;
+}
+
+.custom::-webkit-scrollbar-thumb:hover {
+  background: #5568d3;
+}
+
+/* Horizontal scrollbar */
+.horizontal {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #f59e0b #fef3c7;
+}
+
+/* Dark mode scrollbar */
+@media (prefers-color-scheme: dark) {
+  .container {
+    scrollbar-color: #4b5563 #1f2937;
+  }
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

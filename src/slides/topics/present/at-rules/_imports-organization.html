@@ -1,0 +1,90 @@
+<section>
+  <h4>@import and Organization</h4>
+  <h5><img src="./assets/baseline/baseline-widely-icon.svg" style="width: 5rem" alt="" /> Widely Available (various)</h5>
+  <p>Modern CSS architecture with <mark>imports and layers</mark></p>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1rem; width: 100%">
+        <!-- File structure visualization -->
+        <div style="padding: 1.5rem; background: #1f2937; border-radius: 0.5rem; color: white; font-family: monospace; font-size: 0.75rem">
+          <div style="margin-bottom: 0.5rem">📁 styles/</div>
+          <div style="padding-left: 1rem; opacity: 0.9">
+            <div>├── 📄 reset.css</div>
+            <div>├── 📄 tokens.css</div>
+            <div>├── 📄 base.css</div>
+            <div>├── 📁 components/</div>
+            <div style="padding-left: 1rem">
+              <div>├── 📄 button.css</div>
+              <div>└── 📄 card.css</div>
+            </div>
+            <div>└── 📄 utilities.css</div>
+          </div>
+        </div>
+
+        <!-- Import flow -->
+        <div style="padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; color: white">
+          <div style="font-weight: bold; margin-bottom: 1rem">Import Flow</div>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.875rem">
+            <div>1. Import into layers ↓</div>
+            <div>2. Control cascade order ↓</div>
+            <div>3. Modular & maintainable ✓</div>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div style="padding: 1.5rem; background: #f3f4f6; border-radius: 0.5rem">
+          <div style="font-weight: bold; margin-bottom: 0.5rem; color: #1f2937">Benefits</div>
+          <div style="font-size: 0.875rem; color: #6b7280; display: flex; flex-direction: column; gap: 0.25rem">
+            <div>✓ Organized codebase</div>
+            <div>✓ Predictable cascade</div>
+            <div>✓ Easy maintenance</div>
+          </div>
+        </div>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Main stylesheet */
+/* Define layer order first */
+@layer reset, tokens, base, components, utilities;
+
+/* Import files into layers */
+@import url('reset.css') layer(reset);
+@import url('tokens.css') layer(tokens);
+@import url('base.css') layer(base);
+
+/* Import with supports */
+@import url('modern.css') 
+  supports(display: grid);
+
+/* Import with media query */
+@import url('print.css') 
+  print;
+
+/* Combine conditions */
+@import url('advanced.css')
+  layer(components)
+  supports(container-type: inline-size)
+  (min-width: 768px);
+
+/* Component imports */
+@import url('components/button.css') 
+  layer(components);
+@import url('components/card.css') 
+  layer(components);
+
+/* Utilities last */
+@import url('utilities.css') 
+  layer(utilities);
+
+/* Modern modular CSS architecture:
+   - Organized by concern
+   - Controlled cascade with layers  
+   - Progressive enhancement
+   - Easy to maintain */
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

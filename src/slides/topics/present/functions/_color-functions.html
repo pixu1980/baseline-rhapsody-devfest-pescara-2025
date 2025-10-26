@@ -1,0 +1,69 @@
+<section>
+  <h4>Color Functions</h4>
+  <h5><img src="./assets/baseline/baseline-widely-icon.svg" style="width: 5rem" alt="" /> Widely Available (March 2017)</h5>
+  <p>From hex codes to perceptual <mark>color spaces</mark></p>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1rem; width: 100%">
+        <!-- RGB/HSL demo -->
+        <div style="padding: 1.5rem; background: linear-gradient(135deg, rgb(102, 126, 234) 0%, hsl(258, 76%, 58%) 100%); color: white; border-radius: 0.5rem; text-align: center; font-weight: bold">
+          RGB & HSL Gradient
+        </div>
+
+        <!-- OKLCH demo -->
+        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem">
+          <div style="background: oklch(0.7 0.25 0); height: 60px; border-radius: 0.25rem"></div>
+          <div style="background: oklch(0.7 0.25 72); height: 60px; border-radius: 0.25rem"></div>
+          <div style="background: oklch(0.7 0.25 144); height: 60px; border-radius: 0.25rem"></div>
+          <div style="background: oklch(0.7 0.25 216); height: 60px; border-radius: 0.25rem"></div>
+          <div style="background: oklch(0.7 0.25 288); height: 60px; border-radius: 0.25rem"></div>
+        </div>
+        <small style="text-align: center; opacity: 0.8">OKLCH: Uniform lightness and chroma</small>
+
+        <!-- LAB demo -->
+        <div style="display: flex; gap: 0.5rem">
+          <div style="flex: 1; background: lab(50% 50 -50); height: 60px; border-radius: 0.25rem"></div>
+          <div style="flex: 1; background: lab(70% 30 40); height: 60px; border-radius: 0.25rem"></div>
+          <div style="flex: 1; background: lab(40% -40 30); height: 60px; border-radius: 0.25rem"></div>
+        </div>
+        <small style="text-align: center; opacity: 0.8">LAB: Device independent colors</small>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* RGB: Red, Green, Blue */
+.element {
+  background: rgb(102 126 234);
+  background: rgb(102 126 234 / 0.8); /* with alpha */
+}
+
+/* HSL: Hue, Saturation, Lightness */
+.element {
+  background: hsl(258deg 76% 58%);
+  background: hsl(258 76% 58% / 50%);
+}
+
+/* OKLCH: Perceptual uniformity */
+.element {
+  /* Lightness, Chroma, Hue */
+  background: oklch(0.7 0.25 144);
+  /* Uniform brightness across hues! */
+}
+
+/* LAB: Device independent */
+.element {
+  /* Lightness, A axis, B axis */
+  background: lab(50% 50 -50);
+  /* Closer to human perception */
+}
+
+/* LCH: Cylindrical LAB */
+.element {
+  background: lch(70% 45 200);
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

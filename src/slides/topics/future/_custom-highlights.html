@@ -1,0 +1,99 @@
+<section>
+  <h4>CSS Custom Highlights</h4>
+  <h5><img src="./assets/baseline/baseline-newly-icon.svg" style="width: 5rem" alt="" /> Newly Available (December 2023)</h5>
+  <p>Style text ranges with <mark>custom highlight APIs</mark></p>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- Search highlights -->
+        <div style="padding: 1.5rem; background: #f3f4f6; border-radius: 0.5rem">
+          <div style="margin-bottom: 1rem">
+            <input type="text" placeholder="Search..." style="width: 100%; padding: 0.75rem; border: 2px solid #667eea; border-radius: 0.5rem; font-size: 0.875rem" />
+          </div>
+          <div style="line-height: 1.8; color: #1f2937">
+            This is some example text with
+            <span style="background: #fef3c7; padding: 0 0.25rem">highlighted</span>
+            words that match the search. Another
+            <span style="background: #fef3c7; padding: 0 0.25rem">highlighted</span>
+            match appears here.
+          </div>
+        </div>
+
+        <!-- Grammar/Spelling -->
+        <div style="padding: 1.5rem; background: white; border: 2px solid #e5e7eb; border-radius: 0.5rem">
+          <div style="line-height: 1.8; color: #1f2937">
+            This sentance has a
+            <span style="text-decoration: wavy underline #ef4444">spelling</span>
+            error and a
+            <span style="text-decoration: wavy underline #3b82f6">grammar</span>
+            issue to highlight.
+          </div>
+        </div>
+
+        <!-- Code syntax highlighting -->
+        <div style="padding: 1.5rem; background: #1f2937; border-radius: 0.5rem; font-family: monospace; font-size: 0.875rem; line-height: 1.6; color: #d1d5db">
+          <span style="color: #c678dd">const</span>
+          <span style="color: #e06c75"> greeting</span>
+          <span> = </span>
+          <span style="color: #98c379">"Hello World"</span>
+          <span>;</span>
+        </div>
+
+        <small style="text-align: center; opacity: 0.8">Different highlight types</small>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Define custom highlight */
+::highlight(search-results) {
+  background-color: yellow;
+  color: black;
+}
+
+::highlight(spelling-error) {
+  text-decoration: wavy underline red;
+}
+
+::highlight(grammar-error) {
+  text-decoration: wavy underline blue;
+}
+
+/* Syntax highlighting */
+::highlight(keyword) {
+  color: #c678dd;
+  font-weight: bold;
+}
+
+::highlight(string) {
+  color: #98c379;
+}
+
+::highlight(comment) {
+  color: #5c6370;
+  font-style: italic;
+}
+
+/* Selection alternatives */
+::highlight(user-selection) {
+  background: rgba(102, 126, 234, 0.3);
+}
+
+/* Inherit and override */
+::highlight(important) {
+  background: #fef3c7;
+  font-weight: bold;
+  border-bottom: 2px solid #f59e0b;
+}
+
+/* Multiple highlights can overlap */
+/* Latest defined wins for conflicts */
+
+/* Use with CSS Highlight API (JS) */
+/* const highlight = new Highlight(range);
+   CSS.highlights.set('search', highlight); */
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

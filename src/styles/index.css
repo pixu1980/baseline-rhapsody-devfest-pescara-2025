@@ -1,0 +1,131 @@
+@import 'npm:@pixu-talks/fonts';
+@import 'npm:@pixu-talks/theme';
+
+/* Men in Black theme overrides */
+/* Unlayered styles take precedence over imported layered theme */
+
+:root {
+	/* Palette */
+	--mib-accent: #00e5ff;
+	--mib-accent-weak: color-mix(in oklab, var(--mib-accent) 35%, transparent);
+
+	/* Reveal variables */
+	--r-background-color: #0b0b0b;
+	--r-main-color: #e6e6e6;
+	--r-heading-color: #ffffff;
+	--r-link-color: var(--mib-accent);
+	--r-highlight-color: var(--mib-accent);
+
+	/* Typography tweaks */
+	--r-heading-text-transform: none;
+}
+
+/* Subtle starfield + vignette background */
+.reveal {
+	background-color: var(--r-background-color);
+	background-image:
+		radial-gradient(120rem 60rem at 50% 120%, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0)),
+		radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.35), transparent),
+		radial-gradient(1.2px 1.2px at 70% 20%, rgba(255, 255, 255, 0.45), transparent),
+		radial-gradient(0.8px 0.8px at 40% 80%, rgba(255, 255, 255, 0.3), transparent),
+		radial-gradient(1px 1px at 85% 65%, rgba(255, 255, 255, 0.4), transparent),
+		radial-gradient(0.9px 0.9px at 10% 75%, rgba(255, 255, 255, 0.3), transparent);
+	background-blend-mode: normal;
+}
+
+/* Heading glow for the MIB vibe */
+.reveal h1,
+.reveal h2 {
+	text-shadow: 0 0 0.35rem color-mix(in oklab, var(--mib-accent) 65%, transparent),
+		0 0 1.2rem color-mix(in oklab, var(--mib-accent) 35%, transparent);
+}
+
+/* Link and highlight accent */
+.reveal a {
+	color: var(--r-link-color);
+}
+.reveal a:hover {
+	text-shadow: 0 0 0.6rem var(--mib-accent-weak);
+}
+
+/* Brand badge tweaks */
+[brand] img {
+	border-color: var(--mib-accent);
+	box-shadow: 0 0 1rem color-mix(in oklab, var(--mib-accent) 35%, transparent);
+}
+
+/* Code highlight subtle refinement */
+.hljs .hljs-keyword,
+.hljs .hljs-selector-tag {
+	color: var(--mib-accent);
+}
+
+/* Neuralyzer flash effect (press "N") */
+.mib-neuralyzer {
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	background: radial-gradient(35rem 35rem at 50% 50%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 60%);
+	opacity: 0;
+}
+
+@keyframes mib-flash {
+	0% {
+		opacity: 0;
+	}
+	10% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.mib-neuralyzer.flash {
+	animation: mib-flash 600ms ease-out both;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+	.mib-neuralyzer.flash {
+		animation-duration: 200ms;
+	}
+	.reveal h1,
+	.reveal h2 {
+		text-shadow: none;
+	}
+}
+
+/* Baseline badges - MIB themed */
+.baseline-badges {
+	display: inline-flex;
+	gap: 0.8rem;
+	align-items: center;
+}
+.baseline-badges .badge {
+	font: 600 1.2rem/1.2 var(--font-family--base, system-ui, sans-serif);
+	padding: 0.3rem 0.8rem;
+	border-radius: 999px;
+	letter-spacing: 0.02em;
+	border: 1px solid color-mix(in oklab, var(--mib-accent) 35%, rgba(255, 255, 255, 0.15));
+	background: color-mix(in oklab, var(--mib-accent) 8%, rgba(255, 255, 255, 0.04));
+	color: var(--r-main-color);
+	box-shadow: 0 0 0.6rem color-mix(in oklab, var(--mib-accent) 25%, transparent) inset;
+}
+.badge--widely {
+	color: #6dffb3;
+}
+.badge--newly {
+	color: #ffe28c;
+}
+.badge--limited {
+	color: #ff8f8f;
+}
+
+@media (prefers-contrast: more) {
+	.baseline-badges .badge {
+		border-color: #ffffff;
+		background: #000000;
+		box-shadow: none;
+	}
+}

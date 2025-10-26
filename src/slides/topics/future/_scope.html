@@ -1,0 +1,57 @@
+<section>
+  <h4>@scope</h4>
+  <h5><img src="./assets/baseline/baseline-newly-icon.svg" style="width: 5rem" alt="" /> Newly Available (August 2024)</h5>
+  <small>Style encapsulation without <mark>shadow DOM</mark></small>
+    <pre>
+      <code class="hljs css" data-trim data-line-numbers>
+/* Scope styles to component */
+@scope (.card) {
+  /* Only affects buttons in .card */
+  button {
+    background: white;
+    color: var(--card-color);
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@scope (.alert) {
+  /* Only affects buttons in .alert */
+  button {
+    background: black;
+    color: white;
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Scope with lower boundary */
+@scope (.article) to (.comments) {
+  /* Styles article content,
+     but NOT the comments section */
+  p {
+    line-height: 1.6;
+  }
+}
+
+/* Scope root reference */
+@scope (.card) {
+  :scope {
+    /* Targets .card itself */
+    padding: 2rem;
+  }
+  
+  :scope > header {
+    /* Direct child of scope root */
+  }
+}
+
+/* No more class prefixes needed! */
+/* .card__button, .card__title, etc. */
+    </code>
+  </pre>
+</section>

@@ -1,0 +1,87 @@
+<section>
+  <h4>Flexbox</h4>
+  <h5><img src="./assets/baseline/baseline-widely-icon.svg" style="width: 5rem" alt="" /> Widely Available (September 2015)</h5>
+  <p>From Float Hell to Flex <mark>Heaven</mark></p>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1rem; width: 100%">
+        <!-- Nav demo -->
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 0.5rem;
+          "
+        >
+          <div style="font-weight: bold">Logo</div>
+          <div style="display: flex; gap: 1rem">
+            <span>Home</span>
+            <span>About</span>
+            <span>Contact</span>
+          </div>
+        </div>
+
+        <!-- Cards demo -->
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap">
+          <div style="flex: 1 1 100px; padding: 1rem; background: #10b981; color: white; border-radius: 0.5rem; text-align: center">Card 1</div>
+          <div style="flex: 1 1 100px; padding: 1rem; background: #3b82f6; color: white; border-radius: 0.5rem; text-align: center">Card 2</div>
+          <div style="flex: 1 1 100px; padding: 1rem; background: #f59e0b; color: white; border-radius: 0.5rem; text-align: center">Card 3</div>
+        </div>
+
+        <!-- Centered content -->
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border-radius: 0.5rem;
+            color: white;
+            font-weight: bold;
+          "
+        >
+          Perfectly Centered! 🎯
+        </div>
+      </small>
+    </left>
+    <right>
+      <pre>
+    <code class="hljs css" data-trim data-line-numbers>
+/* Responsive navigation */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Perfectly centered content */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Card layout with auto-sizing */
+.cards {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1 1 300px;
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

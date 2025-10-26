@@ -1,0 +1,205 @@
+<section>
+  <h4>CSS Custom Properties (Variables) 🎨</h4>
+  <h5><img src="./assets/baseline/baseline-widely-icon.svg" style="width: 5rem" alt="" /> Widely Available (April 2017)</h5>
+  <comparison>
+    <left>
+      <div style="padding: 2rem; background: var(--bg-primary, #fff); border-radius: 8px">
+        <style>
+          .theme-demo {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f3f4f6;
+            --text-primary: #1f2937;
+            --accent: #667eea;
+
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+
+            h4 {
+              color: var(--text-primary);
+            }
+          }
+
+          .theme-demo.dark {
+            --bg-primary: #1f2937;
+            --bg-secondary: #111827;
+            --text-primary: #f9fafb;
+            --accent: #a78bfa;
+          }
+
+          .theme-card {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+          }
+
+          .theme-button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1rem;
+          }
+        </style>
+        <div class="theme-demo" id="themeDemo">
+          <h4 style="margin-top: 0">Theme System</h4>
+          <div class="theme-card">
+            <p>This card adapts to the theme using CSS custom properties.</p>
+          </div>
+          <button class="theme-button" onclick="document.getElementById('themeDemo').classList.toggle('dark')">Toggle Theme</button>
+        </div>
+      </div>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+:root {
+  /* Light theme (default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+}
+
+[data-theme="dark"] {
+  /* Dark theme */
+  --bg-primary: #1f2937;
+  --bg-secondary: #111827;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --border-color: #374151;
+}
+
+/* Components automatically adapt */
+.card {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>
+<!-- 
+<section>
+  <h4>Fallback Values</h4>
+  <pre><code class="language-css">/* Provide fallback if variable is not defined */
+.element {
+  color: var(--text-color, #000000);
+  font-size: var(--font-size, 16px);
+}
+
+/* Chain multiple fallbacks */
+.element {
+  color: var(--brand-color, var(--primary-color, #667eea));
+}
+
+/* Use with calc() */
+.element {
+  margin: calc(var(--spacing, 1rem) * 2);
+}</code></pre>
+</section>
+
+<section>
+  <h4>Scoped Variables</h4>
+  <pre><code class="language-css">/* Global variables */
+:root {
+  --color-primary: blue;
+}
+
+/* Component-scoped variables */
+.card {
+  --card-padding: 1rem;
+  --card-bg: white;
+  
+  padding: var(--card-padding);
+  background: var(--card-bg);
+}
+
+.card.large {
+  --card-padding: 2rem; /* Override in larger variant */
+}
+
+/* Context-specific overrides */
+.sidebar .card {
+  --card-bg: #f5f5f5;
+}</code></pre>
+</section>
+
+<section>
+  <h4>Dynamic Updates with JavaScript</h4>
+  <pre><code class="language-javascript">// Get variable value
+const root = document.documentElement;
+const primaryColor = getComputedStyle(root)
+  .getPropertyValue('--primary-color');
+
+// Set variable value
+root.style.setProperty('--primary-color', '#ff6b6b');
+
+// Update per element
+element.style.setProperty('--item-width', '300px');
+
+// Example: Color picker
+colorPicker.addEventListener('change', (e) => {
+  root.style.setProperty('--accent-color', e.target.value);
+});</code></pre>
+</section>
+
+<section>
+  <h4>Advanced: Spacing System</h4>
+  <pre><code class="language-css">:root {
+  /* Base unit */
+  --space-unit: 0.5rem;
+  
+  /* Spacing scale */
+  --space-xs: calc(var(--space-unit) * 1);   /* 0.5rem */
+  --space-sm: calc(var(--space-unit) * 2);   /* 1rem */
+  --space-md: calc(var(--space-unit) * 4);   /* 2rem */
+  --space-lg: calc(var(--space-unit) * 8);   /* 4rem */
+  --space-xl: calc(var(--space-unit) * 16);  /* 8rem */
+}
+
+.component {
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+  gap: var(--space-sm);
+}</code></pre>
+</section> -->
+<!-- 
+<section>
+  <h4>Browser Support</h4>
+  <ul>
+    <li>✅ Chrome 49+ (2016)</li>
+    <li>✅ Firefox 31+ (2014)</li>
+    <li>✅ Safari 9.1+ (2016)</li>
+    <li>✅ Edge 15+ (2017)</li>
+    <li>📊 Baseline: Widely available (2020)</li>
+  </ul>
+  <div class="resources">
+    <p><strong>Resources:</strong></p>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*" target="_blank">MDN: Custom Properties</a></li>
+      <li><a href="https://web.dev/baseline" target="_blank">Baseline Status</a></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h4>Key Takeaways</h4>
+  <ul>
+    <li>✅ Foundation for modern CSS architecture</li>
+    <li>✅ Enable theming and design systems</li>
+    <li>✅ Reduce code duplication</li>
+    <li>✅ Dynamic updates without re-parsing CSS</li>
+    <li>✅ Work with calc(), gradients, animations</li>
+    <li>⚠️ Always provide fallback values</li>
+  </ul>
+</section> -->

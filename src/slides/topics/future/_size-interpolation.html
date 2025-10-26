@@ -1,0 +1,184 @@
+<section>
+  <h4>Size Interpolation</h4>
+  <h5><img src="./assets/baseline/baseline-newly-icon.svg" style="width: 5rem" alt="" /> Newly Available (August 2024)</h5>
+  <small>Animate between <mark>auto and fixed sizes</mark></small>
+  <comparison>
+    <left>
+      <style>
+        /* Enable size interpolation */
+        .accordion-content {
+          interpolate-size: allow-keywords;
+        }
+
+        .accordion-demo {
+          padding: 1.5rem;
+          background: #f3f4f6;
+          border-radius: 0.5rem;
+        }
+
+        .accordion-header {
+          font-weight: bold;
+          margin-bottom: 1rem;
+          color: #1f2937;
+          cursor: pointer;
+          user-select: none;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.5rem;
+          background: white;
+          border-radius: 0.5rem;
+          transition: background 0.2s ease;
+        }
+
+        .accordion-header:hover {
+          background: #e5e7eb;
+        }
+
+        .accordion-arrow {
+          transition: transform 0.3s ease;
+          display: inline-block;
+        }
+
+        .accordion-demo.open .accordion-arrow {
+          transform: rotate(180deg);
+        }
+
+        .accordion-content {
+          overflow: hidden;
+          height: 0;
+          transition:
+            height 0.3s ease,
+            opacity 0.3s ease;
+          background: white;
+          border-radius: 0.5rem;
+          opacity: 0;
+        }
+
+        .accordion-demo.open .accordion-content {
+          height: auto;
+          opacity: 1;
+        }
+
+        .accordion-inner {
+          padding: 1rem;
+          color: #6b7280;
+        }
+      </style>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const accordion = document.querySelector('.accordion-demo');
+          const header = accordion?.querySelector('.accordion-header');
+
+          if (header && accordion) {
+            header.addEventListener('click', () => {
+              accordion.classList.toggle('open');
+            });
+          }
+        });
+      </script>
+
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- Interactive Height transition demo -->
+        <div class="accordion-demo">
+          <div class="accordion-header">
+            <span>Click to expand</span>
+            <span class="accordion-arrow">▼</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              <strong style="display: block; margin-bottom: 0.5rem">Size Interpolation in Action!</strong>
+              This content smoothly animates its height from 0 to auto using interpolate-size. No more max-height hacks! The transition is smooth and precise, adapting to the actual content size.
+            </div>
+          </div>
+        </div>
+
+        <!-- Before/After comparison -->
+        <!-- <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem">
+          <div style="padding: 1rem; background: #ef4444; color: white; border-radius: 0.5rem; text-align: center">
+            <div style="font-weight: bold; margin-bottom: 0.5rem">❌ Before</div>
+            <div style="font-size: 0.75rem; opacity: 0.9">max-height: 9999px</div>
+            <div style="font-size: 0.65rem; margin-top: 0.25rem; opacity: 0.8">(Hacky & imprecise)</div>
+          </div>
+          <div style="padding: 1rem; background: #10b981; color: white; border-radius: 0.5rem; text-align: center">
+            <div style="font-weight: bold; margin-bottom: 0.5rem">✅ After</div>
+            <div style="font-size: 0.75rem; opacity: 0.9">height: auto</div>
+            <div style="font-size: 0.65rem; margin-top: 0.25rem; opacity: 0.8">(Clean & smooth!)</div>
+          </div>
+        </div> -->
+
+        <!-- Use cases -->
+        <div style="padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; color: white">
+          <div style="font-weight: bold; margin-bottom: 1rem">✨ Perfect For</div>
+          <div style="display: flex; flex-direction: column; gap: -0.5rem; font-size: 1.5rem">
+            <div>✓ Accordions & collapsible sections</div>
+            <div>✓ Dropdown menus</div>
+            <div>✓ Expandable cards</div>
+            <div>✓ Dynamic content reveals</div>
+          </div>
+        </div>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Enable size interpolation globally */
+* {
+  interpolate-size: allow-keywords;
+}
+
+/* Now animate to/from auto! */
+.accordion-content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.accordion.open .accordion-content {
+  height: auto;
+  /* Smoothly animates! */
+}
+
+/* Works with width too */
+.sidebar {
+  width: 0;
+  transition: width 0.3s;
+}
+
+.sidebar.open {
+  width: auto;
+}
+
+/* calc-size() for more control */
+.element {
+  height: 0;
+  transition: height 0.3s;
+}
+
+.element.expanded {
+  height: calc-size(auto, size + 2rem);
+  /* Add padding to auto height */
+}
+
+/* Combine with other properties */
+.card {
+  height: 0;
+  opacity: 0;
+  padding: 0;
+  transition: 
+    height 0.3s,
+    opacity 0.3s,
+    padding 0.3s;
+}
+
+.card.visible {
+  height: auto;
+  opacity: 1;
+  padding: 1rem;
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

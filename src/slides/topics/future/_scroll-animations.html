@@ -1,0 +1,269 @@
+<section>
+  <h4>Scroll Driven Animations</h4>
+  <h5><img src="./assets/baseline/baseline-limited-icon.svg" style="width: 5rem" alt="" /> Limited Availability</h5>
+  <small>Animations that respond to <mark>scroll position</mark></small>
+  <comparison>
+    <left>
+      <style>
+        .scroll-driven-demo {
+          position: relative;
+          height: 250px;
+          overflow-y: auto;
+          background: #1f2937;
+          border-radius: 0.5rem;
+          scroll-behavior: smooth;
+        }
+
+        .scroll-driven-content {
+          height: 600px;
+          position: relative;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+          position: sticky;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: #374151;
+          z-index: 15;
+        }
+
+        .progress-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+          transition: width 0.1s ease-out;
+          width: 0%;
+        }
+
+        /* Parallax layers */
+        .parallax-scene {
+          position: relative;
+          height: 100%;
+          background: linear-gradient(to bottom, #1f2937 0%, #667eea 50%, #10b981 100%);
+        }
+
+        .star {
+          position: absolute;
+          transition: transform 0.1s ease-out;
+        }
+
+        .star-1 {
+          top: 15%;
+          left: 10%;
+          font-size: 3rem;
+        }
+
+        .star-2 {
+          top: 30%;
+          right: 15%;
+          font-size: 2rem;
+        }
+
+        .star-3 {
+          top: 50%;
+          left: 50%;
+          font-size: 2.5rem;
+        }
+
+        .moon {
+          position: absolute;
+          top: 40%;
+          right: 20%;
+          font-size: 4rem;
+          transition: transform 0.1s ease-out;
+        }
+
+        /* Reveal sections */
+        .reveal-section {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80%;
+          padding: 1.5rem;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          border-radius: 0.5rem;
+          color: white;
+          text-align: center;
+          transition:
+            opacity 0.3s ease-out,
+            transform 0.3s ease-out;
+          opacity: 0;
+          transform: translateX(-50%) translateY(30px);
+        }
+
+        .reveal-section.visible {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+
+        .reveal-1 {
+          top: 20%;
+        }
+
+        .reveal-2 {
+          top: 50%;
+        }
+
+        .reveal-3 {
+          top: 80%;
+        }
+      </style>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const scrollDemo = document.querySelector('.scroll-driven-demo');
+          if (scrollDemo) {
+            const progressFill = scrollDemo.querySelector('.progress-fill');
+            const star1 = scrollDemo.querySelector('.star-1');
+            const star2 = scrollDemo.querySelector('.star-2');
+            const star3 = scrollDemo.querySelector('.star-3');
+            const moon = scrollDemo.querySelector('.moon');
+            const reveals = scrollDemo.querySelectorAll('.reveal-section');
+
+            scrollDemo.addEventListener('scroll', () => {
+              const scrollPercent = scrollDemo.scrollTop / (scrollDemo.scrollHeight - scrollDemo.clientHeight);
+
+              // Progress bar
+              if (progressFill) {
+                progressFill.style.width = `${scrollPercent * 100}%`;
+              }
+
+              // Parallax stars (different speeds)
+              if (star1) {
+                star1.style.transform = `translateY(${scrollPercent * -50}px)`;
+              }
+              if (star2) {
+                star2.style.transform = `translateY(${scrollPercent * -80}px)`;
+              }
+              if (star3) {
+                star3.style.transform = `translateY(${scrollPercent * -30}px)`;
+              }
+              if (moon) {
+                moon.style.transform = `translateY(${scrollPercent * -100}px) scale(${1 + scrollPercent * 0.3})`;
+              }
+
+              // Reveal on scroll
+              reveals.forEach((reveal, index) => {
+                const revealTop = reveal.offsetTop;
+                const revealHeight = reveal.offsetHeight;
+                const scrollTop = scrollDemo.scrollTop;
+                const windowHeight = scrollDemo.clientHeight;
+
+                if (scrollTop + windowHeight > revealTop + revealHeight * 0.3) {
+                  reveal.classList.add('visible');
+                }
+              });
+            });
+          }
+        });
+      </script>
+
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- Scrollable demo with all effects -->
+        <div class="scroll-driven-demo">
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+          <div class="scroll-driven-content">
+            <div class="parallax-scene">
+              <div class="star star-1">⭐</div>
+              <div class="star star-2">✨</div>
+              <div class="star star-3">💫</div>
+              <div class="moon">🌙</div>
+
+              <div class="reveal-section reveal-1">
+                <strong>Parallax Effect</strong>
+                <div style="font-size: 0.875rem; margin-top: 0.5rem; opacity: 0.9">Stars move at different speeds</div>
+              </div>
+
+              <div class="reveal-section reveal-2">
+                <strong>Reveal Animation</strong>
+                <div style="font-size: 0.875rem; margin-top: 0.5rem; opacity: 0.9">Elements fade in as you scroll</div>
+              </div>
+
+              <div class="reveal-section reveal-3">
+                <strong>Progress Tracking</strong>
+                <div style="font-size: 0.875rem; margin-top: 0.5rem; opacity: 0.9">Bar at top shows scroll progress</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Use cases -->
+        <div style="padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; color: white">
+          <div style="font-weight: bold; margin-bottom: 1rem">✨ Use Cases</div>
+          <div style="display: flex; flex-direction: column; gap: -.5rem; font-size: 1.5rem">
+            <div>✓ Parallax scrolling effects</div>
+            <div>✓ Reading progress indicators</div>
+            <div>✓ Reveal on scroll animations</div>
+            <div>✓ Sticky headers with animations</div>
+          </div>
+        </div>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Progress bar tied to scroll */
+.progress {
+  position: fixed;
+  top: 0;
+  width: 0%;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    #667eea, #764ba2);
+  
+  animation: progress auto linear;
+  animation-timeline: scroll(root);
+}
+
+@keyframes progress {
+  to { width: 100%; }
+}
+
+/* Reveal on scroll */
+.section {
+  opacity: 0;
+  transform: translateY(50px);
+  
+  animation: reveal auto linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Parallax effect */
+.background {
+  animation: parallax auto linear;
+  animation-timeline: scroll(root);
+}
+
+@keyframes parallax {
+  to {
+    transform: translateY(-100px);
+  }
+}
+
+/* Scale on scroll */
+.hero-image {
+  animation: scale-down auto linear;
+  animation-timeline: scroll(root);
+}
+
+@keyframes scale-down {
+  to { transform: scale(0.8); }
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

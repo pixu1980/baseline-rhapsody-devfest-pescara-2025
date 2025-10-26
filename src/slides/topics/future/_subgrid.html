@@ -1,0 +1,113 @@
+<section>
+  <h4>CSS Subgrid</h4>
+  <h5><img src="./assets/baseline/baseline-newly-icon.svg" style="width: 5rem" alt="" /> Newly Available (December 2023)</h5>
+  <p>Nested grids that <mark>inherit parent tracks</mark></p>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- Subgrid visualization -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; padding: 1rem; background: #f3f4f6; border-radius: 0.5rem">
+          <!-- Header spans all columns -->
+          <div style="grid-column: 1 / -1; padding: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; color: white; font-weight: bold; text-align: center">
+            Header (spans 3 columns)
+          </div>
+
+          <!-- Card with subgrid -->
+          <div style="grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; gap: 0.5rem">
+            <div style="padding: 1rem; background: #10b981; border-radius: 0.5rem; color: white; text-align: center; font-size: 0.875rem">Column 1</div>
+            <div style="padding: 1rem; background: #3b82f6; border-radius: 0.5rem; color: white; text-align: center; font-size: 0.875rem">Column 2</div>
+            <div style="padding: 1rem; background: #f59e0b; border-radius: 0.5rem; color: white; text-align: center; font-size: 0.875rem">Column 3</div>
+          </div>
+
+          <!-- Another row with aligned content -->
+          <div style="padding: 0.75rem; background: white; border-radius: 0.5rem; text-align: center; font-size: 0.75rem; color: #6b7280">Aligned</div>
+          <div style="padding: 0.75rem; background: white; border-radius: 0.5rem; text-align: center; font-size: 0.75rem; color: #6b7280">To parent</div>
+          <div style="padding: 0.75rem; background: white; border-radius: 0.5rem; text-align: center; font-size: 0.75rem; color: #6b7280">Grid tracks</div>
+        </div>
+
+        <!-- Before/After comparison -->
+        <!-- <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem">
+          <div style="padding: 1rem; background: #ef4444; color: white; border-radius: 0.5rem; text-align: center">
+            <div style="font-weight: bold; margin-bottom: 0.5rem">Without Subgrid</div>
+            <div style="font-size: 0.75rem">Alignment breaks</div>
+          </div>
+          <div style="padding: 1rem; background: #10b981; color: white; border-radius: 0.5rem; text-align: center">
+            <div style="font-weight: bold; margin-bottom: 0.5rem">With Subgrid</div>
+            <div style="font-size: 0.75rem">Perfect alignment! ✓</div>
+          </div>
+        </div> -->
+
+        <!-- Use cases -->
+        <div style="padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; color: white">
+          <div style="font-weight: bold; margin-bottom: 1rem">Perfect For</div>
+          <div style="font-size: 1.5rem; display: flex; flex-direction: column; gap: -.5rem">
+            <div>✓ Card layouts</div>
+            <div>✓ Form alignment</div>
+            <div>✓ Data tables</div>
+            <div>✓ Nested components</div>
+          </div>
+        </div>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Parent grid */
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Child inherits parent columns */
+.card {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  
+  /* Inherits parent's 3 columns! */
+  /* Perfect alignment */
+}
+
+/* Subgrid for rows too */
+.sidebar {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: 1 / -1;
+}
+
+/* Both dimensions */
+.nested {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+  
+  /* Inherits both axes */
+}
+
+/* Gap inheritance */
+.card {
+  display: grid;
+  grid-template-columns: subgrid;
+  
+  /* Gaps inherited from parent */
+  /* Can override with own gap */
+  gap: 0.5rem;
+}
+
+/* Named grid lines */
+.container {
+  grid-template-columns: 
+    [start] 1fr [middle] 1fr [end];
+}
+
+.subgrid-item {
+  grid-template-columns: subgrid;
+  /* Inherits named lines too! */
+  grid-column: start / end;
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

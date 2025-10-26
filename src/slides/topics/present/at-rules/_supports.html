@@ -1,0 +1,86 @@
+<section>
+  <h4>@supports (Feature Queries)</h4>
+  <h5><img src="./assets/baseline/baseline-widely-icon.svg" style="width: 5rem" alt="" /> Widely Available (September 2015)</h5>
+  <p>Progressive enhancement with <mark>feature detection</mark></p>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- Feature check visualization -->
+        <div style="padding: 1.5rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 0.5rem; color: white">
+          <div style="font-weight: bold; margin-bottom: 0.5rem">✓ Feature Supported</div>
+          <div style="font-size: 0.875rem; opacity: 0.9">Enhanced styles applied</div>
+        </div>
+
+        <div style="padding: 1.5rem; background: #f3f4f6; border-radius: 0.5rem; color: #1f2937; border: 2px dashed #d1d5db">
+          <div style="font-weight: bold; margin-bottom: 0.5rem">○ Feature Not Supported</div>
+          <div style="font-size: 0.875rem; color: #6b7280">Fallback styles used</div>
+        </div>
+
+        <!-- Example use case -->
+        <div style="padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; color: white">
+          <div style="font-weight: bold; margin-bottom: 1rem">Real Example</div>
+          <div style="display: grid; gap: 0.5rem; font-size: 0.875rem">
+            <div>1. Check if Grid is supported</div>
+            <div>2. Use Grid if yes ✓</div>
+            <div>3. Use Flexbox if no ↩</div>
+          </div>
+        </div>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Check single property */
+@supports (display: grid) {
+  .layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Fallback for non-support */
+@supports not (display: grid) {
+  .layout {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+/* Multiple conditions - AND */
+@supports (display: grid) and (gap: 1rem) {
+  .grid {
+    display: grid;
+    gap: 1rem;
+  }
+}
+
+/* Multiple conditions - OR */
+@supports (backdrop-filter: blur(10px)) or 
+          (-webkit-backdrop-filter: blur(10px)) {
+  .glass {
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Check for selector support */
+@supports selector(:has(*)) {
+  .parent:has(.child) {
+    border: 2px solid green;
+  }
+}
+
+/* Progressive enhancement */
+.button {
+  background: blue; /* Fallback */
+}
+
+@supports (background: linear-gradient(red, blue)) {
+  .button {
+    background: linear-gradient(#667eea, #764ba2);
+  }
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

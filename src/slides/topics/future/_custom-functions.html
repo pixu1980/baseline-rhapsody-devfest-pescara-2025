@@ -1,0 +1,62 @@
+<section>
+  <h4>CSS Custom Functions</h4>
+  <h5><img src="./assets/baseline/baseline-limited-icon.svg" style="width: 5rem" alt="" /> Limited Availability</h5>
+  <small>Define reusable <mark>calculation functions</mark> in CSS</small>
+
+  <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Define custom function */
+@function --fluid-size(
+  --min,
+  --max,
+  --viewport-min: 320px,
+  --viewport-max: 1200px
+) {
+  result: clamp(
+    var(--min),
+    calc(
+      var(--min) + 
+      (var(--max) - var(--min)) * 
+      (100vw - var(--viewport-min)) / 
+      (var(--viewport-max) - var(--viewport-min))
+    ),
+    var(--max)
+  );
+}
+
+/* Use the function */
+h1 {
+  font-size: --fluid-size(
+    --min: 2rem,
+    --max: 4rem
+  );
+}
+
+/* Another example - spacing function */
+@function --spacing(--multiplier) {
+  result: calc(var(--base-spacing) * var(--multiplier));
+}
+
+.card {
+  padding: --spacing(--multiplier: 2);
+  margin-bottom: --spacing(--multiplier: 3);
+}
+
+/* Color mixing function */
+@function --tint(--color, --percentage) {
+  result: color-mix(
+    in oklch,
+    var(--color),
+    white var(--percentage)
+  );
+}
+
+.button {
+  background: --tint(
+    --color: blue,
+    --percentage: 20%
+  );
+}
+        </code>
+      </pre>
+</section>

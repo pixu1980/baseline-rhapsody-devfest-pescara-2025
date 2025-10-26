@@ -1,0 +1,241 @@
+<section>
+  <h4>Anchor Positioning</h4>
+  <h5><img src="./assets/baseline/baseline-limited-icon.svg" style="width: 5rem" alt="" /> Limited Availability</h5>
+  <small balance>Position elements relative to <mark>other elements</mark> declaratively</small>
+  <comparison>
+    <left>
+      <style>
+        @keyframes float-anchor {
+          0%,
+          100% {
+            transform: translate(0, 0);
+          }
+          25% {
+            transform: translate(150px, -20px);
+          }
+          50% {
+            transform: translate(150px, 40px);
+          }
+          75% {
+            transform: translate(-50px, 40px);
+          }
+        }
+
+        .anchor-demo-container {
+          position: relative;
+          cursor: pointer;
+        }
+
+        .anchor-demo-container::before {
+          content: 'Click to animate! 👆';
+          position: absolute;
+          top: -1.5rem;
+          right: 0;
+          font-size: 0.75rem;
+          opacity: 0.7;
+          pointer-events: none;
+        }
+
+        .anchor-demo-container.active .anchor-element {
+          animation: float-anchor 4s ease-in-out infinite;
+        }
+
+        .anchor-element {
+          position: relative;
+          display: inline-block;
+          transition: transform 0.3s ease;
+        }
+
+        /* Simulate anchor positioning behavior */
+        .tooltip-anchored {
+          position: absolute;
+          pointer-events: none;
+          transition: all 0.3s ease;
+        }
+
+        .anchor-demo-container.active .tooltip-anchored {
+          animation: float-anchor 4s ease-in-out infinite;
+        }
+
+        .side-label-anchored {
+          position: absolute;
+          pointer-events: none;
+          transition: all 0.3s ease;
+        }
+
+        .anchor-demo-container.active .side-label-anchored {
+          animation: float-anchor 4s ease-in-out infinite;
+        }
+
+        .badge-anchored {
+          position: absolute;
+          pointer-events: none;
+          transition: all 0.3s ease;
+        }
+
+        .anchor-demo-container.active .badge-anchored {
+          animation: float-anchor 4s ease-in-out infinite;
+        }
+      </style>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const container = document.querySelector('.anchor-demo-container');
+          if (container) {
+            container.addEventListener('click', () => {
+              container.classList.toggle('active');
+            });
+          }
+        });
+      </script>
+
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- Interactive Anchor positioning demo -->
+        <div class="anchor-demo-container" style="position: relative; padding: 3rem 1.5rem; background: #f3f4f6; border-radius: 0.5rem; min-height: 120px">
+          <div
+            class="anchor-element"
+            style="
+              padding: 0.75rem 1.5rem;
+              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              color: white;
+              border-radius: 0.5rem;
+              font-weight: bold;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            "
+          >
+            🎯 Anchor Element
+          </div>
+
+          <!-- Tooltip anchored to button (top) -->
+          <div
+            class="tooltip-anchored"
+            style="
+              bottom: 100%;
+              left: 50%;
+              transform: translateX(-50%);
+              margin-bottom: 0.5rem;
+              background: #1f2937;
+              color: white;
+              padding: 0.75rem 1rem;
+              border-radius: 0.5rem;
+              font-size: 0.875rem;
+              white-space: nowrap;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            "
+          >
+            📍 Tooltip (top)
+            <div style="position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 8px; height: 8px; background: #1f2937"></div>
+          </div>
+
+          <!-- Side label (right) -->
+          <div
+            class="side-label-anchored"
+            style="
+              left: 100%;
+              top: 50%;
+              transform: translateY(-50%);
+              margin-left: 0.75rem;
+              background: #10b981;
+              color: white;
+              padding: 0.5rem 1rem;
+              border-radius: 0.5rem;
+              font-size: 0.875rem;
+              white-space: nowrap;
+              z-index: 2;
+            "
+          >
+            ➡️ Label
+          </div>
+
+          <!-- Badge (bottom-right) -->
+          <!-- <div
+            class="badge-anchored"
+            style="top: 100%; right: 0; margin-top: 0.5rem; background: #f59e0b; color: white; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: bold"
+          >
+            NEW
+          </div> -->
+        </div>
+
+        <!-- Benefits -->
+        <div style="padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; color: white">
+          <div style="font-weight: bold; margin-bottom: 1rem">Key Benefits</div>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 1.5rem">
+            <div>✓ Declarative positioning (no JS)</div>
+            <div>✓ Elements follow anchor automatically</div>
+            <div>✓ Respects viewport boundaries</div>
+            <div>✓ Works across stacking contexts</div>
+          </div>
+        </div>
+
+        <!-- Use cases -->
+        <!-- <div style="padding: 1.5rem; background: #f3f4f6; border-radius: 0.5rem">
+          <div style="font-weight: bold; margin-bottom: 0.75rem; color: #1f2937">🎯 Perfect For</div>
+          <div style="font-size: 0.875rem; color: #6b7280; display: flex; flex-direction: column; gap: 0.25rem">
+            <div>• Tooltips & popovers</div>
+            <div>• Dropdown menus</div>
+            <div>• Context menus</div>
+            <div>• Callouts & annotations</div>
+          </div>
+        </div> -->
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* Define anchor on target element */
+.button {
+  anchor-name: --my-button;
+}
+
+/* Position tooltip relative to anchor */
+.tooltip {
+  position: absolute;
+  
+  /* Position based on anchor */
+  position-anchor: --my-button;
+  
+  /* Use anchor() function */
+  bottom: anchor(top);
+  left: anchor(center);
+  translate: -50% 0;
+  
+  /* Add spacing */
+  margin-bottom: 0.5rem;
+}
+
+/* Fallback positioning */
+.menu {
+  position: absolute;
+  position-anchor: --trigger;
+  
+  /* Try top first */
+  top: anchor(bottom);
+  
+  /* Fallback if no space */
+  position-try-fallbacks:
+    --bottom,
+    --left,
+    --right;
+}
+
+/* Pre-defined fallback positions */
+@position-try --bottom {
+  bottom: anchor(top);
+  top: auto;
+}
+
+@position-try --left {
+  right: anchor(left);
+  left: auto;
+}
+
+/* Anchor across different stacking contexts */
+.modal .tooltip {
+  position-anchor: --external-button;
+  /* Works even in different contexts! */
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

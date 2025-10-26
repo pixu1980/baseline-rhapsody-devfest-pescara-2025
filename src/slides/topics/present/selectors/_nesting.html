@@ -1,0 +1,81 @@
+<section>
+  <h4>CSS Nesting</h4>
+  <h5><img src="./assets/baseline/baseline-newly-icon.svg" style="width: 5rem" alt="" /> Newly Available (December 2023)</h5>
+  <small>Native CSS nesting without <mark>preprocessors</mark></small>
+  <pre>
+    <code class="hljs css" data-trim data-line-numbers>
+/* Basic nesting */
+.card {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  
+  /* Nested element selector */
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Nested with & (explicit parent) */
+  & p {
+    color: gray;
+  }
+  
+  /* Pseudo-classes */
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  /* Nested child elements */
+  button {
+    padding: 0.5rem 1rem;
+    
+    &:hover {
+      background: blue;
+    }
+  }
+}
+
+/* Media queries inside selectors */
+.container {
+  padding: 1rem;
+  
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+}
+
+/* Compound selectors */
+.button {
+  background: blue;
+  
+  &.primary {
+    background: darkblue;
+  }
+  
+  &.secondary {
+    background: gray;
+  }
+}
+
+/* Multiple levels */
+.nav {
+  ul {
+    list-style: none;
+    
+    li {
+      display: inline-block;
+      
+      a {
+        color: black;
+        
+        &:hover {
+          color: blue;
+        }
+      }
+    }
+  }
+}
+    </code>
+  </pre>
+</section>

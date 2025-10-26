@@ -1,0 +1,87 @@
+<section>
+  <h4>Math Functions</h4>
+  <h5><img src="./assets/baseline/baseline-widely-icon.svg" style="width: 5rem" alt="" /> Widely Available (April 2020)</h5>
+  <small balance>Dynamic calculations and <mark>responsive values</mark> without media queries</small>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1rem; width: 100%">
+        <!-- calc() demo -->
+        <div
+          style="
+            width: calc(100% - 4rem);
+            padding: 1rem;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: bold;
+          "
+        >
+          calc(100% - 4rem)
+        </div>
+
+        <!-- min/max demo -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)); gap: 0.5rem">
+          <div style="padding: 1rem; background: #10b981; color: white; border-radius: 0.25rem; text-align: center">Box 1</div>
+          <div style="padding: 1rem; background: #3b82f6; color: white; border-radius: 0.25rem; text-align: center">Box 2</div>
+          <div style="padding: 1rem; background: #f59e0b; color: white; border-radius: 0.25rem; text-align: center">Box 3</div>
+        </div>
+        <small style="text-align: center; opacity: 0.8">Responsive grid with min(150px, 100%)</small>
+
+        <!-- clamp() demo -->
+        <div style="padding: 2rem 1rem; background: #f3f4f6; border-radius: 0.5rem; text-align: center">
+          <div style="font-size: clamp(1rem, 4vw, 2rem); font-weight: bold; color: #1f2937">Fluid Typography</div>
+          <small style="display: block; color: #000; margin-top: 0.5rem; opacity: 0.6">clamp(1rem, 4vw, 2rem)</small>
+        </div>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* calc(): Basic math operations */
+.element {
+  width: calc(100% - 2rem);
+  padding: calc(1rem + 2px);
+  margin-top: calc(var(--spacing) * 2);
+  
+  /* Mix units freely */
+  height: calc(100vh - 80px);
+}
+
+/* min(): Pick smallest value */
+.container {
+  /* Never wider than 1200px, but can be smaller */
+  width: min(1200px, 100% - 2rem);
+  
+  /* Responsive without media queries */
+  padding: min(5vw, 3rem);
+}
+
+/* max(): Pick largest value */
+.element {
+  /* At least 200px, can grow */
+  width: max(200px, 50%);
+  font-size: max(16px, 1rem);
+}
+
+/* clamp(): Bound between min and max */
+.text {
+  /* min, preferred, max */
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  
+  /* Fluid spacing */
+  padding: clamp(1rem, 5vw, 3rem);
+}
+
+/* Combine them all */
+.hero {
+  padding: clamp(2rem, 5vw, 5rem)
+           max(2rem, 5vw);
+  width: min(1200px, calc(100% - 4rem));
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>

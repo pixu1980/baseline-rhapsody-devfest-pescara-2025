@@ -1,0 +1,77 @@
+<section>
+  <h4>Text Effects</h4>
+  <h5><img src="./assets/baseline/baseline-newly-icon.svg" style="width: 5rem" alt="" /> Newly Available (March 2024)</h5>
+  <small>Modern typography with <mark>text-wrap</mark> and text-stroke</small>
+  <comparison>
+    <left>
+      <small style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%">
+        <!-- text-wrap: balance -->
+        <div style="padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; color: white">
+          <div style="font-size: 1.5rem; font-weight: bold; text-wrap: balance; line-height: 1.3">Balanced Headlines Look Better</div>
+          <small style="display: block; margin-top: 0.5rem; opacity: 0.8">text-wrap: balance</small>
+        </div>
+
+        <!-- text-wrap: pretty -->
+        <div style="padding: 1.5rem; background: #f3f4f6; border-radius: 0.5rem; color: #1f2937">
+          <div style="font-size: 1rem; text-wrap: pretty; line-height: 1.6">
+            This paragraph uses text-wrap pretty to avoid orphans and improve readability. The browser tries to avoid single words on the last line.
+          </div>
+          <small style="display: block; margin-top: 0.5rem; opacity: 0.6">text-wrap: pretty</small>
+        </div>
+
+        <!-- text-stroke -->
+        <div style="padding: 1.5rem; background: #1f2937; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center">
+          <div style="font-size: 3rem; font-weight: 900; color: transparent; -webkit-text-stroke: 2px #667eea">STROKE</div>
+        </div>
+        <small style="text-align: center; opacity: 0.8">-webkit-text-stroke</small>
+      </small>
+    </left>
+    <right>
+      <pre>
+        <code class="hljs css" data-trim data-line-numbers>
+/* text-wrap: balance - headlines */
+h1, h2, h3 {
+  text-wrap: balance;
+  /* Balances line lengths */
+  /* Max 4 lines */
+}
+
+/* text-wrap: pretty - paragraphs */
+p {
+  text-wrap: pretty;
+  /* Avoids orphans */
+  /* Better line breaks */
+}
+
+/* text-wrap: stable - editable */
+textarea, [contenteditable] {
+  text-wrap: stable;
+  /* Minimal reflow on edit */
+}
+
+/* Text stroke */
+.outlined {
+  color: transparent;
+  -webkit-text-stroke: 2px black;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(
+    to right, #667eea, #764ba2
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Combine effects */
+.fancy {
+  text-wrap: balance;
+  -webkit-text-stroke: 1px white;
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>
