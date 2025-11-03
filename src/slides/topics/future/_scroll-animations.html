@@ -79,7 +79,6 @@
         .reveal-section {
           position: absolute;
           left: 50%;
-          transform: translateX(-50%);
           width: 80%;
           padding: 1.5rem;
           background: rgba(255, 255, 255, 0.1);
@@ -91,12 +90,13 @@
             opacity 0.3s ease-out,
             transform 0.3s ease-out;
           opacity: 0;
-          transform: translateX(-50%) translateY(30px);
+          /* X centers the element via percentage and Y sets the reveal offset */
+          transform: translate(-50%, 30px);
         }
 
         .reveal-section.visible {
           opacity: 1;
-          transform: translateX(-50%) translateY(0);
+          transform: translate(-50%, 0);
         }
 
         .reveal-1 {
@@ -146,7 +146,7 @@
               }
 
               // Reveal on scroll
-              reveals.forEach((reveal, index) => {
+              reveals.forEach((reveal, _index) => {
                 const revealTop = reveal.offsetTop;
                 const revealHeight = reveal.offsetHeight;
                 const scrollTop = scrollDemo.scrollTop;
@@ -195,7 +195,7 @@
         <!-- Use cases -->
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; color: white">
           <div style="font-weight: bold; margin-bottom: 1rem">✨ Use Cases</div>
-          <div style="display: flex; flex-direction: column; gap: -.5rem; font-size: 1.5rem">
+          <div style="display: flex; flex-direction: column; gap: -0.5rem; font-size: 1.5rem">
             <div>✓ Parallax scrolling effects</div>
             <div>✓ Reading progress indicators</div>
             <div>✓ Reveal on scroll animations</div>

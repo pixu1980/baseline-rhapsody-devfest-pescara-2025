@@ -1,5 +1,7 @@
-@import 'npm:@pixu-talks/fonts';
-@import 'npm:@pixu-talks/theme';
+@import "npm:@pixu-talks/fonts";
+@import "npm:@pixu-talks/theme";
+
+@import "./orbitron/orbitron-vf.css";
 
 /* Men in Black theme overrides */
 /* Unlayered styles take precedence over imported layered theme */
@@ -9,34 +11,72 @@
 	--mib-accent: #00e5ff;
 	--mib-accent-weak: color-mix(in oklab, var(--mib-accent) 35%, transparent);
 
-	/* Reveal variables */
-	--r-background-color: #0b0b0b;
-	--r-main-color: #e6e6e6;
-	--r-heading-color: #ffffff;
-	--r-link-color: var(--mib-accent);
-	--r-highlight-color: var(--mib-accent);
-
 	/* Typography tweaks */
 	--r-heading-text-transform: none;
 }
 
-/* Subtle starfield + vignette background */
-.reveal {
-	background-color: var(--r-background-color);
-	background-image:
-		radial-gradient(120rem 60rem at 50% 120%, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0)),
-		radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.35), transparent),
-		radial-gradient(1.2px 1.2px at 70% 20%, rgba(255, 255, 255, 0.45), transparent),
-		radial-gradient(0.8px 0.8px at 40% 80%, rgba(255, 255, 255, 0.3), transparent),
-		radial-gradient(1px 1px at 85% 65%, rgba(255, 255, 255, 0.4), transparent),
-		radial-gradient(0.9px 0.9px at 10% 75%, rgba(255, 255, 255, 0.3), transparent);
-	background-blend-mode: normal;
+/* Preserve light-dark background/text from the base theme.
+   Only customize link/highlight colors with adaptive mapping. */
+@supports (color: light-dark(#fff, #000)) {
+	:root {
+		--r-link-color: light-dark(#005d66, var(--mib-accent));
+		--r-highlight-color: light-dark(#005d66, var(--mib-accent));
+	}
+}
+@supports not (color: light-dark(#fff, #000)) {
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--r-link-color: var(--mib-accent);
+			--r-highlight-color: var(--mib-accent);
+		}
+	}
+	@media (prefers-color-scheme: light) {
+		:root {
+			--r-link-color: #005d66;
+			--r-highlight-color: #005d66;
+		}
+	}
+}
+
+/* Subtle starfield + vignette background (dark mode only) */
+@media (prefers-color-scheme: dark) {
+	.reveal {
+		background-image:
+			radial-gradient(
+				120rem 60rem at 50% 120%,
+				rgba(0, 0, 0, 0.85),
+				rgba(0, 0, 0, 0)
+			),
+			radial-gradient(
+				1px 1px at 20% 30%,
+				rgba(255, 255, 255, 0.35),
+				transparent
+			),
+			radial-gradient(
+				1.2px 1.2px at 70% 20%,
+				rgba(255, 255, 255, 0.45),
+				transparent
+			),
+			radial-gradient(
+				0.8px 0.8px at 40% 80%,
+				rgba(255, 255, 255, 0.3),
+				transparent
+			),
+			radial-gradient(1px 1px at 85% 65%, rgba(255, 255, 255, 0.4), transparent),
+			radial-gradient(
+				0.9px 0.9px at 10% 75%,
+				rgba(255, 255, 255, 0.3),
+				transparent
+			);
+		background-blend-mode: normal;
+	}
 }
 
 /* Heading glow for the MIB vibe */
 .reveal h1,
 .reveal h2 {
-	text-shadow: 0 0 0.35rem color-mix(in oklab, var(--mib-accent) 65%, transparent),
+	text-shadow:
+		0 0 0.35rem color-mix(in oklab, var(--mib-accent) 65%, transparent),
 		0 0 1.2rem color-mix(in oklab, var(--mib-accent) 35%, transparent);
 }
 
@@ -65,8 +105,14 @@
 	position: fixed;
 	inset: 0;
 	pointer-events: none;
-	background: radial-gradient(35rem 35rem at 50% 50%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 60%);
 	opacity: 0;
+	z-index: 10000;
+	background: radial-gradient(
+		ellipse 80vw 50vh at 50% 85%,
+		var(--mib-accent),
+		#fff 40%,
+		#fff
+	);
 }
 
 @keyframes mib-flash {
@@ -96,6 +142,146 @@
 	}
 }
 
+/* Neuralyzer device (slides in from bottom before flash) */
+.mib-device {
+	position: fixed;
+	inset: auto 0 2rem 0;
+	display: flex;
+	justify-content: center;
+	pointer-events: none;
+	transform: translateY(140%);
+	transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+	z-index: 9999; /* below overlay */
+}
+.mib-device.enter {
+	transform: translateY(0);
+}
+.mib-device img,
+.mib-device svg {
+	inline-size: min(28rem, 60vw);
+	filter: drop-shadow(
+		0 0 0.6rem color-mix(in oklab, var(--mib-accent) 30%, transparent)
+	);
+}
+@keyframes mib-pulse {
+	0% {
+		filter: drop-shadow(
+			0 0 0.4rem color-mix(in oklab, var(--mib-accent) 10%, transparent)
+		);
+		opacity: 0.85;
+	}
+	50% {
+		filter: drop-shadow(
+			0 0 1rem color-mix(in oklab, var(--mib-accent) 40%, transparent)
+		);
+		opacity: 1;
+	}
+	100% {
+		filter: drop-shadow(
+			0 0 0.4rem color-mix(in oklab, var(--mib-accent) 10%, transparent)
+		);
+		opacity: 0.85;
+	}
+}
+.mib-device.enter img,
+.mib-device.enter svg {
+	animation: mib-pulse 900ms ease-in-out infinite;
+}
+.mib-head-glow {
+	position: absolute;
+	top: 7rem;
+	inline-size: min(28rem, 60vw);
+	aspect-ratio: 1 / 0.25;
+	pointer-events: none;
+	background: radial-gradient(
+		ellipse at 50% 0%,
+		color-mix(in oklab, var(--mib-accent) 45%, transparent),
+		transparent 40%
+	);
+	opacity: 0.9;
+	filter: blur(4px);
+}
+@media (prefers-reduced-motion: reduce) {
+	.mib-device {
+		transition: none;
+		transform: translateY(0);
+	}
+}
+
+/* Classified panel component */
+.mib-panel {
+	--panel-bg-dark: color-mix(in oklab, #000 85%, var(--mib-accent) 5%);
+	--panel-bg-light: #ffffff;
+	--panel-text-dark: #f2f2f2;
+	--panel-text-light: #1a1a1a;
+
+	font-family: "OrbitronVF", system-ui, sans-serif;
+
+	border: 1px solid
+		color-mix(in oklab, var(--mib-accent) 35%, rgba(255, 255, 255, 0.12));
+	border-left-width: 6px;
+	border-left-color: var(--mib-accent);
+	border-radius: 12px;
+	padding: 1.2rem 1.4rem;
+	margin: 1.2rem 0;
+	box-shadow: 0 0.6rem 2rem
+		color-mix(in oklab, var(--mib-accent) 10%, transparent);
+	background: var(--panel-bg-light);
+	color: var(--panel-text-light);
+}
+@media (prefers-color-scheme: dark) {
+	.mib-panel {
+		background: var(--panel-bg-dark);
+		color: var(--panel-text-dark);
+	}
+}
+.mib-panel h4 {
+	font-family: "OrbitronVF", system-ui, sans-serif;
+
+	margin: 0 0 0.6rem;
+	font-weight: 800;
+	letter-spacing: 0.02em;
+}
+.mib-panel p {
+	margin: 0.4rem 0;
+}
+.mib-panel .mib-panel-actions {
+	margin-top: 0.8rem;
+	display: flex;
+	gap: 0.8rem;
+	flex-wrap: wrap;
+}
+.mib-panel a {
+	text-decoration: none;
+}
+
+.mib-panel--classified {
+	position: relative;
+}
+
+.mib-panel--classified::before {
+	content: "CLASSIFIED";
+	position: absolute;
+	top: -0.9rem;
+	left: 1.2rem;
+	font: 900 0.95rem / 1 var(--font-family--base, system-ui, sans-serif);
+	letter-spacing: 0.18em;
+	color: #000;
+	background: var(--mib-accent);
+	padding: 0.35rem 0.6rem;
+	border-radius: 6px;
+	box-shadow: 0 0.2rem 0.8rem
+		color-mix(in oklab, var(--mib-accent) 35%, transparent);
+}
+@media (prefers-contrast: more) {
+	.mib-panel {
+		box-shadow: none;
+	}
+	.mib-panel--classified::before {
+		box-shadow: none;
+	}
+}
+
 /* Baseline badges - MIB themed */
 .baseline-badges {
 	display: inline-flex;
@@ -103,14 +289,20 @@
 	align-items: center;
 }
 .baseline-badges .badge {
-	font: 600 1.2rem/1.2 var(--font-family--base, system-ui, sans-serif);
+	font: 600 1.2rem / 1.2 var(--font-family--base, system-ui, sans-serif);
 	padding: 0.3rem 0.8rem;
 	border-radius: 999px;
 	letter-spacing: 0.02em;
-	border: 1px solid color-mix(in oklab, var(--mib-accent) 35%, rgba(255, 255, 255, 0.15));
-	background: color-mix(in oklab, var(--mib-accent) 8%, rgba(255, 255, 255, 0.04));
+	border: 1px solid
+		color-mix(in oklab, var(--mib-accent) 35%, rgba(255, 255, 255, 0.15));
+	background: color-mix(
+		in oklab,
+		var(--mib-accent) 8%,
+		rgba(255, 255, 255, 0.04)
+	);
 	color: var(--r-main-color);
-	box-shadow: 0 0 0.6rem color-mix(in oklab, var(--mib-accent) 25%, transparent) inset;
+	box-shadow: 0 0 0.6rem color-mix(in oklab, var(--mib-accent) 25%, transparent)
+		inset;
 }
 .badge--widely {
 	color: #6dffb3;
@@ -127,5 +319,62 @@
 		border-color: #ffffff;
 		background: #000000;
 		box-shadow: none;
+	}
+}
+
+/* Cover crossfade container */
+.cover-crossfade {
+	position: relative;
+	display: inline-block;
+}
+.cover-crossfade img {
+	display: block;
+	margin: auto;
+}
+.cover-crossfade .cover-original {
+	transition: opacity 800ms ease-in-out;
+}
+.cover-crossfade .cover-mib {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	transition: opacity 800ms ease-in-out;
+}
+.cover-crossfade.swap-active .cover-original {
+	opacity: 0;
+}
+.cover-crossfade.swap-active .cover-mib {
+	opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+	.cover-crossfade .cover-original,
+	.cover-crossfade .cover-mib {
+		transition-duration: 200ms;
+	}
+}
+
+/* Typing cursor animation for Agent B reveal */
+.typing-cursor::after {
+	content: "|";
+	display: inline-block;
+	margin-left: 0.1em;
+	animation: blink-cursor 1s step-end infinite;
+}
+
+@keyframes blink-cursor {
+	0%,
+	50% {
+		opacity: 1;
+	}
+	50.01%,
+	100% {
+		opacity: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.typing-cursor::after {
+		animation: none;
+		opacity: 1;
 	}
 }

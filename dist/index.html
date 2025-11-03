@@ -1,21 +1,31 @@
-<!DOCTYPE html><html lang="it"><head>
+<!DOCTYPE html><html lang="it"><head><script type="importmap">{"imports":{"kTMuc":"./neuralyzer.4c25e67b.mp3"}}</script>
     <meta charset="utf-8">
     <title>Baseline Rhapsody - A tale of Style and Motion</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="baseline-rhapsody-devfest-pescara-2025.95e6228b.css">
+    <link rel="stylesheet" href="baseline-rhapsody-devfest-pescara-2025.c40c93db.css">
   </head>
   <body>
     <main class="reveal">
       <div class="slides">
         <section>
-  <section>
+  <section neuralyzer="">
     <figure class="center">
-      <img src="baseline-rhapsody-cover.aff53b52.png" width="70%" alt="Baseline Rhapsody Cover">
+      <div class="cover-crossfade">
+        <img src="baseline-rhapsody-cover.7625c092.png" width="60%" alt="Baseline Rhapsody Cover" class="cover-original">
+        <img src="men-in-baseline-cover.8a253709.png" width="60%" alt="Men in Baseline Cover" class="cover-mib">
+      </div>
     </figure>
+    <h2 class="neuralyzer-subtitle">A <mark>tale</mark> of Style and Motion</h2>
+  </section>
+  <section welcome="">
+    <h3>Welcome, Agent <mark class="typing-cursor">Baseline</mark></h3>
   </section>
   <section>
-    <h2>A <mark>tale</mark> of Style and Motion</h2>
+    <div class="mib-panel mib-panel--classified">
+      <h4><mark>Agent B</mark>: briefing</h4>
+      <p balance="" class="fragment">This presentation deck is <mark>classified</mark>, unauthorized disclosure may result in <mark>neuralization</mark>. Proceed with caution and enjoy the ride.</p>
+    </div>
     <aside class="notes">
       Goals: show the evolution of CSS, present 24 modern APIs, preview 6 upcoming features, and explain how to use Baseline to plan adoption. References:
       <a href="https://web.dev/baseline" target="_blank" rel="noreferrer noopener">Baseline</a>, <a href="https://developer.mozilla.org/" target="_blank" rel="noreferrer noopener">MDN</a>,
@@ -79,12 +89,6 @@
   </section>
 </section>
 
-<section>
-  <p>
-    Is this a <mark>real</mark> life? <br>
-    Is this just <mark>fantasy?</mark>
-  </p>
-</section>
 <section intro="">
   <div orbital-container="">
     <div class="logo">
@@ -352,27 +356,40 @@
 
 <section>
   <section>
+  <h3>The <mark>Past</mark></h3>
+  <figure style="margin-top: 2rem">
+    <img src="men-in-baseline-past.d4769000.png" width="80%" alt="Men in Baseline Past" class="cover-mib">
+  </figure>
+</section>
+<section>
+  <div class="mib-panel mib-panel--classified">
+    <h4><mark>Agent B</mark>: brief note</h4>
+    <p balance="" class="fragment">
+      Old history records, the CSS galaxy was filled of <mark>cross browser anomalies</mark>, unidentified layout objects, <mark>clearfix wipes</mark>, prefixes and <mark>sprites</mark>. We kept the
+      web stable, but it was a suffering mess.
+    </p>
+  </div>
+</section>
+<section>
   <h4 balance="">
     Before modern CSS,
     <mark>we had to</mark> rely on: <span class="fragment">weird <mark>hacks</mark>, </span>
     <span class="fragment"><mark>pork</mark>... ehm... workarounds, </span>
     <span class="fragment">techniques that seem <mark>absurd today</mark>.</span>
+    <br><br>
+    <span balance="" class="fragment">Let's take a <mark>nostalgic</mark>, and <mark>painful</mark>, trip down <mark>memory lane</mark>.</span>
   </h4>
 </section>
 <section>
-  <figure>
-    <img src="baseline-rhapsody-past.71c4ab59.png" width="80%" alt="">
+  <figure style="margin-top: 2rem">
+    <img src="wtf.852b274b.gif" width="65%" alt="">
   </figure>
-</section>
-<section>
-  <h4 balance="">Let's take a <mark>nostalgic</mark>, and <mark>painful</mark>, trip down <mark>memory lane</mark>.</h4>
 </section>
 
   <section>
   <h3>Float &amp; <mark>Clear</mark></h3>
-  <p class="fragment">How we used for "<mark>hack</mark>" layouts</p>
+  <p>How we used for "<mark>hack</mark>" layouts</p>
 </section>
-
 <section>
   <h4>multi-column layout "<mark>challenge</mark>"</h4>
   <comparison>
@@ -419,8 +436,8 @@
 }
 </code></pre>
     </left>
-    <right>
-      <div class="fragment">
+    <right class="fragment">
+      <div>
         <div style="background: #fee2e2; border: 2px solid #ef4444; padding: 1rem">
           <div style="float: left; color: #000; background: #fff; border: 1px solid #000; width: 44%; padding: 1rem; font-size: 3rem">Float Left</div>
           <div style="float: right; color: #000; background: #fff; border: 1px solid #000; width: 44%; padding: 1rem; font-size: 3rem">Float Right</div>
@@ -428,7 +445,7 @@
         <p style="margin-top: 1rem"><small>Without clearfix, the parent would collapse! 😱</small></p>
       </div>
       <br>
-      <div class="fragment">
+      <div>
         <div style="background: #fee2e2; border: 2px solid #ef4444; padding: 1rem">
           <div style="float: left; color: #000; background: #fff; border: 1px solid #000; width: 44%; padding: 1rem; font-size: 3rem">Float Left</div>
           <div style="float: right; color: #000; background: #fff; border: 1px solid #000; width: 44%; padding: 1rem; font-size: 3rem">Float Right</div>
@@ -442,13 +459,13 @@
 </section>
 <section>
   <h4>it was <mark>awful</mark>, uh?</h4>
-  <small>
+  <small class="fragment">
     <ul>
-      <li class="fragment">⚠️ Parent collapse without clearfix</li>
-      <li class="fragment">⚠️ Percentage calculations = headaches</li>
-      <li class="fragment">⚠️ No vertical centering</li>
-      <li class="fragment">⚠️ Float clearing everywhere</li>
-      <li class="fragment">⚠️ Semantic markup sacrificed</li>
+      <li>⚠️ Parent collapse without clearfix</li>
+      <li>⚠️ Percentage calculations = headaches</li>
+      <li>⚠️ No vertical centering</li>
+      <li>⚠️ Float clearing everywhere</li>
+      <li>⚠️ Semantic markup sacrificed</li>
     </ul>
   </small>
   <aside class="notes">Floats were never meant for layout! They were designed for wrapping text around images. But we made them work... with pain.</aside>
@@ -456,9 +473,8 @@
 
   <section>
   <h3>Table Layouts</h3>
-  <p class="fragment">when <mark>Semantics</mark> didn't matter</p>
+  <p>when <mark>Semantics</mark> didn't matter</p>
 </section>
-
 <section>
   <h4>The <mark>&lt;table&gt;</mark> Abuse</h4>
   <comparison>
@@ -526,14 +542,14 @@
         </code>
       </pre>
     </left>
-    <right>
+    <right class="fragment">
       <small>
         <ul>
-          <li class="fragment">⚠️ Still table-thinking for layouts</li>
-          <li class="fragment">⚠️ Hard to make responsive</li>
-          <li class="fragment">⚠️ Vertical alignment works... but at what cost?</li>
-          <li class="fragment">⚠️ No gaps/gutters without spacer elements</li>
-          <li class="fragment">⚠️ Order changes require HTML changes</li>
+          <li>⚠️ Still table-thinking for layouts</li>
+          <li>⚠️ Hard to make responsive</li>
+          <li>⚠️ Vertical alignment works... but at what cost?</li>
+          <li>⚠️ No gaps/gutters without spacer elements</li>
+          <li>⚠️ Order changes require HTML changes</li>
         </ul>
       </small>
     </right>
@@ -547,9 +563,8 @@
 
   <section>
   <h3>CSS Sprites</h3>
-  <p class="fragment">The "<mark>image optimization</mark>" technique</p>
+  <p>The "<mark>image optimization</mark>" technique</p>
 </section>
-
 <section>
   <h4>One Image to <mark>Rule Them All</mark></h4>
   <comparison>
@@ -599,21 +614,26 @@ manual pixel calculations */
 
 <section>
   <h4>this idea leaded to lots of <mark>problems</mark></h4>
-  <small>
+  <small class="fragment">
     <ul>
-      <li class="fragment">⚠️ Add one button → rebuild entire sprite</li>
-      <li class="fragment">⚠️ Manual pixel calculations</li>
-      <li class="fragment">⚠️ Hover/Active states = 2/3x the complexity</li>
-      <li class="fragment">⚠️ Different sizes? More sprites!</li>
-      <li class="fragment">⚠️ Documentation needed to track positions</li>
+      <li>⚠️ Add one button → rebuild entire sprite</li>
+      <li>⚠️ Manual pixel calculations</li>
+      <li>⚠️ Hover/Active states = 2/3x the complexity</li>
+      <li>⚠️ Different sizes? More sprites!</li>
+      <li>⚠️ Documentation needed to track positions</li>
     </ul>
   </small>
   <aside class="notes">With HTTP/2 multiplexing, the "fewer requests" argument died. SVG gave us scalable, accessible icons. Sprites became a relic of the past.</aside>
 </section>
+<section>
+  <figure style="margin-top: 2rem">
+    <img src="thats-very-funny-to-me.40e9f7b0.webp" width="65%" alt="">
+  </figure>
+</section>
 
   <section>
   <h3>Hacks &amp; <mark>Workarounds</mark></h3>
-  <p class="fragment">a "<mark>wild west</mark>" of browser compatibility</p>
+  <p>a "<mark>wild west</mark>" of browser compatibility</p>
 </section>
 
 <section>
@@ -732,66 +752,74 @@ manual pixel calculations */
 
 <section>
   <section>
-    <h3>the Advent of <mark>Base</mark>line</h3>
+    <div class="mib-panel mib-panel--classified">
+      <h4><mark>Agent B</mark>: brief note</h4>
+      <p balance="" class="fragment">
+        Here is a <mark>neuralyzation proof</mark> guide through the galaxy. Treat the <mark>badges</mark> as clearance levels, use <mark>@supports</mark> as your field scanner, and always brief
+        stakeholders <mark>back at HQ</mark>.
+      </p>
+    </div>
   </section>
   <section>
-  <h4>What is Baseline?</h4>
-  <small>
-    <p balance="" class="fragment">Baseline, officially introduced during the Google I/O 2023, is an <mark>initiative</mark>, a standard for indicating when web platform features <mark>become reliably available</mark> across major browsers.</p>
-    <p align="left" class="fragment">
-      <span>✅ Clear communication about feature support</span><br>
-      <span>✅ Helps developers make informed decisions</span><br>
-      <span>✅ Tracks features across Chrome, Firefox, Safari, Edge</span><br>
-      <span>✅ Updated regularly by web standards organizations</span>
-    </p>
-  </small>
-</section>
-<section>
-  <p>3 simple states for <br>Web API <mark>Availability</mark></p>
-</section>
-
-<section>
-  <h3><img src="baseline-widely-icon.ba7c41a8.svg" style="width: 5rem" alt=""> Widely Available</h3>
-  <small style="background: #d1fae5; border-left: 4px solid #10b981; border-radius: 8px; padding: 2rem">
-    <h4 style="color: #065f46; margin-top: 0">Safe to Use in Production</h4>
-    <ul style="color: #065f46">
-      <li>Available in Chrome, Firefox, Safari, Edge for <strong>30+ months</strong></li>
-      <li>Excellent cross-browser support</li>
-      <li>Can be used without fallbacks in most cases</li>
-      <li>Recommended for all projects</li>
-    </ul>
-  </small>
-</section>
-
-<section>
-  <h3><img src="baseline-newly-icon.4510a3d4.svg" style="width: 5rem" alt=""> Newly Available</h3>
-  <small style="background: #86b2f9; border-left: 4px solid #1b6ef3; border-radius: 8px; padding: 2rem">
-    <h4 style="color: #063279; margin-top: 0">Use with Progressive Enhancement</h4>
-    <ul style="color: #063279">
-      <li>Available in all major browsers for <strong>less than 30 months</strong></li>
-      <li>Good modern browser support</li>
-      <li>Consider fallbacks for older browsers</li>
-      <li>Test thoroughly across browsers</li>
-    </ul>
-  </small>
-</section>
-<section>
-  <h3><img src="baseline-limited-icon.7e00212a.svg" style="width: 5rem" alt=""> Limited Availability</h3>
-  <small style="background: #fce0b5; border-left: 4px solid #ac6a06; border-radius: 8px; padding: 2rem">
-    <h4 style="color: #ac6a06; margin-top: 0">Experimental - Use with Caution</h4>
-    <ul style="color: #ac6a06">
-      <li><strong>Not available</strong> in all major browsers yet</li>
-      <li>May require feature flags or polyfills</li>
-      <li>Syntax may change</li>
-      <li>Best for experiments and prototypes</li>
-      <li>Plan for graceful degradation</li>
-    </ul>
-  </small>
-</section>
-
-<section>
-  <h4>An example</h4>
-  <pre>    <code class="hljs text" data-trim="">
+    <h2>What is <mark>Baseline</mark>?</h2>
+    <figure class="fragment" style="margin-top: 2rem">
+      <img src="the-last-suite-youll-ever-wear.4057bf4f.gif" width="65%" alt="">
+    </figure>
+  </section>
+  <section>
+    <small>
+      <h3 balance="">Introduced during the Google I/O 2023, is an <mark>initiative</mark> for indicating when web platform features <mark>become reliably available</mark> across major browsers.</h3>
+      <p align="left" class="fragment">
+        <span>✅ Clear communication about feature support</span><br>
+        <span>✅ Helps developers make informed decisions</span><br>
+        <span>✅ Tracks features across Chrome, Firefox, Safari, Edge</span><br>
+        <span>✅ Updated regularly by web standards organizations</span>
+      </p>
+    </small>
+  </section>
+  <section>
+    <h3>3 simple states for <br>Web API <mark>Availability</mark></h3>
+  </section>
+  <section>
+    <h3><img src="baseline-widely-icon.ba7c41a8.svg" style="width: 5rem" alt=""> Widely Available</h3>
+    <small align="left" style="background: #d1fae5; border-left: 4px solid #10b981; border-radius: 8px; width: 100%; padding: 2rem">
+      <h4 align="center" style="color: #065f46; margin-top: 0">Ready to Use in Production</h4>
+      <ul style="color: #065f46">
+        <li>Available in Chrome, Firefox, Safari, Edge for <strong>30+ months</strong></li>
+        <li>Excellent cross-browser support</li>
+        <li>Can be used without fallbacks in most cases</li>
+        <li>Recommended for all projects</li>
+      </ul>
+    </small>
+  </section>
+  <section>
+    <h3><img src="baseline-newly-icon.4510a3d4.svg" style="width: 5rem" alt=""> Newly Available</h3>
+    <small align="left" style="background: #86b2f9; border-left: 4px solid #1b6ef3; border-radius: 8px; width: 100%; padding: 2rem">
+      <h4 align="center" style="color: #063279; margin-top: 0">Use with Progressive Enhancement</h4>
+      <ul style="color: #063279">
+        <li>Available in all major browsers for <strong>less than 30 months</strong></li>
+        <li>Good modern browser support</li>
+        <li>Consider fallbacks for older browsers</li>
+        <li>Test thoroughly across browsers</li>
+      </ul>
+    </small>
+  </section>
+  <section>
+    <h3><img src="baseline-limited-icon.7e00212a.svg" style="width: 5rem" alt=""> Limited Availability</h3>
+    <small align="left" style="background: #fce0b5; border-left: 4px solid #ac6a06; border-radius: 8px; width: 100%; padding: 2rem">
+      <h4 align="center" style="color: #ac6a06; margin-top: 0">Experimental - Use with Caution</h4>
+      <ul style="color: #ac6a06">
+        <li><strong>Not available</strong> in all major browsers yet</li>
+        <li>May require feature flags or polyfills</li>
+        <li>Syntax may change</li>
+        <li>Best for experiments and prototypes</li>
+        <li>Plan for graceful degradation</li>
+      </ul>
+    </small>
+  </section>
+  <section>
+    <h4>An example</h4>
+    <pre>    <code class="hljs text" data-trim="">
 @container at-rule
 
 Chrome 105    ✅ Sep 2022
@@ -802,72 +830,71 @@ Edge 105      ✅ Sep 2022
 Last browser:  Firefox (Feb 2023)
 Baseline date: Feb 2023 (Newly Available)
 Widely date:   Aug 2025 (Feb 2023 + 30 months)
-    </code>
-  </pre>
-</section>
+      </code>
+    </pre>
+  </section>
+  <section>
+    <h3>Decision Framework</h3>
+    <table style="width: 100%; font-size: 3rem">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>When to Use</th>
+          <th>Considerations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="fragment">
+          <td><img src="baseline-widely-icon.ba7c41a8.svg" style="width: 5rem" alt=""> Widely</td>
+          <td>
+            ✅ All projects<br>
+            ✅ Production sites<br>
+            ✅ No fallback needed
+          </td>
+          <td>
+            Safe for 95%+ users<br>
+            Minimal testing required
+          </td>
+        </tr>
+        <tr class="fragment">
+          <td><img src="baseline-newly-icon.4510a3d4.svg" style="width: 5rem" alt=""> Newly</td>
+          <td>
+            ✅ Modern projects<br>
+            ✅ With fallbacks<br>
+            ⚠️ Check user base
+          </td>
+          <td>
+            Use @supports<br>
+            Test older browsers<br>
+            Progressive enhancement
+          </td>
+        </tr>
+        <tr class="fragment">
+          <td><img src="baseline-limited-icon.7e00212a.svg" style="width: 5rem" alt=""> Limited</td>
+          <td>
+            ⚠️ Experiments only<br>
+            ⚠️ With polyfills<br>
+            ⚠️ Feature detection
+          </td>
+          <td>
+            Provide fallbacks<br>
+            Syntax may change<br>
+            Limited browser support
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-<section>
-  <h3>Decision Framework</h3>
-  <table style="width: 100%; font-size: 3rem">
-    <thead>
-      <tr>
-        <th>Status</th>
-        <th>When to Use</th>
-        <th>Considerations</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="fragment">
-        <td><img src="baseline-widely-icon.ba7c41a8.svg" style="width: 5rem" alt=""> Widely</td>
-        <td>
-          ✅ All projects<br>
-          ✅ Production sites<br>
-          ✅ No fallback needed
-        </td>
-        <td>
-          Safe for 95%+ users<br>
-          Minimal testing required
-        </td>
-      </tr>
-      <tr class="fragment">
-        <td><img src="baseline-newly-icon.4510a3d4.svg" style="width: 5rem" alt=""> Newly</td>
-        <td>
-          ✅ Modern projects<br>
-          ✅ With fallbacks<br>
-          ⚠️ Check user base
-        </td>
-        <td>
-          Use @supports<br>
-          Test older browsers<br>
-          Progressive enhancement
-        </td>
-      </tr>
-      <tr class="fragment">
-        <td><img src="baseline-limited-icon.7e00212a.svg" style="width: 5rem" alt=""> Limited</td>
-        <td>
-          ⚠️ Experiments only<br>
-          ⚠️ With polyfills<br>
-          ⚠️ Feature detection
-        </td>
-        <td>
-          Provide fallbacks<br>
-          Syntax may change<br>
-          Limited browser support
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<section>
-  <h3>Checking Baseline Status</h3>
-  <ol>
-    <li>Visit <a href="https://web.dev/baseline" target="_blank">web.dev/baseline</a></li>
-    <li>Check MDN browser compatibility tables</li>
-    <li>Look for Baseline badges in documentation</li>
-    <li>Use <code>@supports</code> for feature detection</li>
-  </ol>
-  <!-- <pre><code class="language-css">/* Feature detection example */
+  <section>
+    <h3>Checking Baseline Status</h3>
+    <ol>
+      <li>Visit <a href="https://web.dev/baseline" target="_blank">web.dev/baseline</a></li>
+      <li>Check MDN browser compatibility tables</li>
+      <li>Look for Baseline badges in documentation</li>
+      <li>Use <code>@supports</code> for feature detection</li>
+    </ol>
+    <!-- <pre><code class="language-css">/* Feature detection example */
 @supports (container-type: inline-size) {
   .card {
     container-type: inline-size;
@@ -880,23 +907,33 @@ Widely date:   Aug 2025 (Feb 2023 + 30 months)
     /* Use media queries instead */
   }
 }</code></pre> -->
+  </section>
 </section>
 
-</section>
 
 <section>
   <!-- Modern CSS Renaissance: Widely Available Features -->
   <section>
+  <h3>The <mark>Present</mark></h3>
+  <figure style="margin-top: 2rem">
+    <!-- <div class="cover-crossfade">
+      <img src="./assets/meme/bsseline-rhapsody-present.png" width="45%" alt="" class="cover-original" /> -->
+    <img src="men-in-baseline-present.5a1c35ff.png" width="80%" alt="Men in Baseline Present" class="cover-mib">
+    <!-- </div> -->
+  </figure>
+</section>
+<section>
+  <div class="mib-panel mib-panel--classified">
+    <h4><mark>Agent B</mark>: brief note</h4>
+    <p balance="" class="fragment">The following <mark>features</mark> are cleared for <mark>field</mark> usage under the <mark>Baseline</mark> protocol, deploy with <mark>confidence</mark>.</p>
+  </div>
+</section>
+<section>
   <p>From painful hacks to <mark>powerful</mark> features ✨</p>
   <aside class="notes">
     The transformation of CSS over the last decade has been incredible. We've gone from hacky workarounds to having proper tools for layout, design systems, animations, and more. Let's explore the
     modern CSS APIs that are widely available today.
   </aside>
-</section>
-<section>
-  <figure>
-    <img src="bsseline-rhapsody-present.10a6cda5.png" width="45%" alt="">
-  </figure>
 </section>
 
   <section>
@@ -2517,9 +2554,19 @@ h1 {
 
 <section>
   <section>
-  <figure>
-    <img src="baseline-rhapsody-future.155847df.png" width="90%" alt="">
+  <h3>The <mark>Future</mark></h3>
+  <figure style="margin-top: 2rem">
+    <img src="men-in-baseline-future.7b60978f.png" width="75%" alt="Men in Baseline Future" class="cover-mib">
   </figure>
+</section>
+<section>
+  <div class="mib-panel mib-panel--classified">
+    <h4><mark>Agent B</mark>: brief note</h4>
+    <p balance="" class="fragment">
+      These features are <mark>classified</mark> and still <mark>evolving</mark>, expect <mark>anomalies</mark>, use <mark>@supports</mark> for detection, provide solid <mark>fallbacks</mark>, and
+      keep your <mark>neuralyzer ready</mark>. Observe, adapt, do not panic.
+    </p>
+  </div>
   <aside class="notes">
     While many modern CSS features are widely supported, some are still in development or have limited browser support. Let's take a look at some upcoming features that hold great promise for the
     future of web design.
@@ -2531,7 +2578,7 @@ h1 {
   <h5><img src="baseline-newly-icon.4510a3d4.svg" style="width: 5rem" alt=""> Newly Available (July 2023)</h5>
   <small balance="">Sine, cosine, and tangent for <mark>circular layouts</mark> and organic animations</small>
   <comparison>
-    <left>
+    <left class="fragment">
       <style>@keyframes rotate-circle {
   from {
     transform: rotate(0);
@@ -2610,7 +2657,6 @@ h1 {
   animation-delay: .6s;
 }
 </style>
-
       <small style="flex-direction: column; gap: 1.5rem; width: 100%; display: flex">
         <!-- Circular layout demo -->
         <div class="circle-demo" style="padding-top: 1.5rem; position: relative">
@@ -2623,7 +2669,6 @@ h1 {
           </div>
         </div>
         <small style="text-align: center; opacity: .8">5 items in circular layout (hover to rotate)</small>
-
         <!-- Wave pattern demo -->
         <div class="wave-demo" style="padding-top: 1.5rem; position: relative">
           <div style="background: #1f2937; border-radius: .5rem; justify-content: space-evenly; align-items: center; height: 80px; display: flex">
@@ -2641,7 +2686,7 @@ h1 {
         <small style="text-align: center; opacity: .8">Wave pattern with sin() (hover to animate)</small>
       </small>
     </left>
-    <right>
+    <right class="fragment">
       <pre>        <code class="hljs css" data-trim="" data-line-numbers="">
 /* sin(): Vertical position in circle */
 /* cos(): Horizontal position in circle */
@@ -3375,12 +3420,12 @@ h1 {
   transition: opacity .3s ease-out, transform .3s ease-out;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%)translateY(30px);
+  transform: translate(-50%, 30px);
 }
 
 .reveal-section.visible {
   opacity: 1;
-  transform: translateX(-50%)translateY(0);
+  transform: translate(-50%);
 }
 
 .reveal-1 {
@@ -3415,7 +3460,7 @@ h1 {
             if (star3) star3.style.transform = `translateY(${scrollPercent * -30}px)`;
             if (moon) moon.style.transform = `translateY(${scrollPercent * -100}px) scale(${1 + scrollPercent * 0.3})`;
             // Reveal on scroll
-            reveals.forEach((reveal, index)=>{
+            reveals.forEach((reveal, _index)=>{
                 const revealTop = reveal.offsetTop;
                 const revealHeight = reveal.offsetHeight;
                 const scrollTop = scrollDemo.scrollTop;
@@ -3855,7 +3900,7 @@ h1 {
   <h4>@scope</h4>
   <h5><img src="baseline-newly-icon.4510a3d4.svg" style="width: 5rem" alt=""> Newly Available (August 2024)</h5>
   <small>Style encapsulation without <mark>shadow DOM</mark></small>
-    <pre>      <code class="hljs css" data-trim="" data-line-numbers="">
+  <pre>      <code class="hljs css" data-trim="" data-line-numbers="">
 /* Scope styles to component */
 @scope (.card) {
   /* Only affects buttons in .card */
@@ -4166,6 +4211,12 @@ h1 {
 
 
       </div>
+      <div class="mib-device">
+  <img src="neuralyzer.051003bf.svg" alt="Neuralyzer">
+  <span class="mib-head-glow" aria-hidden="true"></span>
+</div>
+<div class="mib-neuralyzer" aria-hidden="true"></div>
+
       <a brand="" href="https://www.devdojo.it" target="_blank" rel="noopener noreferrer">
   <figure>
     <img src="dev-dojo.3f2f430c.png" alt="Dev Dojo IT Logo">
@@ -4173,7 +4224,7 @@ h1 {
 </a>
 
     </main>
-    <script src="baseline-rhapsody-devfest-pescara-2025.c77c4693.js" type="module"></script>
+    <script src="baseline-rhapsody-devfest-pescara-2025.9efc056f.js" type="module"></script>
   
 
 </body></html>

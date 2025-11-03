@@ -1,0 +1,12 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.3.1/schema.json",
+	"files": {
+		"includes": [
+			"src/styles/index.css",
+			"src/slides/**",
+			"README.md",
+			"package.json",
+			".github/**"
+		]
+	}
+}

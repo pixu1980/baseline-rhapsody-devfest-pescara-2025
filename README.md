@@ -38,10 +38,12 @@ See `.github/TALK_STRUCTURE.md` for the complete, per-slide outline (45 slides).
 ## 🚀 Quick Start
 
 Prerequisites
+
 - Node.js (LTS)
 - pnpm (recommended)
 
 Installation
+
 ```bash
 # Clone the repository
 # git clone <repository-url>
@@ -52,12 +54,14 @@ pnpm install
 ```
 
 Development
+
 ```bash
 # Start development server (default port 6001)
 pnpm start
 ```
 
 Build
+
 ```bash
 # Build for production
 pnpm build
@@ -107,11 +111,13 @@ baseline-rhapsody/
 ## 📚 Documentation
 
 Start here:
+
 - Roadmap: `.github/ROADMAP.md`
 - Structure: `.github/TALK_STRUCTURE.md`
 - Assistant guidance: `.github/copilot-instructions.md`
 
 Additional references (limited/experimental features):
+
 - `.github/docs/LIMITED_AVAILABILITY_OCT_2025.md`
 - `.github/docs/LIMITED_AVAILABILITY_QUICK_REF.md`
 
@@ -129,6 +135,7 @@ MIT License — see `LICENSE`.
 ## 👨‍💻 Author
 
 Emiliano Pisu ([@pixu1980](https://github.com/pixu1980))
+
 - Senior Design Engineer & Sensei @ Dev Dojo IT
 - LinkedIn: https://linkedin.com/in/pixu1980
 - CodePen: https://codepen.io/pixu1980

@@ -1,8 +1,7 @@
 <section>
   <h3>CSS Sprites</h3>
-  <p class="fragment">The "<mark>image optimization</mark>" technique</p>
+  <p>The "<mark>image optimization</mark>" technique</p>
 </section>
-
 <section>
   <h4>One Image to <mark>Rule Them All</mark></h4>
   <comparison>
@@ -53,14 +52,19 @@ manual pixel calculations */
 
 <section>
   <h4>this idea leaded to lots of <mark>problems</mark></h4>
-  <small>
+  <small class="fragment">
     <ul>
-      <li class="fragment">⚠️ Add one button → rebuild entire sprite</li>
-      <li class="fragment">⚠️ Manual pixel calculations</li>
-      <li class="fragment">⚠️ Hover/Active states = 2/3x the complexity</li>
-      <li class="fragment">⚠️ Different sizes? More sprites!</li>
-      <li class="fragment">⚠️ Documentation needed to track positions</li>
+      <li>⚠️ Add one button → rebuild entire sprite</li>
+      <li>⚠️ Manual pixel calculations</li>
+      <li>⚠️ Hover/Active states = 2/3x the complexity</li>
+      <li>⚠️ Different sizes? More sprites!</li>
+      <li>⚠️ Documentation needed to track positions</li>
     </ul>
   </small>
   <aside class="notes">With HTTP/2 multiplexing, the "fewer requests" argument died. SVG gave us scalable, accessible icons. Sprites became a relic of the past.</aside>
+</section>
+<section>
+  <figure style="margin-top: 2rem">
+    <img src="./assets/mib/thats-very-funny-to-me.webp" width="65%" alt="" />
+  </figure>
 </section>
