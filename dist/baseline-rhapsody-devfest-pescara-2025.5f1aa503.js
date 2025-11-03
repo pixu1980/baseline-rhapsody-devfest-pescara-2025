@@ -51255,7 +51255,7 @@ var $47b02048c6e74b64$exports = {};
  *    to the notes window
  * 
  * Copyright (c) 2025 Emiliano "pixu1980" Pisu
- */ const $06828f27f8344b10$var$HeaderPlugin = ()=>{
+ */ const $542e9a98d9f8978a$var$HeaderPlugin = ()=>{
     let deck;
     const headerPlugin = {
         id: 'header',
@@ -51295,7 +51295,7 @@ var $47b02048c6e74b64$exports = {};
     };
     return headerPlugin;
 };
-var $06828f27f8344b10$export$2e2bcd8739ae039 = $06828f27f8344b10$var$HeaderPlugin;
+var $542e9a98d9f8978a$export$2e2bcd8739ae039 = $542e9a98d9f8978a$var$HeaderPlugin;
 
 
 /*
@@ -51303,7 +51303,7 @@ var $06828f27f8344b10$export$2e2bcd8739ae039 = $06828f27f8344b10$var$HeaderPlugi
  * MIT licensed
  * 
  * Copyright (c) 2025 Emiliano "pixu1980" Pisu
- */ const $12a42ace05675583$var$defaults = {
+ */ const $ee33314e39800510$var$defaults = {
     side: 'right',
     numbers: false,
     titleSelector: 'h1, h2, h3, h4, h5',
@@ -51326,7 +51326,7 @@ var $06828f27f8344b10$export$2e2bcd8739ae039 = $06828f27f8344b10$var$HeaderPlugi
     delayInit: false,
     openOnInit: false
 };
-class $12a42ace05675583$var$Menu {
+class $ee33314e39800510$var$Menu {
     deck;
     dom = {
         reveal: null,
@@ -52007,25 +52007,25 @@ class $12a42ace05675583$var$Menu {
     constructor(deck){
         this.deck = deck;
         this.settings = {
-            ...$12a42ace05675583$var$defaults,
+            ...$ee33314e39800510$var$defaults,
             ...deck.getConfig()?.menu
         };
         this.init();
     }
 }
-const $12a42ace05675583$var$Plugin = ()=>{
+const $ee33314e39800510$var$Plugin = ()=>{
     let instance;
     return {
         id: 'menu',
         init: (deck)=>{
-            instance = new $12a42ace05675583$var$Menu(deck);
+            instance = new $ee33314e39800510$var$Menu(deck);
         },
         toggleMenu: ()=>{
             instance.toggle();
         }
     };
 };
-var $12a42ace05675583$export$2e2bcd8739ae039 = $12a42ace05675583$var$Plugin;
+var $ee33314e39800510$export$2e2bcd8739ae039 = $ee33314e39800510$var$Plugin;
 
 
 /*
@@ -52037,7 +52037,7 @@ var $12a42ace05675583$export$2e2bcd8739ae039 = $12a42ace05675583$var$Plugin;
  * - Notes ?
  * - PDF export ?
  * - tooltips
- */ const $7771a7b62e117df9$var$defaults = {
+ */ const $705fa02b7751a3e9$var$defaults = {
     position: 'top',
     fullscreen: true,
     colorScheme: true,
@@ -52047,7 +52047,7 @@ var $12a42ace05675583$export$2e2bcd8739ae039 = $12a42ace05675583$var$Plugin;
     help: true,
     menu: true
 };
-class $7771a7b62e117df9$var$Toolbar {
+class $705fa02b7751a3e9$var$Toolbar {
     deck;
     dom = {
         reveal: null,
@@ -52157,22 +52157,22 @@ class $7771a7b62e117df9$var$Toolbar {
     constructor(deck){
         this.deck = deck;
         this.settings = {
-            ...$7771a7b62e117df9$var$defaults,
+            ...$705fa02b7751a3e9$var$defaults,
             ...deck.getConfig()?.toolbar
         };
         this.init();
         this.deck.dispatchEvent('toolbar-ready', this, true);
     }
 }
-const $7771a7b62e117df9$var$Plugin = ()=>{
+const $705fa02b7751a3e9$var$Plugin = ()=>{
     return {
         id: 'toolbar',
         init: (deck)=>{
-            new $7771a7b62e117df9$var$Toolbar(deck);
+            new $705fa02b7751a3e9$var$Toolbar(deck);
         }
     };
 };
-var $7771a7b62e117df9$export$2e2bcd8739ae039 = $7771a7b62e117df9$var$Plugin;
+var $705fa02b7751a3e9$export$2e2bcd8739ae039 = $705fa02b7751a3e9$var$Plugin;
 
 
 
@@ -52418,7 +52418,7 @@ addEventListener('DOMContentLoaded', ()=>{
             (0, (/*@__PURE__*/$parcel$interopDefault($4002db5decd7789a$exports))),
             (0, (/*@__PURE__*/$parcel$interopDefault($076471d7064f32b1$exports))),
             (0, (/*@__PURE__*/$parcel$interopDefault($47b02048c6e74b64$exports))),
-            (0, $7771a7b62e117df9$export$2e2bcd8739ae039)
+            (0, $705fa02b7751a3e9$export$2e2bcd8739ae039)
         ],
         navigationMode: 'linear',
         menu: {
@@ -52764,4 +52764,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
 });
 
 
-//# sourceMappingURL=baseline-rhapsody-devfest-pescara-2025.9efc056f.js.map
+//# sourceMappingURL=baseline-rhapsody-devfest-pescara-2025.5f1aa503.js.map

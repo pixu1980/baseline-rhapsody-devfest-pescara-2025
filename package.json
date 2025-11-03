@@ -1,6 +1,6 @@
 {
 	"name": "baseline-rhapsody-devfest-pescara-2025",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"license": "MIT",
 	"private": true,
 	"scripts": {
@@ -12,9 +12,9 @@
 		"prebuild": "pnpm run clear",
 		"build": "parcel build src/index.html --no-optimize --public-url ./ && git add . && git commit --amend --no-edit && git push -f",
 		"rel:push": "git push && git push --tags",
-		"rel:major": "pnpm run build && pnpm version --major && pnpm run rel:push",
-		"rel:minor": "pnpm run build && pnpm version --minor && pnpm run rel:push",
-		"rel:patch": "pnpm run build && pnpm version --patch && pnpm run rel:push",
+		"rel:major": "pnpm run build && pnpm version major && pnpm run rel:push",
+		"rel:minor": "pnpm run build && pnpm version minor && pnpm run rel:push",
+		"rel:patch": "pnpm run build && pnpm version patch && pnpm run rel:push",
 		"format:prettier": "prettier --write \"**/*.{html,css,md,json,yml,yaml}\"",
 		"format:biome": "biome format --write .",
 		"lint:biome": "biome lint .",
