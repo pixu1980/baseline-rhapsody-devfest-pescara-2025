@@ -1,6 +1,6 @@
 {
 	"name": "baseline-rhapsody-devfest-pescara-2025",
-	"version": "0.0.3",
+	"version": "0.1.0",
 	"license": "MIT",
 	"private": true,
 	"scripts": {
