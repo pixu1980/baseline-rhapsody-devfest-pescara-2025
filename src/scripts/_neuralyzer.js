@@ -89,7 +89,8 @@ export function setupNeuralyzer() {
         },
         prefersReduced ? 220 : 700
       );
-      setTimeout(() => device.classList.remove('enter'), prefersReduced ? 250 : 1800); // Keep device visible longer
+      // Start sliding the device out a bit earlier so the audience sees the final image sooner
+      setTimeout(() => device.classList.remove('enter'), prefersReduced ? 240 : 1300);
     }, delay);
   };
 
@@ -150,7 +151,8 @@ export function setupNeuralyzer() {
 
     // After the full sequence, navigate to next slide
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const totalDuration = prefersReduced ? 450 : 4000; // Slightly longer to ensure everything completes
+  // Wait a bit longer before moving to the next slide so the audience can see the "Men in Baseline" image
+  const totalDuration = prefersReduced ? 650 : 4800;
 
     setTimeout(() => {
       console.debug('[neuralyzer] navigating to next slide');

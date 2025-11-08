@@ -52652,7 +52652,8 @@ function $bca42cf1db19739f$export$30b9a8d794ba0f2d() {
                 performSubtitleSwapIfPending();
                 performDocumentTitleSwap();
             }, prefersReduced ? 220 : 700);
-            setTimeout(()=>device.classList.remove('enter'), prefersReduced ? 250 : 1800); // Keep device visible longer
+            // Start sliding the device out a bit earlier so the audience sees the final image sooner
+            setTimeout(()=>device.classList.remove('enter'), prefersReduced ? 240 : 1300);
         }, delay);
     };
     const tryMarkCoverForSwap = (ev)=>{
@@ -52695,7 +52696,8 @@ function $bca42cf1db19739f$export$30b9a8d794ba0f2d() {
         runSequence();
         // After the full sequence, navigate to next slide
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const totalDuration = prefersReduced ? 450 : 4000; // Slightly longer to ensure everything completes
+        // Wait a bit longer before moving to the next slide so the audience can see the "Men in Baseline" image
+        const totalDuration = prefersReduced ? 650 : 4800;
         setTimeout(()=>{
             console.debug('[neuralyzer] navigating to next slide');
             window.Reveal.next();
@@ -52764,4 +52766,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
 });
 
 
-//# sourceMappingURL=baseline-rhapsody-devfest-pescara-2025.5f1aa503.js.map
+//# sourceMappingURL=baseline-rhapsody-devfest-pescara-2025.39af5f13.js.map

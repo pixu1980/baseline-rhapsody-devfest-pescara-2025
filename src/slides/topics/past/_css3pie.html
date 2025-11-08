@@ -1,0 +1,66 @@
+<section>
+  <h3><mark>CSS3Pie</mark> and the <mark>HTC</mark> nightmare</h3>
+  <p balance>
+    Internet Explorer 6 through 8 could not understand <mark>border radius</mark>, <mark>box shadow</mark>, or <mark>linear gradients</mark>. We reached for CSS3Pie, a proprietary behavior file that
+    forced those effects with <code>.htc</code> scripts.
+  </p>
+</section>
+<section>
+  <h3><mark>CSS3Pie</mark> and the <mark>HTC</mark> nightmare</h3>
+  <p balance>
+    HTC (HTML Components) files were <mark>XML flavored scripts</mark> that IE parsed outside the page, attaching custom logic to matching elements through the <code>behavior</code> property. They ran
+    as a mini runtime, intercepting layout and repaint events to draw features the browser was missing.
+  </p>
+</section>
+<section>
+  <h4><mark>CSS3Pie</mark> and the <mark>HTC</mark> nightmare</h4>
+  <comparison>
+    <left>
+      <small class="fragment">
+        <ul>
+          <li>Required custom <mark>behavior</mark> property in CSS</li>
+          <li>Had to host <mark>PIE.htc</mark> with special MIME type</li>
+          <li>Relative paths were fragile and <mark>broke in production</mark></li>
+          <li>JavaScript-like parser <mark>running on every layout pass</mark></li>
+        </ul>
+      </small>
+    </left>
+    <right>
+      <pre class="fragment">
+        <code class="hljs css" data-trim data-line-numbers>
+.card {
+  background: #fff;
+  border: 1px solid #c3c3c3;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  behavior: url('/scripts/PIE.htc'); /* Only IE understood this */
+}
+        </code>
+      </pre>
+      <pre class="fragment">
+        <code class="hljs javascript" data-trim data-line-numbers style="max-height: 20rem">
+&lt;PUBLIC:COMPONENT&gt;
+  &lt;PUBLIC:ATTACH event="ondocumentready" onevent="attachPie" /&gt;
+&lt;/PUBLIC:COMPONENT&gt;
+
+&lt;script language="JScript"&gt;
+function attachPie() {
+  if (!window.PIE) {
+    return;
+  }
+
+  try {
+    PIE.attachElement(element);
+  } catch (error) {
+    // PIE.htc failed silently and the layout stayed broken
+  }
+}
+&lt;/script&gt;
+        </code>
+      </pre>
+    </right>
+  </comparison>
+  <aside class="notes">
+    Mention that CSS3Pie shipped as an HTC file, so we had to configure the server to serve it with text/x-component. Debugging was painful because PIE executed outside the regular developer tools.
+  </aside>
+</section>

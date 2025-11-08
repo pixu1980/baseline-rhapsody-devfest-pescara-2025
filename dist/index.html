@@ -3,7 +3,7 @@
     <title>Baseline Rhapsody - A tale of Style and Motion</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="baseline-rhapsody-devfest-pescara-2025.66637832.css">
+    <link rel="stylesheet" href="baseline-rhapsody-devfest-pescara-2025.505001fd.css">
   </head>
   <body>
     <main class="reveal">
@@ -24,7 +24,7 @@
   <section>
     <div class="mib-panel mib-panel--classified">
       <h4><mark>Agent B</mark>: briefing</h4>
-      <p balance="" class="fragment">This presentation deck is <mark>classified</mark>, unauthorized disclosure may result in <mark>neuralization</mark>. Proceed with caution and enjoy the ride.</p>
+      <p balance="">This presentation deck is <mark>classified</mark>, unauthorized disclosure may result in <mark>neuralization</mark>. Proceed with caution and enjoy the ride.</p>
     </div>
     <aside class="notes">
       Goals: show the evolution of CSS, present 24 modern APIs, preview 6 upcoming features, and explain how to use Baseline to plan adoption. References:
@@ -338,418 +338,6 @@
   </div>
 </section>
 
-
-<section class="slide-dive-in" data-auto-animate="">
-  <div sr-only="" data-menu-title="">Let's dive in!</div>
-  <dive-in>
-    <stack-container>
-      <stack-item>Let's <mark>dive</mark> in!</stack-item>
-      <stack-item>Let's <mark>dive</mark> in!</stack-item>
-      <stack-item>Let's <mark>dive</mark> in!</stack-item>
-      <stack-item>Let's <mark>dive</mark> in!</stack-item>
-      <stack-item>Let's <mark>dive</mark> in!</stack-item>
-    </stack-container>
-  </dive-in>
-</section>
-
-<!-- <include src="./slides/summary/_topics.html"></include> -->
-
-<section>
-  <section>
-  <h3>The <mark>Past</mark></h3>
-  <figure style="margin-top: 2rem">
-    <img src="men-in-baseline-past.d4769000.png" width="80%" alt="Men in Baseline Past" class="cover-mib">
-  </figure>
-</section>
-<section>
-  <div class="mib-panel mib-panel--classified">
-    <h4><mark>Agent B</mark>: brief note</h4>
-    <p balance="" class="fragment">
-      Old history records, the CSS galaxy was filled of <mark>cross browser anomalies</mark>, unidentified layout objects, <mark>clearfix wipes</mark>, prefixes and <mark>sprites</mark>. We kept the
-      web stable, but it was a suffering mess.
-    </p>
-  </div>
-</section>
-<section>
-  <h4 balance="">
-    Before modern CSS,
-    <mark>we had to</mark> rely on: <span class="fragment">weird <mark>hacks</mark>, </span>
-    <span class="fragment"><mark>pork</mark>... ehm... workarounds, </span>
-    <span class="fragment">techniques that seem <mark>absurd today</mark>.</span>
-    <br><br>
-    <span balance="" class="fragment">Let's take a <mark>nostalgic</mark>, and <mark>painful</mark>, trip down <mark>memory lane</mark>.</span>
-  </h4>
-</section>
-<section>
-  <figure style="margin-top: 2rem">
-    <img src="wtf.852b274b.gif" width="65%" alt="">
-  </figure>
-</section>
-
-  <section>
-  <h3>Float &amp; <mark>Clear</mark></h3>
-  <p>How we used for "<mark>hack</mark>" layouts</p>
-</section>
-<section>
-  <h4>multi-column layout "<mark>challenge</mark>"</h4>
-  <comparison>
-    <left>
-      <small class="fragment" style="background: #fee2e2; border: 2px solid #ef4444; padding: 1rem">
-        <div style="float: left; color: #000; background: #fff; border: 1px solid #000; width: 32.8%">Left Column</div>
-        <div style="float: left; color: #000; background: #fff; border: 1px solid #000; width: 32.8%">Center Column</div>
-        <div style="float: left; color: #000; background: #fff; border: 1px solid #000; width: 32.8%">Right Column</div>
-      </small>
-    </left>
-    <right>
-      <pre class="fragment">        <code class="hljs html" data-trim="" data-line-numbers="">
-&lt;div class="container"&gt;
-  &lt;div class="column"&gt;Left&lt;/div&gt;
-  &lt;div class="column"&gt;Center&lt;/div&gt;
-  &lt;div class="column"&gt;Right&lt;/div&gt;
-  &lt;div class="clearfix"&gt;&lt;/div&gt;
-&lt;/div&gt;
-        </code>
-      </pre>
-    </right>
-  </comparison>
-</section>
-
-<section>
-  <h4>the infamous <mark>clearfix</mark> "hack"</h4>
-  <comparison>
-    <left>
-      <pre class="fragment">        <code class="hljs css" data-trim="" data-line-numbers="">
-/* The classic clearfix */
-.clearfix::before,
-.clearfix::after {
-  content: "";
-  display: table;
-}
-
-.clearfix::after {
-  clear: both;
-}
-
-/* IE6/7 fallback */
-.clearfix {
-  *zoom: 1;
-}
-</code></pre>
-    </left>
-    <right class="fragment">
-      <div>
-        <div style="background: #fee2e2; border: 2px solid #ef4444; padding: 1rem">
-          <div style="float: left; color: #000; background: #fff; border: 1px solid #000; width: 44%; padding: 1rem; font-size: 3rem">Float Left</div>
-          <div style="float: right; color: #000; background: #fff; border: 1px solid #000; width: 44%; padding: 1rem; font-size: 3rem">Float Right</div>
-        </div>
-        <p style="margin-top: 1rem"><small>Without clearfix, the parent would collapse! 😱</small></p>
-      </div>
-      <br>
-      <div>
-        <div style="background: #fee2e2; border: 2px solid #ef4444; padding: 1rem">
-          <div style="float: left; color: #000; background: #fff; border: 1px solid #000; width: 44%; padding: 1rem; font-size: 3rem">Float Left</div>
-          <div style="float: right; color: #000; background: #fff; border: 1px solid #000; width: 44%; padding: 1rem; font-size: 3rem">Float Right</div>
-          <div style="clear: both"></div>
-        </div>
-        <p style="margin-top: 1rem"><small>With clearfix, the parent will not collapse! 😱</small></p>
-      </div>
-    </right>
-  </comparison>
-  <aside class="notes">The clearfix was copy-pasted into every project. We memorized it like a prayer. Notice the *zoom: 1 for IE6/7 - that was a whole other level of pain.</aside>
-</section>
-<section>
-  <h4>it was <mark>awful</mark>, uh?</h4>
-  <small class="fragment">
-    <ul>
-      <li>⚠️ Parent collapse without clearfix</li>
-      <li>⚠️ Percentage calculations = headaches</li>
-      <li>⚠️ No vertical centering</li>
-      <li>⚠️ Float clearing everywhere</li>
-      <li>⚠️ Semantic markup sacrificed</li>
-    </ul>
-  </small>
-  <aside class="notes">Floats were never meant for layout! They were designed for wrapping text around images. But we made them work... with pain.</aside>
-</section>
-
-  <section>
-  <h3>Table Layouts</h3>
-  <p>when <mark>Semantics</mark> didn't matter</p>
-</section>
-<section>
-  <h4>The <mark>&lt;table&gt;</mark> Abuse</h4>
-  <comparison>
-    <left>
-      <div class="fragment">
-        <div style="background: #fee2e2; border: 2px solid #ef4444; padding: .5rem; font-size: 1.8rem">
-          <table style="border-collapse: collapse; width: 100%">
-            <tbody><tr>
-              <td style="color: #000; background: #fecaca; border: 1px solid #ef4444; width: 30%; padding: .5rem">Sidebar</td>
-              <td style="background: #fff; border: 1px solid #ef4444; padding: .5rem">
-                <div style="color: #000; background: #fecaca; border: 1px solid #ef4444; margin-bottom: .5rem; padding: .5rem">Header</div>
-                <div style="color: #000; background: #fff; border: 1px solid #ef4444; padding: .5rem">Main Content</div>
-              </td>
-            </tr>
-          </tbody></table>
-        </div>
-        <p style="margin-top: 1rem"><small>Nested tables within tables! 🤯</small></p>
-      </div>
-    </left>
-    <right>
-      <pre class="fragment">        <code class="hljs html" data-trim="" data-line-numbers="">
-&lt;!-- The "layout" --&gt;
-&lt;table width="100%" cellpadding="0"&gt;
-  &lt;tr&gt;
-    &lt;td width="200"&gt;Sidebar&lt;/td&gt;
-    &lt;td&gt;
-      &lt;table width="100%"&gt;
-        &lt;tr&gt;
-          &lt;td&gt;Header&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;Content&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/table&gt;
-    &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;
-        </code>
-      </pre>
-    </right>
-  </comparison>
-  <aside class="notes">Tables were used for layout because they gave us grid-like control. But they were a nightmare for accessibility, SEO, and maintenance.</aside>
-</section>
-
-<section>
-  <h4><mark>display: table</mark> alternative</h4>
-  <comparison>
-    <left>
-      <pre class="fragment">        <code class="hljs css" data-trim="" data-line-numbers="">
-.layout {
-  display: table;
-  width: 100%;
-}
-
-.sidebar {
-  display: table-cell;
-  width: 200px;
-  vertical-align: top;
-}
-
-.content {
-  display: table-cell;
-  vertical-align: top;
-}
-        </code>
-      </pre>
-    </left>
-    <right class="fragment">
-      <small>
-        <ul>
-          <li>⚠️ Still table-thinking for layouts</li>
-          <li>⚠️ Hard to make responsive</li>
-          <li>⚠️ Vertical alignment works... but at what cost?</li>
-          <li>⚠️ No gaps/gutters without spacer elements</li>
-          <li>⚠️ Order changes require HTML changes</li>
-        </ul>
-      </small>
-    </right>
-  </comparison>
-</section>
-
-<section>
-  <p>slightly better, but still... <mark class="fragment">yawk!</mark></p>
-  <aside class="notes">display: table was "better" because we kept semantic HTML, but we were still thinking in tables. True layout tools were still years away.</aside>
-</section>
-
-  <section>
-  <h3>CSS Sprites</h3>
-  <p>The "<mark>image optimization</mark>" technique</p>
-</section>
-<section>
-  <h4>One Image to <mark>Rule Them All</mark></h4>
-  <comparison>
-    <left>
-      <div class="fragment">
-        <small style="color: #000; background: #f8fafc; border-radius: .5rem; padding: 2rem">
-          <p>the "magic" sprite grid</p>
-          <br>
-          <div style="background: #e2e8f0; border: 2px dashed #94a3b8; grid-template-columns: repeat(3, 40px); place-content: center; gap: 1rem; padding: 1rem; display: grid">
-            <div style="background: #3c83f6; border-radius: 4px; width: 32px; height: 32px" title="Icon 1"></div>
-            <div style="background: #5593f7; border-radius: 4px; width: 32px; height: 32px" title="Icon 2"></div>
-            <div style="background: #6da2f8; border-radius: 4px; width: 32px; height: 32px" title="Icon 3"></div>
-            <div style="background: #10bc83; border-radius: 4px; width: 32px; height: 32px" title="Icon 1 hover"></div>
-            <div style="background: #2cedac; border-radius: 4px; width: 32px; height: 32px" title="Icon 2 hover"></div>
-            <div style="background: #72f3c8; border-radius: 4px; width: 32px; height: 32px" title="Icon 3 hover"></div>
-          </div>
-        </small>
-      </div>
-    </left>
-    <right>
-      <pre class="fragment">        <code class="hljs css" data-trim="" data-line-numbers="">
-/* the sprite sheet */
-.icon {
-  background: url('sprites.png') no-repeat;
-  background-position: 0 0;
-  display: inline-block;
-  width: 32px;
-  height: 32px;
-}
-
-/* adding classes via JS and 
-manual pixel calculations */
-.icon.icon-hover {
-  background-position: -32px 0;
-}
-
-.icon.icon-active {
-  background-position: -64px 0;
-}
-
-        </code>
-      </pre>
-    </right>
-  </comparison>
-  <aside class="notes">CSS Sprites were born from HTTP/1.1 limitations - fewer requests meant better performance. But the maintenance cost was HUGE.</aside>
-</section>
-
-<section>
-  <h4>this idea leaded to lots of <mark>problems</mark></h4>
-  <small class="fragment">
-    <ul>
-      <li>⚠️ Add one button → rebuild entire sprite</li>
-      <li>⚠️ Manual pixel calculations</li>
-      <li>⚠️ Hover/Active states = 2/3x the complexity</li>
-      <li>⚠️ Different sizes? More sprites!</li>
-      <li>⚠️ Documentation needed to track positions</li>
-    </ul>
-  </small>
-  <aside class="notes">With HTTP/2 multiplexing, the "fewer requests" argument died. SVG gave us scalable, accessible icons. Sprites became a relic of the past.</aside>
-</section>
-<section>
-  <figure style="margin-top: 2rem">
-    <img src="thats-very-funny-to-me.40e9f7b0.webp" width="65%" alt="">
-  </figure>
-</section>
-
-  <section>
-  <h3>Hacks &amp; <mark>Workarounds</mark></h3>
-  <p>a "<mark>wild west</mark>" of browser compatibility</p>
-</section>
-
-<section>
-  <h4>Browser-Specific <mark>Nightmares</mark></h4>
-  <small>a <mark>minefield</mark> of hacks and workarounds</small>
-  <comparison>
-    <left>
-      <small class="fragment">
-        <ul>
-          <li>Too different rendering engines</li>
-          <li>Box model inconsistencies</li>
-          <li>Margin collapsing bugs</li>
-          <li>PNG transparency issues</li>
-          <li>Z-index nightmares</li>
-        </ul>
-      </small>
-    </left>
-    <right>
-      <pre class="fragment">        <code class="hljs css" data-trim="" data-line-numbers="">
-/* IE6/7 hacks */
-* html .selector {
-  /* Only IE6 sees this */
-  margin: 10px;
-}
-
-*+html .selector {
-  /* Only IE7 sees this */
-  margin: 10px;
-}
-
-.selector {
-  margin: 20px;
-  _margin: 10px; /* IE6 underscore hack */
-  *margin: 10px; /* IE6/7 star hack */
-}
-
-/* IE conditional comments in CSS */
-/* @media \0screen\,screen\9 {
-  .selector { margin: 10px; }
-} */
-        </code>
-      </pre>
-    </right>
-  </comparison>
-  <aside class="notes">Each browser had its own quirks. IE6 was the worst offender, but every browser required special treatment. We had to be browser archaeologists.</aside>
-</section>
-
-<section>
-  <h4>Vendor <mark>Prefix</mark> Hell</h4>
-  <comparison>
-    <left>
-      <small class="fragment">
-        <ul>
-          <li>Different prefixes for different browsers</li>
-          <li>N times the code for one property</li>
-          <li>How and When to drop old prefixes?</li>
-          <li>Additional toolchain entries (Autoprefixer?)</li>
-        </ul>
-      </small>
-    </left>
-    <right>
-      <pre class="fragment">        <code class="hljs css" data-trim="" data-line-numbers="">
-.box {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  border-radius: 10px;
-  
-  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  -moz-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  
-  -webkit-transform: rotate(5deg);
-  -moz-transform: rotate(5deg);
-  -ms-transform: rotate(5deg);
-  -o-transform: rotate(5deg);
-  transform: rotate(5deg);
-}
-        </code>
-      </pre>
-    </right>
-  </comparison>
-  <aside class="notes">Vendor prefixes were necessary for experimental features, but they cluttered our code. Build tools eventually automated this pain away.</aside>
-</section>
-
-<!-- <section>
-  <h3>The Famous <mark>"Works on My Machine"</mark></h3>
-  <div style="text-align: center; padding: 2rem">
-    <div class="fragment" style="font-size: 3rem; margin-bottom: 1rem">🖥️ → 💥</div>
-    <div class="fragment" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); border: 3px solid #ef4444; padding: 2rem; border-radius: 1rem; margin: 2rem auto; max-width: 600px">
-      <h4 style="margin-top: 0; color: #991b1b">The Developer Experience</h4>
-      <ul style="text-align: left; color: #7f1d1d">
-        <li>Test in IE6, IE7, IE8, IE9, IE10...</li>
-        <li>Different bugs in Firefox 2, 3, 3.5...</li>
-        <li>Safari on Mac vs Windows (different!)</li>
-        <li>Opera had its own special quirks</li>
-        <li>Mobile browsers? Forget about it!</li>
-      </ul>
-    </div>
-
-    <div class="fragment" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border: 2px solid #10b981; padding: 1.5rem; border-radius: 1rem; margin-top: 2rem">
-      <p style="font-size: 1.2rem; margin: 0; color: #065f46">
-        <strong>Today:</strong> Evergreen browsers + Standards = Less Pain!<br />
-        <span style="font-size: 0.9rem">And <mark>Baseline</mark> tells us what's safe to use! 🎯</span>
-      </p>
-    </div>
-  </div>
-  <aside class="notes">
-    The pain of browser compatibility testing was real. Virtual machines, separate test computers, BrowserStack... it was exhausting. Modern evergreen browsers and web standards have made this SO much
-    better.
-  </aside>
-</section> -->
-
-</section>
-
 <section>
   <section>
     <div class="mib-panel mib-panel--classified">
@@ -911,11 +499,487 @@ Widely date:   Aug 2025 (Feb 2023 + 30 months)
 </section>
 
 
+<section class="slide-dive-in" data-auto-animate="">
+  <div sr-only="" data-menu-title="">Let's dive in!</div>
+  <dive-in>
+    <stack-container>
+      <stack-item>Let's <mark>dive</mark> in!</stack-item>
+      <stack-item>Let's <mark>dive</mark> in!</stack-item>
+      <stack-item>Let's <mark>dive</mark> in!</stack-item>
+      <stack-item>Let's <mark>dive</mark> in!</stack-item>
+      <stack-item>Let's <mark>dive</mark> in!</stack-item>
+    </stack-container>
+  </dive-in>
+</section>
+
+<!-- <include src="./slides/summary/_topics.html"></include> -->
+
+<section>
+  <section>
+  <h2>The <mark>Past</mark></h2>
+</section>
+<section>
+  <figure>
+    <img src="men-in-baseline-past.d4769000.png" width="80%" alt="Men in Baseline Past" class="cover-mib">
+  </figure>
+</section>
+<section>
+  <div class="mib-panel mib-panel--classified">
+    <h4><mark>Agent B</mark>: brief note</h4>
+    <p balance="">
+      Old history records, the CSS galaxy was filled of <mark>cross browser anomalies</mark>, unidentified layout objects, <mark>clearfix wipes</mark>, prefixes and <mark>sprites</mark>. We kept the
+      web stable, but it was a suffering mess.
+    </p>
+  </div>
+</section>
+<section>
+  <h4 balance="">
+    Before modern CSS,
+    <mark>we had to</mark> rely on: weird <mark>hacks</mark>, <mark>pork</mark>... ehm... workarounds, techniques that seem <mark>absurd today</mark>. <br><br>
+    <span balance="" class="fragment"> Let's take a <mark>nostalgic</mark>, and <mark>painful</mark>, trip down <mark>memory lane</mark>. </span>
+  </h4>
+</section>
+<section>
+  <figure>
+    <img src="wtf.852b274b.gif" width="65%" alt="">
+  </figure>
+</section>
+
+  <section>
+  <h3>Float &amp; <mark>Clear</mark></h3>
+  <p>How we used for "<mark>hack</mark>" layouts</p>
+</section>
+<section>
+  <h4>multi-column layout "<mark>challenge</mark>"</h4>
+  <comparison>
+    <left>
+      <small class="fragment" style="background: #fee2e2; border: 2px solid #ef4444; padding: 1rem">
+        <div style="float: left; color: #000; background: #fff; border: 1px solid #000; width: 32.8%">Left Column</div>
+        <div style="float: left; color: #000; background: #fff; border: 1px solid #000; width: 32.8%">Center Column</div>
+        <div style="float: left; color: #000; background: #fff; border: 1px solid #000; width: 32.8%">Right Column</div>
+      </small>
+    </left>
+    <right>
+      <pre class="fragment">        <code class="hljs html" data-trim="" data-line-numbers="">
+&lt;div class="container"&gt;
+  &lt;div class="column"&gt;Left&lt;/div&gt;
+  &lt;div class="column"&gt;Center&lt;/div&gt;
+  &lt;div class="column"&gt;Right&lt;/div&gt;
+  &lt;div class="clearfix"&gt;&lt;/div&gt;
+&lt;/div&gt;
+        </code>
+      </pre>
+    </right>
+  </comparison>
+</section>
+
+<section>
+  <h4>the infamous <mark>clearfix</mark> "hack"</h4>
+  <comparison>
+    <left>
+      <pre class="fragment">        <code class="hljs css" data-trim="" data-line-numbers="">
+/* The classic clearfix */
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/* IE6/7 fallback */
+.clearfix {
+  *zoom: 1;
+}
+</code></pre>
+    </left>
+    <right class="fragment">
+      <div>
+        <div style="background: #fee2e2; border: 2px solid #ef4444; padding: 1rem">
+          <div style="float: left; color: #000; background: #fff; border: 1px solid #000; width: 44%; padding: 1rem; font-size: 3rem">Float Left</div>
+          <div style="float: right; color: #000; background: #fff; border: 1px solid #000; width: 44%; padding: 1rem; font-size: 3rem">Float Right</div>
+        </div>
+        <p style="margin-top: 1rem"><small>Without clearfix, the parent would collapse! 😱</small></p>
+      </div>
+      <br>
+      <div>
+        <div style="background: #fee2e2; border: 2px solid #ef4444; padding: 1rem">
+          <div style="float: left; color: #000; background: #fff; border: 1px solid #000; width: 44%; padding: 1rem; font-size: 3rem">Float Left</div>
+          <div style="float: right; color: #000; background: #fff; border: 1px solid #000; width: 44%; padding: 1rem; font-size: 3rem">Float Right</div>
+          <div style="clear: both"></div>
+        </div>
+        <p style="margin-top: 1rem"><small>With clearfix, the parent will not collapse! 😱</small></p>
+      </div>
+    </right>
+  </comparison>
+  <aside class="notes">The clearfix was copy-pasted into every project. We memorized it like a prayer. Notice the *zoom: 1 for IE6/7 - that was a whole other level of pain.</aside>
+</section>
+<section>
+  <h4>it was <mark>awful</mark>, uh?</h4>
+  <small class="fragment">
+    <ul>
+      <li>⚠️ Parent collapse without clearfix</li>
+      <li>⚠️ Percentage calculations = headaches</li>
+      <li>⚠️ No vertical centering</li>
+      <li>⚠️ Float clearing everywhere</li>
+      <li>⚠️ Semantic markup sacrificed</li>
+    </ul>
+  </small>
+  <aside class="notes">Floats were never meant for layout! They were designed for wrapping text around images. But we made them work... with pain.</aside>
+</section>
+
+  <section>
+  <h3>Table Layouts</h3>
+  <p>when <mark>Semantics</mark> didn't matter</p>
+</section>
+<section>
+  <h4>The <mark>&lt;table&gt;</mark> Abuse</h4>
+  <comparison>
+    <left>
+      <div class="fragment">
+        <div style="background: #fee2e2; border: 2px solid #ef4444; padding: .5rem; font-size: 1.8rem">
+          <table style="border-collapse: collapse; width: 100%">
+            <tbody><tr>
+              <td style="color: #000; background: #fecaca; border: 1px solid #ef4444; width: 30%; padding: .5rem">Sidebar</td>
+              <td style="background: #fff; border: 1px solid #ef4444; padding: .5rem">
+                <div style="color: #000; background: #fecaca; border: 1px solid #ef4444; margin-bottom: .5rem; padding: .5rem">Header</div>
+                <div style="color: #000; background: #fff; border: 1px solid #ef4444; padding: .5rem">Main Content</div>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+        <p style="margin-top: 1rem"><small>Nested tables within tables! 🤯</small></p>
+      </div>
+    </left>
+    <right>
+      <pre class="fragment">        <code class="hljs html" data-trim="" data-line-numbers="">
+&lt;!-- The "layout" --&gt;
+&lt;table width="100%" cellpadding="0"&gt;
+  &lt;tr&gt;
+    &lt;td width="200"&gt;Sidebar&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table width="100%"&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Header&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Content&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+        </code>
+      </pre>
+    </right>
+  </comparison>
+  <aside class="notes">Tables were used for layout because they gave us grid-like control. But they were a nightmare for accessibility, SEO, and maintenance.</aside>
+</section>
+
+<section>
+  <h4>The even worst <mark>display: table</mark> alternative</h4>
+  <comparison>
+    <left>
+      <pre class="fragment">        <code class="hljs css" data-trim="" data-line-numbers="">
+.layout {
+  display: table;
+  width: 100%;
+}
+
+.sidebar {
+  display: table-cell;
+  width: 200px;
+  vertical-align: top;
+}
+
+.content {
+  display: table-cell;
+  vertical-align: top;
+}
+        </code>
+      </pre>
+    </left>
+    <right class="fragment">
+      <small>
+        <ul>
+          <li>⚠️ Still table-thinking for layouts</li>
+          <li>⚠️ Hard to make responsive</li>
+          <li>⚠️ Vertical alignment works... but at what cost?</li>
+          <li>⚠️ No gaps/gutters without spacer elements</li>
+          <li>⚠️ Order changes require HTML changes</li>
+        </ul>
+      </small>
+    </right>
+  </comparison>
+</section>
+
+<section>
+  <p>slightly better, but still... <mark class="fragment">yawk!</mark></p>
+  <aside class="notes">display: table was "better" because we kept semantic HTML, but we were still thinking in tables. True layout tools were still years away.</aside>
+</section>
+
+  <section>
+  <h3>CSS Sprites</h3>
+  <p>The "<mark>image optimization</mark>" technique</p>
+</section>
+<section>
+  <h4>One Image to <mark>Rule Them All</mark></h4>
+  <comparison>
+    <left>
+      <div class="fragment">
+        <small style="color: #000; background: #f8fafc; border-radius: .5rem; padding: 2rem">
+          <p>the "magic" sprite grid</p>
+          <br>
+          <div style="background: #e2e8f0; border: 2px dashed #94a3b8; grid-template-columns: repeat(3, 40px); place-content: center; gap: 1rem; padding: 1rem; display: grid">
+            <div style="background: #3c83f6; border-radius: 4px; width: 32px; height: 32px" title="Icon 1"></div>
+            <div style="background: #5593f7; border-radius: 4px; width: 32px; height: 32px" title="Icon 2"></div>
+            <div style="background: #6da2f8; border-radius: 4px; width: 32px; height: 32px" title="Icon 3"></div>
+            <div style="background: #10bc83; border-radius: 4px; width: 32px; height: 32px" title="Icon 1 hover"></div>
+            <div style="background: #2cedac; border-radius: 4px; width: 32px; height: 32px" title="Icon 2 hover"></div>
+            <div style="background: #72f3c8; border-radius: 4px; width: 32px; height: 32px" title="Icon 3 hover"></div>
+          </div>
+        </small>
+      </div>
+    </left>
+    <right>
+      <pre class="fragment">        <code class="hljs css" data-trim="" data-line-numbers="">
+/* the sprite sheet */
+.icon {
+  background: url('sprites.png') no-repeat;
+  background-position: 0 0;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+
+/* adding classes via JS and 
+manual pixel calculations */
+.icon.icon-hover {
+  background-position: -32px 0;
+}
+
+.icon.icon-active {
+  background-position: -64px 0;
+}
+
+        </code>
+      </pre>
+    </right>
+  </comparison>
+  <aside class="notes">CSS Sprites were born from HTTP/1.1 limitations - fewer requests meant better performance. But the maintenance cost was HUGE.</aside>
+</section>
+
+<section>
+  <h4>this idea leaded to lots of <mark>problems</mark></h4>
+  <small class="fragment">
+    <ul>
+      <li>⚠️ Add one button → rebuild entire sprite</li>
+      <li>⚠️ Manual pixel calculations</li>
+      <li>⚠️ Hover/Active states = 2/3x the complexity</li>
+      <li>⚠️ Different sizes? More sprites!</li>
+      <li>⚠️ Documentation needed to track positions</li>
+    </ul>
+  </small>
+  <aside class="notes">With HTTP/2 multiplexing, the "fewer requests" argument died. SVG gave us scalable, accessible icons. Sprites became a relic of the past.</aside>
+</section>
+<section>
+  <figure style="margin-top: 2rem">
+    <img src="thats-very-funny-to-me.40e9f7b0.webp" width="65%" alt="">
+  </figure>
+</section>
+
+  <section>
+  <h3>Hacks &amp; <mark>Workarounds</mark></h3>
+  <p balance="">Browser compatibility <mark>was a battlefield</mark> of inconsistent engines, fragile hacks and <mark>endless retries</mark>.</p>
+</section>
+
+<section>
+  <h4>Browser-Specific <mark>Nightmares</mark></h4>
+  <comparison>
+    <left>
+      <small class="fragment">
+        <ul>
+          <li><mark>Too different</mark> rendering engines</li>
+          <li>Box model <mark>inconsistencies</mark></li>
+          <li>Margin <mark>collapsing bugs</mark></li>
+          <li>PNG transparency <mark>issues</mark></li>
+          <li>Z-index <mark>nightmares</mark></li>
+        </ul>
+      </small>
+    </left>
+    <right>
+      <pre class="fragment">        <code class="hljs css" data-trim="" data-line-numbers="">
+/* IE6/7 hacks */
+* html .selector {
+  /* Only IE6 sees this */
+  margin: 10px;
+}
+
+*+html .selector {
+  /* Only IE7 sees this */
+  margin: 10px;
+}
+
+.selector {
+  margin: 20px;
+  _margin: 10px; /* IE6 underscore hack */
+  *margin: 10px; /* IE6/7 star hack */
+}
+
+/* IE conditional comments in CSS */
+/* @media \0screen\,screen\9 {
+  .selector { margin: 10px; }
+} */
+        </code>
+      </pre>
+    </right>
+  </comparison>
+  <aside class="notes">Each browser had its own quirks. IE6 was the worst offender, but every browser required special treatment. We had to be browser archaeologists.</aside>
+</section>
+<section>
+  <h4>Vendor <mark>Prefix</mark> Hell</h4>
+  <comparison>
+    <left>
+      <small class="fragment">
+        <ul>
+          <li>Lots of <mark>prefixes</mark> for every browsers</li>
+          <li><mark>N times the code</mark> for one property</li>
+          <li><mark>How and when to drop</mark> them?</li>
+          <li>Add <mark>toolchain items</mark> (Autoprefixer?)</li>
+        </ul>
+      </small>
+    </left>
+    <right>
+      <pre class="fragment">        <code class="hljs css" data-trim="" data-line-numbers="">
+.box {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  
+  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  -ms-transform: rotate(5deg);
+  -o-transform: rotate(5deg);
+  transform: rotate(5deg);
+}
+        </code>
+      </pre>
+    </right>
+  </comparison>
+  <aside class="notes">Vendor prefixes were necessary for experimental features, but they cluttered our code. Build tools eventually automated this pain away.</aside>
+</section>
+
+<!-- <section>
+  <h3>The Famous <mark>"Works on My Machine"</mark></h3>
+  <div style="text-align: center; padding: 2rem">
+    <div class="fragment" style="font-size: 3rem; margin-bottom: 1rem">🖥️ → 💥</div>
+    <div class="fragment" style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); border: 3px solid #ef4444; padding: 2rem; border-radius: 1rem; margin: 2rem auto; max-width: 600px">
+      <h4 style="margin-top: 0; color: #991b1b">The Developer Experience</h4>
+      <ul style="text-align: left; color: #7f1d1d">
+        <li>Test in IE6, IE7, IE8, IE9, IE10...</li>
+        <li>Different bugs in Firefox 2, 3, 3.5...</li>
+        <li>Safari on Mac vs Windows (different!)</li>
+        <li>Opera had its own special quirks</li>
+        <li>Mobile browsers? Forget about it!</li>
+      </ul>
+    </div>
+
+    <div class="fragment" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border: 2px solid #10b981; padding: 1.5rem; border-radius: 1rem; margin-top: 2rem">
+      <p style="font-size: 1.2rem; margin: 0; color: #065f46">
+        <strong>Today:</strong> Evergreen browsers + Standards = Less Pain!<br />
+        <span style="font-size: 0.9rem">And <mark>Baseline</mark> tells us what's safe to use! 🎯</span>
+      </p>
+    </div>
+  </div>
+  <aside class="notes">
+    The pain of browser compatibility testing was real. Virtual machines, separate test computers, BrowserStack... it was exhausting. Modern evergreen browsers and web standards have made this SO much
+    better.
+  </aside>
+</section> -->
+
+  <section>
+  <h3><mark>CSS3Pie</mark> and the <mark>HTC</mark> nightmare</h3>
+  <p balance="">
+    Internet Explorer 6 through 8 could not understand <mark>border radius</mark>, <mark>box shadow</mark>, or <mark>linear gradients</mark>. We reached for CSS3Pie, a proprietary behavior file that
+    forced those effects with <code>.htc</code> scripts.
+  </p>
+</section>
+<section>
+  <h3><mark>CSS3Pie</mark> and the <mark>HTC</mark> nightmare</h3>
+  <p balance="">
+    HTC (HTML Components) files were <mark>XML flavored scripts</mark> that IE parsed outside the page, attaching custom logic to matching elements through the <code>behavior</code> property. They ran
+    as a mini runtime, intercepting layout and repaint events to draw features the browser was missing.
+  </p>
+</section>
+<section>
+  <h4><mark>CSS3Pie</mark> and the <mark>HTC</mark> nightmare</h4>
+  <comparison>
+    <left>
+      <small class="fragment">
+        <ul>
+          <li>Required custom <mark>behavior</mark> property in CSS</li>
+          <li>Had to host <mark>PIE.htc</mark> with special MIME type</li>
+          <li>Relative paths were fragile and <mark>broke in production</mark></li>
+          <li>JavaScript-like parser <mark>running on every layout pass</mark></li>
+        </ul>
+      </small>
+    </left>
+    <right>
+      <pre class="fragment">        <code class="hljs css" data-trim="" data-line-numbers="">
+.card {
+  background: #fff;
+  border: 1px solid #c3c3c3;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  behavior: url('/scripts/PIE.htc'); /* Only IE understood this */
+}
+        </code>
+      </pre>
+      <pre class="fragment">        <code class="hljs javascript" data-trim="" data-line-numbers="" style="max-height: 20rem">
+&lt;PUBLIC:COMPONENT&gt;
+  &lt;PUBLIC:ATTACH event="ondocumentready" onevent="attachPie" /&gt;
+&lt;/PUBLIC:COMPONENT&gt;
+
+&lt;script language="JScript"&gt;
+function attachPie() {
+  if (!window.PIE) {
+    return;
+  }
+
+  try {
+    PIE.attachElement(element);
+  } catch (error) {
+    // PIE.htc failed silently and the layout stayed broken
+  }
+}
+&lt;/script&gt;
+        </code>
+      </pre>
+    </right>
+  </comparison>
+  <aside class="notes">
+    Mention that CSS3Pie shipped as an HTC file, so we had to configure the server to serve it with text/x-component. Debugging was painful because PIE executed outside the regular developer tools.
+  </aside>
+</section>
+
+  <!-- <include src="./slides/topics/past/_outro.html"></include> -->
+</section>
+
 <section>
   <!-- Modern CSS Renaissance: Widely Available Features -->
   <section>
-  <h3>The <mark>Present</mark></h3>
-  <figure style="margin-top: 2rem">
+  <h2>The <mark>Present</mark></h2>
+</section>
+<section>
+  <figure>
     <!-- <div class="cover-crossfade">
       <img src="./assets/meme/bsseline-rhapsody-present.png" width="45%" alt="" class="cover-original" /> -->
     <img src="men-in-baseline-present.5a1c35ff.png" width="80%" alt="Men in Baseline Present" class="cover-mib">
@@ -925,11 +989,16 @@ Widely date:   Aug 2025 (Feb 2023 + 30 months)
 <section>
   <div class="mib-panel mib-panel--classified">
     <h4><mark>Agent B</mark>: brief note</h4>
-    <p balance="" class="fragment">The following <mark>features</mark> are cleared for <mark>field</mark> usage under the <mark>Baseline</mark> protocol, deploy with <mark>confidence</mark>.</p>
+    <p balance="">The following <mark>features</mark> are cleared for <mark>field</mark> usage under the <mark>Baseline</mark> protocol, deploy with <mark>confidence</mark>.</p>
   </div>
 </section>
 <section>
-  <p>From painful hacks to <mark>powerful</mark> features ✨</p>
+  <h4>From painful hacks to <mark>powerful</mark> features ✨</h4>
+</section>
+<section>
+  <figure>
+    <img src="is-that-better.f4395bec.gif" width="80%" alt="Men in Baseline Present" class="cover-mib">
+  </figure>
   <aside class="notes">
     The transformation of CSS over the last decade has been incredible. We've gone from hacky workarounds to having proper tools for layout, design systems, animations, and more. Let's explore the
     modern CSS APIs that are widely available today.
@@ -1142,7 +1211,7 @@ colorPicker.addEventListener('change', (e) => {
 <section>
   <h4>Flexbox</h4>
   <h5><img src="baseline-widely-icon.ba7c41a8.svg" style="width: 5rem" alt=""> Widely Available (September 2015)</h5>
-  <p>From Float Hell to Flex <mark>Heaven</mark></p>
+  <small balance="">From Float Hell to Flex <mark>Heaven</mark></small>
   <comparison>
     <left>
       <small style="flex-direction: column; gap: 1rem; width: 100%; display: flex">
@@ -1392,7 +1461,7 @@ colorPicker.addEventListener('change', (e) => {
 <section>
   <h4>Container Queries</h4>
   <h5><img src="baseline-newly-icon.4510a3d4.svg" style="width: 5rem" alt=""> Newly Available (February 2023)</h5>
-  <p>Responsive components based on their <mark>container</mark>, not the viewport</p>
+  <small balance="">Responsive components based on their <mark>container</mark>, not the viewport</small>
   <comparison>
     <left>
       <small style="flex-direction: column; gap: 1rem; width: 100%; display: flex">
@@ -1467,7 +1536,7 @@ colorPicker.addEventListener('change', (e) => {
   <section>
   <h4>Color Functions</h4>
   <h5><img src="baseline-widely-icon.ba7c41a8.svg" style="width: 5rem" alt=""> Widely Available (March 2017)</h5>
-  <p>From hex codes to perceptual <mark>color spaces</mark></p>
+  <small balance="">From hex codes to perceptual <mark>color spaces</mark></small>
   <comparison>
     <left>
       <small style="flex-direction: column; gap: 1rem; width: 100%; display: flex">
@@ -1618,7 +1687,7 @@ colorPicker.addEventListener('change', (e) => {
 <section>
   <h4>CSS Filters</h4>
   <h5><img src="baseline-widely-icon.ba7c41a8.svg" style="width: 5rem" alt=""> Widely Available (October 2015)</h5>
-  <small>Visual effects without image editing, <mark>backdrop-filter</mark> for glassmorphism</small>
+  <small balance="">Visual effects without image editing, <mark>backdrop-filter</mark> for glassmorphism</small>
   <comparison>
     <left>
       <small style="flex-direction: column; gap: 1rem; width: 100%; display: flex">
@@ -1881,7 +1950,10 @@ colorPicker.addEventListener('change', (e) => {
   <section>
   <h4>:has() Selector</h4>
   <h5><img src="baseline-newly-icon.4510a3d4.svg" style="width: 5rem" alt=""> Newly Available (December 2023)</h5>
-  <p>The <mark>parent selector</mark> we always wanted</p>
+  <small balance="">
+    The <mark><s>parent selector</s></mark>, or better the <br>
+    <mark>content-aware selector</mark> we always wanted
+  </small>
   <comparison>
     <left>
       <small style="flex-direction: column; gap: 1rem; width: 100%; display: flex">
@@ -2350,7 +2422,7 @@ h1 {
 <section>
   <h4>@supports (Feature Queries)</h4>
   <h5><img src="baseline-widely-icon.ba7c41a8.svg" style="width: 5rem" alt=""> Widely Available (September 2015)</h5>
-  <p>Progressive enhancement with <mark>feature detection</mark></p>
+  <small balance="">Progressive enhancement with <mark>feature detection</mark></small>
   <comparison>
     <left>
       <small style="flex-direction: column; gap: 1.5rem; width: 100%; display: flex">
@@ -2554,23 +2626,32 @@ h1 {
 
 <section>
   <section>
-  <h3>The <mark>Future</mark></h3>
-  <figure style="margin-top: 2rem">
+  <h2>The <mark>Future</mark></h2>
+</section>
+<section>
+  <figure>
     <img src="men-in-baseline-future.7b60978f.png" width="75%" alt="Men in Baseline Future" class="cover-mib">
   </figure>
 </section>
 <section>
   <div class="mib-panel mib-panel--classified">
     <h4><mark>Agent B</mark>: brief note</h4>
-    <p balance="" class="fragment">
+    <p balance="">
       These features are <mark>classified</mark> and still <mark>evolving</mark>, expect <mark>anomalies</mark>, use <mark>@supports</mark> for detection, provide solid <mark>fallbacks</mark>, and
       keep your <mark>neuralyzer ready</mark>. Observe, adapt, do not panic.
     </p>
   </div>
-  <aside class="notes">
-    While many modern CSS features are widely supported, some are still in development or have limited browser support. Let's take a look at some upcoming features that hold great promise for the
-    future of web design.
-  </aside>
+</section>
+<section>
+  <p balance="">While <mark>many modern CSS features</mark> are widely supported, some <mark>are still in development</mark> or have limited browser support.</p>
+</section>
+<section>
+  <p balance="">Let's take a look at some upcoming features that hold <mark>great promise for the future</mark> of web design.</p>
+</section>
+<section>
+  <figure>
+    <img src="it-hasnt-happened-yet.ba4eb9d6.gif" width="65%" alt="">
+  </figure>
 </section>
 
   <section>
@@ -4066,13 +4147,13 @@ h1 {
 </section>
 
 <section>
-  <section data-transition="convex">
+  <section data-transition="convex" neuralyzer="">
   <h4>Slides Links</h4>
   <comparison links="">
     <figure>
       <picture>
-        <source srcset="slides.43ee1483.webp" type="image/webp">
-        <img src="slides.0b190715.png" alt="Slides">
+        <source srcset="slides.c0ad3820.webp" type="image/webp">
+        <img src="slides.62a82037.png" alt="Slides">
       </picture>
       <figcaption>
         <small>Slides</small>
@@ -4080,8 +4161,8 @@ h1 {
     </figure>
     <figure>
       <picture>
-        <source srcset="slides-repo.34c5d4a7.webp" type="image/webp">
-        <img src="slides-repo.d6a8e8e4.png" alt="Slides Repo on Github">
+        <source srcset="slides-repo.726ea480.webp" type="image/webp">
+        <img src="slides-repo.0161c44f.png" alt="Slides Repo on Github">
       </picture>
       <figcaption>
         <small>Slides Repo</small>
@@ -4212,7 +4293,7 @@ h1 {
 
       </div>
       <div class="mib-device">
-  <img src="neuralyzer.051003bf.svg" alt="Neuralyzer">
+  <img src="neuralyzer.86f34193.svg" alt="Neuralyzer">
   <span class="mib-head-glow" aria-hidden="true"></span>
 </div>
 <div class="mib-neuralyzer" aria-hidden="true"></div>
@@ -4224,7 +4305,7 @@ h1 {
 </a>
 
     </main>
-    <script src="baseline-rhapsody-devfest-pescara-2025.5f1aa503.js" type="module"></script>
+    <script src="baseline-rhapsody-devfest-pescara-2025.39af5f13.js" type="module"></script>
   
 
 </body></html>

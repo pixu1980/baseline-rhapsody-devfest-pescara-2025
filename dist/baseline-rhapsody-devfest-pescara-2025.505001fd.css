@@ -15352,11 +15352,16 @@
 }
 
 .mib-device.enter {
-  transform: translateY(0);
+  transform: translateY(-10vh);
+}
+
+.mib-device {
+  --mib-device-height: 55vh;
 }
 
 .mib-device img, .mib-device svg {
-  inline-size: min(28rem, 60vw);
+  block-size: var(--mib-device-height);
+  inline-size: auto;
   filter: drop-shadow(0 0 .6rem color-mix(in oklab, var(--mib-accent) 30%, transparent));
 }
 
@@ -15382,14 +15387,14 @@
 }
 
 .mib-head-glow {
+  top: calc(var(--mib-device-height) * .12);
+  inline-size: calc(var(--mib-device-height) / 3.7);
   aspect-ratio: 1 / .25;
   pointer-events: none;
   background: radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--mib-accent) 45%, transparent), transparent 40%);
   opacity: .9;
   filter: blur(4px);
-  inline-size: min(28rem, 60vw);
   position: absolute;
-  top: 7rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -15541,9 +15546,13 @@
   }
 }
 
+.typing-cursor {
+  position: relative;
+}
+
 .typing-cursor:after {
   content: "|";
-  margin-left: .1em;
+  margin-left: 0;
   animation: 1s step-end infinite blink-cursor;
   display: inline-block;
 }
@@ -15564,4 +15573,4 @@
     animation: none;
   }
 }
-/*# sourceMappingURL=baseline-rhapsody-devfest-pescara-2025.66637832.css.map */
+/*# sourceMappingURL=baseline-rhapsody-devfest-pescara-2025.505001fd.css.map */
