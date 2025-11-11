@@ -91,7 +91,8 @@
 <!-- 
 <section>
   <h4>Fallback Values</h4>
-  <pre><code class="language-css">/* Provide fallback if variable is not defined */
+  <pre>
+        <code data-trim data-line-numbers class="hljs css">/* Provide fallback if variable is not defined */
 .element {
   color: var(--text-color, #000000);
   font-size: var(--font-size, 16px);
@@ -110,7 +111,8 @@
 
 <section>
   <h4>Scoped Variables</h4>
-  <pre><code class="language-css">/* Global variables */
+  <pre>
+        <code data-trim data-line-numbers class="hljs css">/* Global variables */
 :root {
   --color-primary: blue;
 }
@@ -136,7 +138,8 @@
 
 <section>
   <h4>Dynamic Updates with JavaScript</h4>
-  <pre><code class="language-javascript">// Get variable value
+  <pre>
+        <code data-trim data-line-numbers class="hljs javascript">// Get variable value
 const root = document.documentElement;
 const primaryColor = getComputedStyle(root)
   .getPropertyValue('--primary-color');
@@ -155,7 +158,8 @@ colorPicker.addEventListener('change', (e) => {
 
 <section>
   <h4>Advanced: Spacing System</h4>
-  <pre><code class="language-css">:root {
+  <pre>
+        <code data-trim data-line-numbers class="hljs css">:root {
   /* Base unit */
   --space-unit: 0.5rem;
   
