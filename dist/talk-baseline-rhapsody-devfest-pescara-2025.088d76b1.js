@@ -59040,8 +59040,8 @@ addEventListener("DOMContentLoaded", ()=>{
 
 
 // Neuralyzer controller: handles sequence, triggers and integration with Reveal
-var $f11f325552028684$exports = {};
-$f11f325552028684$exports = import.meta.resolve("kTMuc");
+var $067c220f6e5ea6ce$exports = {};
+$067c220f6e5ea6ce$exports = import.meta.resolve("kTMuc");
 
 
 function $bca42cf1db19739f$export$30b9a8d794ba0f2d() {
@@ -59096,7 +59096,7 @@ function $bca42cf1db19739f$export$30b9a8d794ba0f2d() {
     };
     const playNeuralyzerSound = ()=>{
         try {
-            const audio = new Audio(new URL($f11f325552028684$exports).href);
+            const audio = new Audio(new URL($067c220f6e5ea6ce$exports).href);
             audio.volume = 0.6;
             audio.play().catch((e)=>console.debug('[neuralyzer] audio playback prevented:', e));
         } catch (e) {
@@ -59236,4 +59236,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
 });
 
 
-//# sourceMappingURL=baseline-rhapsody-devfest-pescara-2025.44266c64.js.map
+//# sourceMappingURL=talk-baseline-rhapsody-devfest-pescara-2025.088d76b1.js.map

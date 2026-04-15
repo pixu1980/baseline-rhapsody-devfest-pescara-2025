@@ -15319,7 +15319,7 @@
 
 .reveal h1, .reveal h2 {
   text-shadow: 0 0 .35rem color-mix(in oklab, var(--mib-accent) 65%, transparent),
-    0 0 1.2rem color-mix(in oklab, var(--mib-accent) 35%, transparent);
+		0 0 1.2rem color-mix(in oklab, var(--mib-accent) 35%, transparent);
 }
 
 .reveal a {
@@ -15343,7 +15343,10 @@
   pointer-events: none;
   opacity: 0;
   z-index: 10000;
-  background: radial-gradient(ellipse 80vw 50vh at 50% 85%, var(--mib-accent), #fff 40%, #fff);
+  background: radial-gradient(ellipse 80vw 50vh at 50% 85%,
+		var(--mib-accent),
+		#fff 40%,
+		#fff);
   position: fixed;
   inset: 0;
 }
@@ -15427,7 +15430,9 @@
   inline-size: calc(var(--mib-device-height) / 3.7);
   aspect-ratio: 1 / .25;
   pointer-events: none;
-  background: radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--mib-accent) 45%, transparent), transparent 40%);
+  background: radial-gradient(ellipse at 50% 0%,
+		color-mix(in oklab, var(--mib-accent) 45%, transparent),
+		transparent 40%);
   opacity: .9;
   filter: blur(4px);
   position: absolute;
@@ -15445,10 +15450,12 @@
   --panel-bg-light: #fff;
   --panel-text-dark: #f2f2f2;
   --panel-text-light: #1a1a1a;
-  border: 1px solid color-mix(in oklab, var(--mib-accent) 35%, #ffffff1f);
+  border: 1px solid
+		color-mix(in oklab, var(--mib-accent) 35%, #ffffff1f);
   border-left-width: 6px;
   border-left-color: var(--mib-accent);
-  box-shadow: 0 .6rem 2rem color-mix(in oklab, var(--mib-accent) 10%, transparent);
+  box-shadow: 0 .6rem 2rem
+		color-mix(in oklab, var(--mib-accent) 10%, transparent);
   background: var(--panel-bg-light);
   color: var(--panel-text-light);
   border-radius: 12px;
@@ -15496,7 +15503,8 @@
   letter-spacing: .18em;
   color: #000;
   background: var(--mib-accent);
-  box-shadow: 0 .2rem .8rem color-mix(in oklab, var(--mib-accent) 35%, transparent);
+  box-shadow: 0 .2rem .8rem
+		color-mix(in oklab, var(--mib-accent) 35%, transparent);
   border-radius: 6px;
   padding: .35rem .6rem;
   position: absolute;
@@ -15519,10 +15527,14 @@
 .baseline-badges .badge {
   font: 600 1.2rem / 1.2 var(--font-family--base, system-ui, sans-serif);
   letter-spacing: .02em;
-  border: 1px solid color-mix(in oklab, var(--mib-accent) 35%, #ffffff26);
-  background: color-mix(in oklab, var(--mib-accent) 8%, #ffffff0a);
+  border: 1px solid
+		color-mix(in oklab, var(--mib-accent) 35%, #ffffff26);
+  background: color-mix(in oklab,
+		var(--mib-accent) 8%,
+		#ffffff0a);
   color: var(--r-main-color);
-  box-shadow: 0 0 .6rem color-mix(in oklab, var(--mib-accent) 25%, transparent) inset;
+  box-shadow: 0 0 .6rem color-mix(in oklab, var(--mib-accent) 25%, transparent)
+		inset;
   border-radius: 999px;
   padding: .3rem .8rem;
 }
@@ -15609,4 +15621,4 @@
     animation: none;
   }
 }
-/*# sourceMappingURL=baseline-rhapsody-devfest-pescara-2025.30b79264.css.map */
+/*# sourceMappingURL=talk-baseline-rhapsody-devfest-pescara-2025.a9d97ff9.css.map */
